@@ -1,0 +1,5 @@
+# Exact Python package versions in the environment that reproduced the approved
+# heightfield.npz SHA256. This is NOT the Mac's full Genesis dependency lock.
+numpy==2.3.5
+scipy==1.17.0
+matplotlib==3.10.8
