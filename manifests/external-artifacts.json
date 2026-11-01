@@ -1,0 +1,22 @@
+{
+  "legacy_root_environment_variable": "GO2_LEGACY_ROOT",
+  "artifacts": [
+    {
+      "name": "adopted6500",
+      "relative_path": "logs/stage1/natural/training/slip20-margin012-64x1500/model_6500.pt",
+      "sha256": "c9bd93aa103db4e892623babff4de5c8da2cc7c0af5e31bcca389836738c0a2c",
+      "size_bytes": 4546199
+    },
+    {
+      "name": "parent_configs",
+      "relative_path": "logs/stage1/natural/training/slip20-margin012-64x1500/cfgs.pkl",
+      "sha256": "3ccde65c9fb8eab394cb57c9686400a57bfd17099422356666b99e98b2c152ea",
+      "size_bytes": 2023
+    }
+  ],
+  "approved_reference": {
+    "tracked_path": "assets/approved/heightfield.npz",
+    "sha256": "69979149fa5814316b7abea1b4ea01ccb12a0dfd6d36bfe72f55ce79d4071913"
+  },
+  "models_and_all_runtime_media_tracked": false
+}

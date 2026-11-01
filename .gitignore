@@ -22,10 +22,14 @@ reports/generated/
 *.mov
 *.zip
 
-# Approved terrain is regenerated from tracked source and validated by SHA256
+# Runtime terrain copy; exact small reference is tracked under assets/approved/
 terrain/rolling_uneven/v1/heightfield.npz
 terrain/rolling_uneven/v1/uneven_rolling_terrain.obj
 terrain/rolling_uneven/v1/terrain_perspective.png
 terrain/rolling_uneven/v1/terrain_centerline.png
 terrain/rolling_uneven/v1/terrain_topdown.png
 terrain/rolling_uneven/v1/centerline_x_z.csv
+
+.cache/
+.superpowers/
+.runtime/

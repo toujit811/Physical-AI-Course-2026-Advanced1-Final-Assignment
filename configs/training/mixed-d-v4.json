@@ -1,0 +1,40 @@
+{
+  "reward_version": "mixed-v4-calf-contact",
+  "additional_reward_scales": {
+    "world_tracking": 1.0,
+    "lateral_drift": -12.0,
+    "heading": -3.0,
+    "upright": -1.0,
+    "nonfoot": -50.0,
+    "joint_limit": -500.0
+  },
+  "sampler": {
+    "FLAT": 0.5,
+    "ROLLING_UNEVEN": 0.5
+  },
+  "seeds": {
+    "train": [
+      62001,
+      62002
+    ],
+    "validation": [
+      2101,
+      2102,
+      2103
+    ],
+    "heldout": [
+      82001,
+      82002,
+      82003
+    ]
+  },
+  "evaluation_thresholds": "unchanged configs/natural-gait.json and configs/stage2-uneven.json",
+  "initial_num_envs": 64,
+  "rollout_steps": 24,
+  "initial_parent_iteration": 6500,
+  "joint_guard_margin_rad": 0.15,
+  "change_reason": "D13550 completes all rolling trials but c0/c1 each has two unloaded FL_calf contacts; strengthen training-only nonfoot and near-limit guard, retain every evaluation threshold and controller setting. One bounded1000-update refinement.",
+  "ppo_overrides": {
+    "entropy_coef": 0.001
+  }
+}

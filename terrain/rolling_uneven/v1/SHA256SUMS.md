@@ -19,4 +19,8 @@ Git上の `restore_approved_heightfield.py` は上記原generatorと同じNPZを
 
 **検証実績**：検証環境 Python3.13.5 / NumPy2.3.5 / SciPy1.17.0 で生成したNPZ SHA256は承認済み原本と完全一致。原ZIPのテスト2件もPASS。GitHubコード読戻しのblob SHAは検証済みローカルソースと一致。
 
-Macでの検証実績は未取得。復元SHAが一致するまで正式なGenesis地形として使用してはいけません。入力NPZを取得するために前のチャットの添付ファイルを探す必要はありません。
+## Macでの実測（Issue #1 / #2）
+
+Macの原ZIP/NPZの上記SHA一致とGenesis1.4.5 native衝突・足裏接触はIssue #1で確認済みです。Issue #2のPython3.12.14 / NumPy2.3.5 / SciPy1.17.0隔離venvでは、元復元コードの出力SHAは`b74be40adf6e1f4380623fc8aab9aa433510a82ec396a02fae99e1d98df07a96`となり、厳密ゲートに不合格でした。元generatorの完全一致実績を全Macへ一般化しません。
+
+承認NPZの一致原本を`assets/approved/heightfield.npz`に保存しています。既定bootstrapはこれを厳密確認してruntimeへ配置します。再生成診断は別runへ保存し、承認原本やruntimeコピーを上書きしません。統計値が似ている不一致NPZを承認済みとして使わないこと。

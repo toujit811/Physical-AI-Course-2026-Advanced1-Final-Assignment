@@ -1,0 +1,342 @@
+{
+  "source_root_env": "GO2_LEGACY_ROOT",
+  "modules": [
+    {
+      "module": "cpu_benchmark_metrics",
+      "source_relative": "scripts/cpu_benchmark_metrics.py",
+      "source_sha256": "c29bff692df2d9a0cea942dc74acd5901de8720749350a6ca33d71d0b736da8b",
+      "integrated_path": "src/go2_ppo/cpu_benchmark_metrics.py",
+      "integrated_sha256": "c29bff692df2d9a0cea942dc74acd5901de8720749350a6ca33d71d0b736da8b",
+      "changes": "package-relative imports and repository paths only; native env adaptations separately versioned"
+    },
+    {
+      "module": "cpu_parallel_benchmark",
+      "source_relative": "scripts/cpu_parallel_benchmark.py",
+      "source_sha256": "20fd5af7775e14c259395203cf3ba92495cefde822342123684f88ed00c6fbd8",
+      "integrated_path": "src/go2_ppo/cpu_parallel_benchmark.py",
+      "integrated_sha256": "f6b11d81e834567b05fae5e5699daac25348746061dd1563080c44b364ecf115",
+      "changes": "package-relative imports and repository paths only; native env adaptations separately versioned"
+    },
+    {
+      "module": "go2_kinematics",
+      "source_relative": "scripts/go2_kinematics.py",
+      "source_sha256": "8413ddd6b032190dfa4ae1724ecdb93b12bc6c35027ee9ca473ee9a4ba8418b0",
+      "integrated_path": "src/go2_ppo/go2_kinematics.py",
+      "integrated_sha256": "8413ddd6b032190dfa4ae1724ecdb93b12bc6c35027ee9ca473ee9a4ba8418b0",
+      "changes": "package-relative imports and repository paths only; native env adaptations separately versioned"
+    },
+    {
+      "module": "natural_gait",
+      "source_relative": "scripts/natural_gait.py",
+      "source_sha256": "064d65d94f07ded1d7a013c5911332bd61b694ad6579cdc2d9b5f560a90f5924",
+      "integrated_path": "src/go2_ppo/natural_gait.py",
+      "integrated_sha256": "0e62ece3eba435548f06e89e096467b48594d574efe952de82974d13a8b938b7",
+      "changes": "package-relative imports and repository paths only; native env adaptations separately versioned"
+    },
+    {
+      "module": "natural_metrics",
+      "source_relative": "scripts/natural_metrics.py",
+      "source_sha256": "d25d5b77cf28f44fc5360f16f421f082a2f356c90f8d67c9f5cd978ad7808040",
+      "integrated_path": "src/go2_ppo/natural_metrics.py",
+      "integrated_sha256": "d25d5b77cf28f44fc5360f16f421f082a2f356c90f8d67c9f5cd978ad7808040",
+      "changes": "package-relative imports and repository paths only; native env adaptations separately versioned"
+    },
+    {
+      "module": "natural_rewards",
+      "source_relative": "scripts/natural_rewards.py",
+      "source_sha256": "b73f38c3e6b537f15650fa07a5f725b64f3ca9388e5572a9cac6f27ab29ec876",
+      "integrated_path": "src/go2_ppo/natural_rewards.py",
+      "integrated_sha256": "b73f38c3e6b537f15650fa07a5f725b64f3ca9388e5572a9cac6f27ab29ec876",
+      "changes": "package-relative imports and repository paths only; native env adaptations separately versioned"
+    },
+    {
+      "module": "nature_env",
+      "source_relative": "scripts/nature_env.py",
+      "source_sha256": "7dbf9a6bfce4f8f185b6bf34e30d37357aa7c8617b56a48356954793ea8e5ba9",
+      "integrated_path": "src/go2_ppo/nature_env.py",
+      "integrated_sha256": "80a29e03e25b63010caade42820c83599db264d8b86909820a83fad89745d28d",
+      "changes": "package-relative imports and repository paths only; native env adaptations separately versioned"
+    },
+    {
+      "module": "rolling_approved_source",
+      "source_relative": "scripts/rolling_approved_source.py",
+      "source_sha256": "dc51fe5a540655bb5b29753702662dec72b05a0dc39dc20658567b3d266fc009",
+      "integrated_path": "src/go2_ppo/rolling_approved_source.py",
+      "integrated_sha256": "e772551ed90cd2674525774d423db013abcbdf4994105fafecf99891ac3c4240",
+      "changes": "package-relative imports and repository paths only; native env adaptations separately versioned"
+    },
+    {
+      "module": "rolling_native_audit",
+      "source_relative": "scripts/rolling_native_audit.py",
+      "source_sha256": "e776ece5f8e01a6372bbb18d78a73d16655f8ad11b7ea4d108055a2b03490db6",
+      "integrated_path": "src/go2_ppo/rolling_native_audit.py",
+      "integrated_sha256": "2095a118d034a45c71b2b5c47ba23f2fb50eee54f625411e38bcd27148dda3b1",
+      "changes": "package-relative imports and repository paths only; native env adaptations separately versioned"
+    },
+    {
+      "module": "rolling_native_env",
+      "source_relative": "scripts/rolling_native_env.py",
+      "source_sha256": "3c3c5545b203c357e9d61e5a989aff2d1a875eeffd190d3d56eef3bb792185fa",
+      "integrated_path": "src/go2_ppo/rolling_native_env.py",
+      "integrated_sha256": "0ffa31e7400a930eb542351fcafbf3e96a8318705c7d02c1cf793cbb0dd6ada9",
+      "changes": "package paths; optional original FLAT URDF plane; preserve approved rolling native physics/controller"
+    },
+    {
+      "module": "rolling_native_evaluate",
+      "source_relative": "scripts/rolling_native_evaluate.py",
+      "source_sha256": "3f32a52544f894fdf9b664155c6d052634c489ce0f4633a5f0d74fbddb618c1f",
+      "integrated_path": "src/go2_ppo/rolling_native_evaluate.py",
+      "integrated_sha256": "d84a1a02bfd06e1f3cfdacd2d9b55f030ac94b4001c6062c3ab175319babc1c3",
+      "changes": "package paths/full source freeze, configurable label; FLAT infinite-plane boundary exclusion; rolling thresholds unchanged; latch every physics substep safety event into progress/termination"
+    },
+    {
+      "module": "rolling_uneven_media",
+      "source_relative": "scripts/rolling_uneven_media.py",
+      "source_sha256": "021c5db8d411303cfc9371611acbfbf25987384a08c57d0877c5074f7f80689f",
+      "integrated_path": "src/go2_ppo/rolling_uneven_media.py",
+      "integrated_sha256": "f170d3ddae49c316bb3f76c4c3510a15226dffd31bd22a6a30fd87272b3b318d",
+      "changes": "package-relative imports and repository paths only; native env adaptations separately versioned"
+    },
+    {
+      "module": "rolling_uneven_terrain",
+      "source_relative": "scripts/rolling_uneven_terrain.py",
+      "source_sha256": "d7e1e62f55ee9a3fb661f4054209c593b6535ed224084779ea9dc544448ca445",
+      "integrated_path": "src/go2_ppo/rolling_uneven_terrain.py",
+      "integrated_sha256": "d7e1e62f55ee9a3fb661f4054209c593b6535ed224084779ea9dc544448ca445",
+      "changes": "package-relative imports and repository paths only; native env adaptations separately versioned"
+    },
+    {
+      "module": "run_paths",
+      "source_relative": "examples/locomotion/run_paths.py",
+      "source_sha256": "f9e295d565038996bc4712ec4eb8f95de3a3eca457a51eeb783a6f6229765c07",
+      "integrated_path": "src/go2_ppo/run_paths.py",
+      "integrated_sha256": "f9e295d565038996bc4712ec4eb8f95de3a3eca457a51eeb783a6f6229765c07",
+      "changes": "package-relative imports and repository paths only; native env adaptations separately versioned"
+    },
+    {
+      "module": "stage1_flat",
+      "source_relative": "scripts/stage1_flat.py",
+      "source_sha256": "fed4d09f77f43d774963c80554639ff15bbfbc82c892765857dd5585898a7dd1",
+      "integrated_path": "src/go2_ppo/stage1_flat.py",
+      "integrated_sha256": "9c96eff8fac178f2250cc5b2a745f48237b76b092d70666806c393c64fc859fe",
+      "changes": "package-relative imports and repository paths only; native env adaptations separately versioned"
+    },
+    {
+      "module": "stage2_boundary",
+      "source_relative": "scripts/stage2_boundary.py",
+      "source_sha256": "958d8331784d1bc52d2975d468d573211a6b9c6c4b07db0a6e621112f0d2c847",
+      "integrated_path": "src/go2_ppo/stage2_boundary.py",
+      "integrated_sha256": "958d8331784d1bc52d2975d468d573211a6b9c6c4b07db0a6e621112f0d2c847",
+      "changes": "package-relative imports and repository paths only; native env adaptations separately versioned"
+    },
+    {
+      "module": "stage2_terrain",
+      "source_relative": "scripts/stage2_terrain.py",
+      "source_sha256": "de439111a215cf24fa642bdc4532759ad1df08a09f23eb7730e15f3672db3c02",
+      "integrated_path": "src/go2_ppo/stage2_terrain.py",
+      "integrated_sha256": "de439111a215cf24fa642bdc4532759ad1df08a09f23eb7730e15f3672db3c02",
+      "changes": "package-relative imports and repository paths only; native env adaptations separately versioned"
+    },
+    {
+      "module": "stage2_visual_diagnostic",
+      "source_relative": "scripts/stage2_visual_diagnostic.py",
+      "source_sha256": "180a01332258cb68385fd4a9f4211d033fc876ac2106c9684c3a1e3f267bf66f",
+      "integrated_path": "src/go2_ppo/stage2_visual_diagnostic.py",
+      "integrated_sha256": "17dd89060e50a9a1261f1307f4f3e7a4213a11e17101dd1548496ec3ec067652",
+      "changes": "package-relative imports and repository paths only; native env adaptations separately versioned"
+    },
+    {
+      "module": "standard_recording",
+      "source_relative": "scripts/standard_recording.py",
+      "source_sha256": "762aa4e809d1916ce76cee24e194e4e81cfb8267259ff397c84d2177697c7b4f",
+      "integrated_path": "src/go2_ppo/standard_recording.py",
+      "integrated_sha256": "b8dee39ff716815b28b0025c163db3556b50e728d481d18bacf1f4fa59bb2465",
+      "changes": "package-relative imports and repository paths only; native env adaptations separately versioned"
+    },
+    {
+      "module": "standing_metrics",
+      "source_relative": "scripts/standing_metrics.py",
+      "source_sha256": "34d6b7bf222b70079b68be38bf1a127f87d6bafeae543e56c638e809ef91056f",
+      "integrated_path": "src/go2_ppo/standing_metrics.py",
+      "integrated_sha256": "34d6b7bf222b70079b68be38bf1a127f87d6bafeae543e56c638e809ef91056f",
+      "changes": "package-relative imports and repository paths only; native env adaptations separately versioned"
+    },
+    {
+      "module": "video_materials",
+      "source_relative": "scripts/video_materials.py",
+      "source_sha256": "760dabbe906accdb4d7a91d21a8840c5ad0c06cbeaf16ffeac35c4d748632e6f",
+      "integrated_path": "src/go2_ppo/video_materials.py",
+      "integrated_sha256": "b24f6449037880c6056a9ac4975ae02c6f79400bfc5d38c1b1e2e318a1f7944d",
+      "changes": "package-relative imports and repository paths only; native env adaptations separately versioned"
+    },
+    {
+      "module": "walking_metrics",
+      "source_relative": "scripts/walking_metrics.py",
+      "source_sha256": "828269be318797cb52e8e415fa4bd8f9eaa0221e6161a2613827d42dcb7784ca",
+      "integrated_path": "src/go2_ppo/walking_metrics.py",
+      "integrated_sha256": "828269be318797cb52e8e415fa4bd8f9eaa0221e6161a2613827d42dcb7784ca",
+      "changes": "package-relative imports and repository paths only; native env adaptations separately versioned"
+    },
+    {
+      "module": "world_x_ruler",
+      "source_relative": "scripts/world_x_ruler.py",
+      "source_sha256": "148536f3168202225d17004382542912f9dc0e4bcde0c77ca7f0ba09dec20aeb",
+      "integrated_path": "src/go2_ppo/world_x_ruler.py",
+      "integrated_sha256": "b54e2235893d41d185fcf37780c11104abc5f358082ed6128cd8304e8323a3e2",
+      "changes": "package-relative imports and repository paths only; native env adaptations separately versioned"
+    },
+    {
+      "module": "xz_colour",
+      "source_relative": "scripts/xz_colour.py",
+      "source_sha256": "fc55d372748b76e32f3fa4933f0005823f2380a3a07fcf4ec909e5fb6b4979f2",
+      "integrated_path": "src/go2_ppo/xz_colour.py",
+      "integrated_sha256": "e556df0402ba4e4fa90f35a2c86061b206090eba4f8d010cb2acbe22d9ff722e",
+      "changes": "package-relative imports and repository paths only; native env adaptations separately versioned"
+    },
+    {
+      "module": "xz_profile",
+      "source_relative": "scripts/xz_profile.py",
+      "source_sha256": "befacb3638edd7ca9e67545f8120330ae1baceb72278896735c4922b3b94cd4a",
+      "integrated_path": "src/go2_ppo/xz_profile.py",
+      "integrated_sha256": "1b856099fc7a6920aadf6e6d846d563bd76974bf1125c15c682e8405ffce0e2b",
+      "changes": "package-relative imports and repository paths only; native env adaptations separately versioned"
+    },
+    {
+      "module": "stage2_eval",
+      "source_relative": "scripts/stage2_eval.py",
+      "source_sha256": "f629af9e309a63bb301fbc6b5d7df2b0133c8b6036022fb1589d4b1660497d64",
+      "integrated_path": "src/go2_ppo/stage2_eval.py",
+      "integrated_sha256": "8fe555a39854eacda7b98518a1bb517be86cb262a762f1dbf0d27219121dd2e3",
+      "changes": "relative imports and repository paths only"
+    },
+    {
+      "module": "stage2_env",
+      "source_relative": "scripts/stage2_env.py",
+      "source_sha256": "fc5e34a2bdeef63239e42c37c8a19e8f879ebb73ac1d85019c7cc30b0b83a1e9",
+      "integrated_path": "src/go2_ppo/stage2_env.py",
+      "integrated_sha256": "82f1339199389078adc3cf82d1723afbfbb98a0c78ecacd4fd42c0633fae8bda",
+      "changes": "relative imports and repository paths only"
+    },
+    {
+      "module": "stage2_train",
+      "source_relative": "scripts/stage2_train.py",
+      "source_sha256": "7bd962e0931c6c13021323c17cb4853d307242884e2cf2d692ab78e9a746c411",
+      "integrated_path": "src/go2_ppo/stage2_train.py",
+      "integrated_sha256": "4fba4ea153a2cba386fb46a1a58a5294946fa945ecf7ca11c46957b971242458",
+      "changes": "relative imports and repository paths only"
+    }
+  ],
+  "tests": [
+    {
+      "source_relative": "tests/test_natural_metrics.py",
+      "source_sha256": "accd15e25f85589e5b3feab65cea2f2ad9fe8fd9d68d4ec8d41f2ada09b3de21",
+      "integrated_path": "tests/test_natural_metrics.py",
+      "integrated_sha256": "b1f732397f33f98c763d110974b1db9c212add3ad84be72841b141d7ff1615e6"
+    },
+    {
+      "source_relative": "tests/test_natural_rewards.py",
+      "source_sha256": "f8f133f11f6b88b9ef8d39c01eede91f460d296842a2fc4c3d7d921dfae9c72e",
+      "integrated_path": "tests/test_natural_rewards.py",
+      "integrated_sha256": "d3b595040e1a032aa3ef66106f45b9233484cb8c7b26a7faca6f301cb373ec5d"
+    },
+    {
+      "source_relative": "tests/test_stage2_boundary.py",
+      "source_sha256": "2e20211e9d05bea21d492d6b7891171f23b44a0a9e234f1a42b2f667650ad8a8",
+      "integrated_path": "tests/test_stage2_boundary.py",
+      "integrated_sha256": "ffbc71337e77cc14acbb86ea364532ad98b0093918269b58f0c9e75e5fd2e450"
+    },
+    {
+      "source_relative": "tests/test_rolling_approved_source.py",
+      "source_sha256": "2cc86d63e7262f604ddc8bb40d4e2c067489635f83cca1599f24ffd34d9793bb",
+      "integrated_path": "tests/test_rolling_approved_source.py",
+      "integrated_sha256": "1053eab058c1591693763e8a5c915f66a61b0db2fa88fe333527541d87e1594b"
+    },
+    {
+      "source_relative": "tests/test_rolling_native_env.py",
+      "source_sha256": "dcde4f0e6a68e27d910a4b132fc9c03e9d88d3c7347b1dae2fa92959e1cfef5f",
+      "integrated_path": "tests/test_rolling_native_env.py",
+      "integrated_sha256": "331b6e66eb6cfe112eeeda06530269f63dab2166d5bfc1e8fc427abd87ceb539"
+    },
+    {
+      "source_relative": "tests/test_xz_profile.py",
+      "source_sha256": "bdae97c427431f929db58096f22acf5df77cfcb7e4d4f9cfffe454d5dcb31aa3",
+      "integrated_path": "tests/test_xz_profile.py",
+      "integrated_sha256": "406a901d5cb188f59db4bfaf292f1ccddf36caf4755ce42e6fc7f6422cb13c76"
+    },
+    {
+      "source_relative": "tests/test_xz_colour.py",
+      "source_sha256": "0e2b7f8109231c87eaa19ecd206a0c2abc40dacf9a17d46b3c983752f1790cc0",
+      "integrated_path": "tests/test_xz_colour.py",
+      "integrated_sha256": "204c333b92112b6307b450c5dfd3b18a8e3ef20072b48495b18bffcb8534ebbe"
+    },
+    {
+      "source_relative": "tests/test_world_x_ruler.py",
+      "source_sha256": "9b2b2e2ccd27aa0a2fcc557f8eaef78795e02d8ddeeebb51f1ae7082fc61d1cc",
+      "integrated_path": "tests/test_world_x_ruler.py",
+      "integrated_sha256": "a98739961ac1a564871ed052753a177a01a0905c675672e167c0be85d7805496"
+    },
+    {
+      "source_relative": "tests/test_standard_recording.py",
+      "source_sha256": "6f28ed0605399dfa9be3917cd0449a736a744f45c8b077d4d678c284fd6a9899",
+      "integrated_path": "tests/test_standard_recording.py",
+      "integrated_sha256": "c4c38e4d801e9483e695c16e1b1e482b271a443f65c6cdb754ad62d2488ec238"
+    },
+    {
+      "source_relative": "tests/test_cpu_benchmark.py",
+      "source_sha256": "9936d7f8d0d59c28793b2023b814455ef079e142fcf676fb36098c46c43726a0",
+      "integrated_path": "tests/test_cpu_benchmark.py",
+      "integrated_sha256": "67571da103597be18db2abc40edd50e45cb5c2d2d6bb94a005e046b941cfc1c3"
+    }
+  ],
+  "new_modules": [
+    {
+      "path": "src/go2_ppo/__init__.py",
+      "sha256": "8b5d55cc627090d6e3dc7580a1d45be0c651dc83a0f293bdcc498eece098b611"
+    },
+    {
+      "path": "src/go2_ppo/bootstrap_source.py",
+      "sha256": "914ca995267054c300461af7845cad7d73eac4fa5c1d9928023ab44dcdf82ede"
+    },
+    {
+      "path": "src/go2_ppo/evaluate.py",
+      "sha256": "a777fbdd455fcb2f863136c0265f9726456a786b4cdcb64e11399b2444f4a889"
+    },
+    {
+      "path": "src/go2_ppo/evaluation_status.py",
+      "sha256": "1f6c89518904960cc16c05e4e72cec91a4c2faf9e50e6a2e05788326a45d2a71"
+    },
+    {
+      "path": "src/go2_ppo/evidence.py",
+      "sha256": "67141d20edfa56d6b284e4ab04e3d0b11d6d3e1285d9aa2f16bb2a18ad1aa0cb"
+    },
+    {
+      "path": "src/go2_ppo/mixed_core.py",
+      "sha256": "0cf2c27f2bf0a4aa8e4b5bdb3a63acc0a6761b5a1ce52588d815ff53ef135de2"
+    },
+    {
+      "path": "src/go2_ppo/selection.py",
+      "sha256": "fd53aabb8788974ab1152f64410861c874cbd31b7d7f001a4cff6d4a040a4e68"
+    },
+    {
+      "path": "src/go2_ppo/train.py",
+      "sha256": "67b0a4ce6e59f2a53e639f6478e5ba2a77aa89b448875f97d7820ac503ea33a0"
+    },
+    {
+      "path": "src/go2_ppo/training_constraints.py",
+      "sha256": "b62f43616a83b1dfcdd0ebf3fe2f18dce521f09479d883195ed3b5e731f5b3a3"
+    },
+    {
+      "path": "src/go2_ppo/training_env.py",
+      "sha256": "06b40b1640e9acf6c8409df7aa895d081b259a001b10ee9b81bd169643d878b5"
+    }
+  ],
+  "new_tests": [
+    "tests/test_evaluation_status.py",
+    "tests/test_evidence.py",
+    "tests/test_mixed_core.py",
+    "tests/test_port_manifest.py",
+    "tests/test_resume_and_bootstrap.py",
+    "tests/test_selection.py",
+    "tests/test_training_constraints.py"
+  ]
+}

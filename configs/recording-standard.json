@@ -1,0 +1,22 @@
+{
+  "schema": 1,
+  "name": "world-x-ruler-xz-elevation-bands",
+  "resolution": [1280, 720],
+  "fps": 25,
+  "playback_rate": 1.0,
+  "codec": "H.264 High",
+  "colour_space": "SDR BT.709",
+  "views": {"side": "primary true world90deg", "oblique": "auxiliary"},
+  "save_clean": true,
+  "save_rgb": true,
+  "world_x_range_m": [-1.0, 7.0],
+  "minor_tick_m": 0.5,
+  "major_tick_m": 1.0,
+  "section_world_y_m": 0.0,
+  "graph_z_cm": [-1.5, 4.0],
+  "viridis_z_cm": [-1.2, 4.0],
+  "interior_fill": "horizontal pixel-world-Z bands only below actual Y0 surface within graph; schematic, not material or physical thickness",
+  "out_of_colour_range": "clamp to LUT endpoint",
+  "ruler": "world(X,0,0) projected via actual saved camera; side HUD100px below projectedZ0; oblique HUD lane uses projectedX only",
+  "no_unrecorded_motion_extension": true
+}

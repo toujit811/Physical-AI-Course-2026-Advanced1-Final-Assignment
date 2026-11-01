@@ -1,5 +1,5 @@
-# Tests
+# 検証
 
-ここには Mac側の既存テストと、新しいGenesis native物理・Go2・PPO・回帰試験を段階的に移行します。
+`PYTHONPATH=src "$GO2_PYTHON" -m unittest discover -s tests -v`で可搬な回帰試験を実行します。元テストのpackage importを変更し、録画試験は過去のローカル動画への依存をsynthetic camera/RGB fixtureへ置換しました。元テスト・元素材は削除しません。
 
-現状すでに実行できるオフラインテストは `terrain/rolling_uneven/v1/test_genesis_terrain_adapter.py` です。Mac上のnative走行検証はまだ実施していません。
+`terrain/rolling_uneven/v1/test_genesis_terrain_adapter.py`のオフライン試験も別途実行します。単体テストだけでnative/PPO成功とは扱いません。実PPOスモーク、多環境reset、64/128実測、保存読戻し、学習後同一checkpointの両環境評価、任意動画の全decodeは各runの証跡です。旧Issue #1の281テストを今回の移行suite数へ混ぜて報告しません。

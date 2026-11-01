@@ -1,0 +1,18 @@
+{
+  "status": "PASS",
+  "frames_fully_decoded": 1500,
+  "video_duration_s": 60.0,
+  "flat_section_frames": 750,
+  "rolling_section_frames": 750,
+  "contiguous_pts_25fps": true,
+  "every_source_frame_unique": true,
+  "same_D13550_SHA_in_both_main_success_segments": true,
+  "source_video_hashes_all_verified": true,
+  "native_raw_RGB_hashes_verified": 1376,
+  "legacy_frames_without_original_raw_RGB_K_E": 124,
+  "source_sim_time_matches_measured_state_time": true,
+  "unannotated_region_mean_absolute_reencoding_error": 1.9386818077256947,
+  "maximum_frame_scene_mean_absolute_error": 2.3113700358072915,
+  "no_scene_interpolation_no_loop_no_unmeasured_walk": true,
+  "legacy_gap_disclosed": true
+}

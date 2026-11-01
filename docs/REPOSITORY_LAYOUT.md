@@ -1,24 +1,7 @@
-# フォルダ構成と管理ルール
+# フォルダと保全
 
-| パス | 用途 | 現状 |
-|---|---|---|
-| `terrain/rolling_uneven/v1/` | 承認済み地形・厳密復元コード・Genesisアダプタ・テスト | 登録済み |
-| `configs/` | FLAT/UNEVEN、PPO、検証seed、設定をバージョン管理 | Macからの移行待ち |
-| `src/` | Genesisシーン、Go2制御、PPO学習・評価コード | Macからの移行待ち |
-| `tests/` | 単体/統合/回帰/物理/再現性テスト | Macからの移行待ち |
-| `assets/` | 自作/配布可能なURDF/terrain等、出典・権利確認後のみ | Macからの移行待ち |
-| `reports/` | CSV/JSON、研究結果、失敗分析、再現条件 | 必要なものだけ後日移行 |
-| `models/` | 6500等のcheckpoint | ローカルのみ、Git除外 |
-| `logs/` | 実行ログ、失敗run、元物理データ | ローカルのみ、Git除外 |
-| `media/` | MP4/画像 | ローカルのみ、Git除外 |
-| `docs/` | 構築手順、仕様、検証ルール | 登録済み |
+READMEの構成表を正本とします。既存controller・PPO・native計測の依存コードを`src/go2_ppo/`へ移し、package importとroot参照を整合しました。移行元SHA・移行後SHAは`manifests/code-port.json`、旧6500参照は`manifests/external-artifacts.json`です。旧ローカルは別cloneの外に保全します。
 
-## データの出所
+承認NPZは約103KiBの自作正本として`assets/approved/`だけをGitに保存します。runtimeコピーやgenerator診断の不一致ファイルはGit除外です。チェックポイント・全学習ログ・生動画・キャッシュ・venv・絶対パスmanifestをcommitしません。
 
-承認済み地形の正本は本リポジトリの `restore_approved_heightfield.py` と既知SHA256です。NPZはコマンドで生成し、Gitには自動生成バイナリとして含めない設計です。
-
-将来他の環境を追加する場合は `terrain/<terrain-name>/vN/` の新規版とし、旧版を上書きしません。地形の承認・学習・評価・提出の状態は混同しません。
-
-## 開発履歴
-
-現行の既存Issue #1は履歴として維持し、将来の工程は必要に応じて新規Issueへ分離します。実装・実験で成功していないものをIssue完了にしません。Gitの反映は、差分/テスト/旧資産保全の確認後に実施します。
+`logs/mixed-d`は学習、`logs/rolling-native`は評価、`reports/generated/issue2`は詳細診断です。旧FLAT/UNEVEN/RUBBLE・失敗runは削除せず、異なるrun名で追記します。小さな数値サマリー・再現コード・テストだけをレビュー・検証後にGitへ反映します。ActionsとPrivate設定は変更しません。

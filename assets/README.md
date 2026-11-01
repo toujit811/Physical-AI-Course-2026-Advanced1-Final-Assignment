@@ -1,5 +1,5 @@
-# Assets
+# ソース資産
 
-Go2 URDF、地形、素材の配置・ライセンス・出典を管理します。Genesisパッケージに付属するURDFを許可なく複製せず、現在使用中のバージョン・SHAを記録して参照してください。
+`approved/heightfield.npz`は承認済みの自作地形原本です。SHA69979149…を必須とし、生成環境差のある近似バイナリを置き換えに使いません。bootstrapでruntimeへ検証配置します。
 
-承認済み新地形の再現可能な正本は `terrain/rolling_uneven/v1/` にあります。
+Go2 URDF/meshは既存Genesis1.4.5のassetsを参照し、この変更では複製・再配布しません。モデル・動画はローカルで保全します。出典とlicenseはNOTICE.mdとmanifestsを参照してください。

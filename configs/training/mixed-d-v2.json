@@ -1,0 +1,37 @@
+{
+  "reward_version": "mixed-v2-joint-guard",
+  "additional_reward_scales": {
+    "world_tracking": 1.0,
+    "lateral_drift": -4.0,
+    "heading": -1.0,
+    "upright": -1.0,
+    "nonfoot": -5.0,
+    "joint_limit": -500.0
+  },
+  "sampler": {
+    "FLAT": 0.5,
+    "ROLLING_UNEVEN": 0.5
+  },
+  "seeds": {
+    "train": [
+      62001,
+      62002
+    ],
+    "validation": [
+      2101,
+      2102,
+      2103
+    ],
+    "heldout": [
+      82001,
+      82002,
+      82003
+    ]
+  },
+  "evaluation_thresholds": "unchanged configs/natural-gait.json and configs/stage2-uneven.json",
+  "initial_num_envs": 64,
+  "rollout_steps": 24,
+  "initial_parent_iteration": 6500,
+  "joint_guard_margin_rad": 0.1,
+  "change_reason": "D7550 improves progress but fails unchanged joint and nonfoot gates. Penalize near-limit joint extension before overshoot; preserve controller and evaluation thresholds."
+}

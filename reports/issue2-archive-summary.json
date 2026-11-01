@@ -1,0 +1,66 @@
+{
+  "legacy": {
+    "all_discovered_records": 217,
+    "categories": {
+      "BENCHMARK": 21,
+      "CONTACT_PROBE": 3,
+      "EVALUATION": 85,
+      "PHYSICS_ONLY": 55,
+      "POSE_REPLAY_MATERIAL": 34,
+      "TRAINING": 3,
+      "MATERIAL": 4,
+      "VIDEO_WITHOUT_RESULT": 1,
+      "REPORT_AGGREGATE": 11
+    },
+    "formal_evaluation_runs": 85,
+    "evaluation_data_recorded": 69,
+    "evaluation_video_recorded": 76,
+    "evaluation_video_missing": 9,
+    "physical_fall_runs_verified": 9,
+    "boundary_runs_observed": 19,
+    "nonfoot_runs_observed": 18,
+    "fall_flag_unknown": 71,
+    "total_movies": 568,
+    "full_decode_pass": 568,
+    "full_decode_fail": 0,
+    "limitations": [
+      "Inventory covers discoverable artifacts, not unrecorded past invocations",
+      "Missing fields remain NOT_RECORDED; file mtime is not claimed as actual start time",
+      "Legacy physical fall without explicit flag requires measured tilt>45deg; mild/height-only uncertain cases remain unproven",
+      "Saved-pose replay not counted as new physical fall"
+    ]
+  },
+  "new": {
+    "all_discovered_records": 71,
+    "categories": {
+      "TRAINING": 12,
+      "EVALUATION": 57,
+      "EDIT_COMPOSITE_COMPLETE": 1,
+      "EDIT_RENDER_FAILURE_PARTIAL": 1
+    },
+    "formal_evaluation_runs": 57,
+    "evaluation_data_recorded": 57,
+    "evaluation_video_recorded": 9,
+    "evaluation_video_missing": 48,
+    "physical_fall_runs_verified": 0,
+    "boundary_runs_observed": 16,
+    "nonfoot_runs_observed": 18,
+    "fall_flag_unknown": 0,
+    "total_movies": 56,
+    "full_decode_pass": 56,
+    "full_decode_fail": 0,
+    "limitations": [
+      "Inventory covers discoverable artifacts, not unrecorded past invocations",
+      "Missing fields remain NOT_RECORDED; file mtime is not claimed as actual start time",
+      "Legacy physical fall without explicit flag requires measured tilt>45deg; mild/height-only uncertain cases remain unproven",
+      "Saved-pose replay not counted as new physical fall"
+    ]
+  },
+  "scope_definition": "All discoverable result.json records and video-only directories; formal evaluation category is path/mode classified, saved-pose replay and contact probes excluded. Unknown past invocations cannot be reconstructed.",
+  "legacy_result_json_files": 216,
+  "old_extra_pose_tables": 25,
+  "old_extra_pose_tables_without_result_owner": 25,
+  "all_mp4_full_decode_pass": 624,
+  "new_render_partial_is_not_a_completed_video": true,
+  "not_recorded_is_not_recorded": "48 new numeric-only formal evaluation runs have no video. Earlier unspecified UTC start/reward fields are not fabricated."
+}
