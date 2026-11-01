@@ -1,0 +1,23 @@
+{
+  "type": "reported_environment_reference_not_installed_by_this_repository",
+  "platform": "macOS",
+  "reported_os_version": "27.0.1",
+  "machine": "Apple M5 Max",
+  "memory_gib": 64,
+  "logical_cpu_count": 18,
+  "python": "3.12.14",
+  "genesis": "1.4.5",
+  "genesis_backend": "CPU",
+  "precision": "FP32",
+  "rsl_rl_lib": "5.0.0",
+  "go2_urdf": "genesis/assets/urdf/go2/urdf/go2.urdf",
+  "go2_urdf_sha256": "4f306754e9b3d73930ac8362aa456eb8912f2e886665618e7eced9627c1704a4",
+  "baseline_checkpoint_mac_local": "logs/stage1/natural/training/slip20-margin012-64x1500/model_6500.pt",
+  "baseline_checkpoint_sha256": "c9bd93aa103db4e892623babff4de5c8da2cc7c0af5e31bcca389836738c0a2c",
+  "observation_dimensions": 45,
+  "action_dimensions": 12,
+  "control_hz": 50,
+  "genesis_native_verified_for_new_rolling_terrain": false,
+  "new_ppo_training_executed": false,
+  "mac_source_migrated_to_git": false
+}
