@@ -1,0 +1,180 @@
+{
+  "authority_issue": 3,
+  "parent_commit": "d7242282301691bd93c6b081c8e38a568b5c2793",
+  "training_performed": false,
+  "new_updates": 0,
+  "new_checkpoint": null,
+  "skip_reason": "Remaining experimental budget755.046s includes diagnosis, six recordings, full decode, Git and reporting. A new shape/substep reward plus bounded PPO and full6validation could not safely fit. No blind weight increase.",
+  "observations": 45,
+  "actions": 12,
+  "thresholds_terrain_URDF_controller_changed": false,
+  "original_models_retained": {
+    "model6500": "c9bd93aa103db4e892623babff4de5c8da2cc7c0af5e31bcca389836738c0a2c",
+    "D13550": "5d7fa7222067ff915942f2be546f9a9b3dcd6126b07eb3d7c8ea7fb4c05a4565",
+    "heightfield": "69979149fa5814316b7abea1b4ea01ccb12a0dfd6d36bfe72f55ce79d4071913"
+  },
+  "results": [
+    {
+      "run": "issue3-D13550-FLAT-c0",
+      "kind": "FLAT",
+      "condition": 0,
+      "checkpoint_sha256": "5d7fa7222067ff915942f2be546f9a9b3dcd6126b07eb3d7c8ea7fb4c05a4565",
+      "numeric_gates": {
+        "A": true,
+        "B": true,
+        "C": true,
+        "D": true,
+        "E": true
+      },
+      "numeric_pass": true,
+      "distance_m": 4.733502388000488,
+      "evaluation_sim_s": 20.0,
+      "physical_fall": false,
+      "termination_reason": "duration_complete",
+      "standalone_videos": {
+        "side": "logs/rolling-native/issue3-D13550-FLAT-c0/native-media/native-side.mp4",
+        "oblique": "logs/rolling-native/issue3-D13550-FLAT-c0/native-media/native-oblique.mp4",
+        "overhead": "logs/rolling-native/issue3-D13550-FLAT-c0/native-media/native-overhead.mp4"
+      },
+      "full_decoded_files": 6,
+      "F": "USER_REVIEW_PENDING"
+    },
+    {
+      "run": "issue3-D13550-FLAT-c1",
+      "kind": "FLAT",
+      "condition": 1,
+      "checkpoint_sha256": "5d7fa7222067ff915942f2be546f9a9b3dcd6126b07eb3d7c8ea7fb4c05a4565",
+      "numeric_gates": {
+        "A": true,
+        "B": true,
+        "C": true,
+        "D": true,
+        "E": true
+      },
+      "numeric_pass": true,
+      "distance_m": 4.87641716003418,
+      "evaluation_sim_s": 20.0,
+      "physical_fall": false,
+      "termination_reason": "duration_complete",
+      "standalone_videos": {
+        "side": "logs/rolling-native/issue3-D13550-FLAT-c1/native-media/native-side.mp4",
+        "oblique": "logs/rolling-native/issue3-D13550-FLAT-c1/native-media/native-oblique.mp4",
+        "overhead": "logs/rolling-native/issue3-D13550-FLAT-c1/native-media/native-overhead.mp4"
+      },
+      "full_decoded_files": 6,
+      "F": "USER_REVIEW_PENDING"
+    },
+    {
+      "run": "issue3-D13550-FLAT-c2",
+      "kind": "FLAT",
+      "condition": 2,
+      "checkpoint_sha256": "5d7fa7222067ff915942f2be546f9a9b3dcd6126b07eb3d7c8ea7fb4c05a4565",
+      "numeric_gates": {
+        "A": true,
+        "B": true,
+        "C": true,
+        "D": true,
+        "E": true
+      },
+      "numeric_pass": true,
+      "distance_m": 4.854813575744629,
+      "evaluation_sim_s": 20.0,
+      "physical_fall": false,
+      "termination_reason": "duration_complete",
+      "standalone_videos": {
+        "side": "logs/rolling-native/issue3-D13550-FLAT-c2/native-media/native-side.mp4",
+        "oblique": "logs/rolling-native/issue3-D13550-FLAT-c2/native-media/native-oblique.mp4",
+        "overhead": "logs/rolling-native/issue3-D13550-FLAT-c2/native-media/native-overhead.mp4"
+      },
+      "full_decoded_files": 6,
+      "F": "USER_REVIEW_PENDING"
+    },
+    {
+      "run": "issue3-D13550-ROLLING_UNEVEN-c0",
+      "kind": "ROLLING_UNEVEN",
+      "condition": 0,
+      "checkpoint_sha256": "5d7fa7222067ff915942f2be546f9a9b3dcd6126b07eb3d7c8ea7fb4c05a4565",
+      "numeric_gates": {
+        "progress": true,
+        "joint_input": true,
+        "posture": true,
+        "no_abnormal_contact": false
+      },
+      "numeric_pass": false,
+      "distance_m": 4.702793121337891,
+      "evaluation_sim_s": 20.0,
+      "physical_fall": false,
+      "termination_reason": "duration_complete",
+      "standalone_videos": {
+        "side": "logs/rolling-native/issue3-D13550-ROLLING_UNEVEN-c0/native-media/native-side.mp4",
+        "oblique": "logs/rolling-native/issue3-D13550-ROLLING_UNEVEN-c0/native-media/native-oblique.mp4",
+        "overhead": "logs/rolling-native/issue3-D13550-ROLLING_UNEVEN-c0/native-media/native-overhead.mp4"
+      },
+      "full_decoded_files": 6,
+      "F": "USER_REVIEW_PENDING"
+    },
+    {
+      "run": "issue3-D13550-ROLLING_UNEVEN-c1",
+      "kind": "ROLLING_UNEVEN",
+      "condition": 1,
+      "checkpoint_sha256": "5d7fa7222067ff915942f2be546f9a9b3dcd6126b07eb3d7c8ea7fb4c05a4565",
+      "numeric_gates": {
+        "progress": true,
+        "joint_input": true,
+        "posture": true,
+        "no_abnormal_contact": false
+      },
+      "numeric_pass": false,
+      "distance_m": 4.91163444519043,
+      "evaluation_sim_s": 20.0,
+      "physical_fall": false,
+      "termination_reason": "duration_complete",
+      "standalone_videos": {
+        "side": "logs/rolling-native/issue3-D13550-ROLLING_UNEVEN-c1/native-media/native-side.mp4",
+        "oblique": "logs/rolling-native/issue3-D13550-ROLLING_UNEVEN-c1/native-media/native-oblique.mp4",
+        "overhead": "logs/rolling-native/issue3-D13550-ROLLING_UNEVEN-c1/native-media/native-overhead.mp4"
+      },
+      "full_decoded_files": 6,
+      "F": "USER_REVIEW_PENDING"
+    },
+    {
+      "run": "issue3-D13550-ROLLING_UNEVEN-c2",
+      "kind": "ROLLING_UNEVEN",
+      "condition": 2,
+      "checkpoint_sha256": "5d7fa7222067ff915942f2be546f9a9b3dcd6126b07eb3d7c8ea7fb4c05a4565",
+      "numeric_gates": {
+        "progress": true,
+        "joint_input": true,
+        "posture": true,
+        "no_abnormal_contact": true
+      },
+      "numeric_pass": true,
+      "distance_m": 4.50569486618042,
+      "evaluation_sim_s": 20.0,
+      "physical_fall": false,
+      "termination_reason": "duration_complete",
+      "standalone_videos": {
+        "side": "logs/rolling-native/issue3-D13550-ROLLING_UNEVEN-c2/native-media/native-side.mp4",
+        "oblique": "logs/rolling-native/issue3-D13550-ROLLING_UNEVEN-c2/native-media/native-oblique.mp4",
+        "overhead": "logs/rolling-native/issue3-D13550-ROLLING_UNEVEN-c2/native-media/native-overhead.mp4"
+      },
+      "full_decoded_files": 6,
+      "F": "USER_REVIEW_PENDING"
+    }
+  ],
+  "diagnosis": "geom9 is fixed FL_calflower1 cylinder r0.0155/L0.03 merged into FL_calf. Independent finite-cylinder samples show preintegration negative gaps1.670/2.263mm, postintegration positive2.992/2.656mm. Each case is two manifold points at one100Hz instant, not two temporal substeps. c1 contact14.69 is absent from50Hz control samples; training nonfoot reward samples only50Hz.",
+  "uncertainties": [
+    "Actual native GJK normals were not saved; no fabricated recovery.",
+    "Finite-cylinder surface sampling is an independent approximation, not a continuous native mesh/GJK proof.",
+    "Zero-force active-set/solver causality and controllable avoidance not established."
+  ],
+  "adoption": "NOT_ADOPTED; D13550 comparison candidate retained; F pending",
+  "heldout": "UNOPENED_NOT_PERFORMED",
+  "standalone_mp4_count": 36,
+  "all_recorded_and_fully_decoded": true,
+  "no_video_editing_or_combining": true,
+  "tests": {
+    "unit_regression": 68,
+    "status": "PASS"
+  }
+}

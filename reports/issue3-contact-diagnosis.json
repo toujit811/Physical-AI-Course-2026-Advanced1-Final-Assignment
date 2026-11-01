@@ -1,0 +1,470 @@
+{
+  "method": "Independent URDF fixed-joint transforms + actual recorded body quaternion,128angularx17axial finite-cylinder surface samples, native anti-diagonal quantized terrain. Not an exact continuous collision proof.",
+  "physics_dt_s": 0.01,
+  "control_dt_s": 0.02,
+  "contact_pose_lag_s": 0.01,
+  "records": [
+    {
+      "condition": 0,
+      "time_s": 15.280000000000001,
+      "URDF_link": "FL_calflower1",
+      "native_merged_link": "FL_calf",
+      "native_geom": 9,
+      "sampled_cylinder_min_vertical_gap_m": 0.04546548212760358,
+      "min_point_world_m": [
+        3.898461741388756,
+        0.044098723499150755,
+        0.15721377137199244
+      ],
+      "FL_foot_clearance_m": 0.0316186398267746,
+      "FL_contact": "False",
+      "FL_positive_contact": "False",
+      "roll_deg": 10.484597838943381,
+      "pitch_deg": 5.694706856428666,
+      "q": [
+        -0.2431090921163559,
+        0.2060035616159439,
+        -1.5054923295974731
+      ],
+      "qdot": [
+        -0.6841164827346802,
+        0.5061532258987427,
+        1.5935624837875366
+      ],
+      "target": [
+        -0.48778051137924194,
+        0.33742237091064453,
+        -1.8140208721160889
+      ]
+    },
+    {
+      "condition": 0,
+      "time_s": 15.290000000000001,
+      "URDF_link": "FL_calflower1",
+      "native_merged_link": "FL_calf",
+      "native_geom": 9,
+      "sampled_cylinder_min_vertical_gap_m": 0.03518076565257286,
+      "min_point_world_m": [
+        3.8944045944100067,
+        0.04211603528833535,
+        0.147623358411205
+      ],
+      "FL_foot_clearance_m": 0.020386800169944763,
+      "FL_contact": "False",
+      "FL_positive_contact": "False",
+      "roll_deg": 10.758895145435208,
+      "pitch_deg": 5.895654880691376,
+      "q": [
+        -0.2504242956638336,
+        0.2170676290988922,
+        -1.4806644916534424
+      ],
+      "qdot": [
+        -0.7315189242362976,
+        1.1064075231552124,
+        2.482779026031494
+      ],
+      "target": [
+        -0.3410266637802124,
+        0.6203731894493103,
+        -0.9577599763870239
+      ]
+    },
+    {
+      "condition": 0,
+      "time_s": 15.3,
+      "URDF_link": "FL_calflower1",
+      "native_merged_link": "FL_calf",
+      "native_geom": 9,
+      "sampled_cylinder_min_vertical_gap_m": 0.018033436653421345,
+      "min_point_world_m": [
+        3.885991793337632,
+        0.033373349645626715,
+        0.1314525770837051
+      ],
+      "FL_foot_clearance_m": 0.0017813891172409058,
+      "FL_contact": "False",
+      "FL_positive_contact": "False",
+      "roll_deg": 9.343434995411922,
+      "pitch_deg": 6.811572221276062,
+      "q": [
+        -0.25225624442100525,
+        0.2318073809146881,
+        -1.44899582862854
+      ],
+      "qdot": [
+        -0.18319618701934814,
+        1.473975419998169,
+        3.1668643951416016
+      ],
+      "target": [
+        -0.3410266637802124,
+        0.6203731894493103,
+        -0.9577599763870239
+      ]
+    },
+    {
+      "condition": 0,
+      "time_s": 15.31,
+      "URDF_link": "FL_calflower1",
+      "native_merged_link": "FL_calf",
+      "native_geom": 9,
+      "sampled_cylinder_min_vertical_gap_m": -0.0016701415088116317,
+      "min_point_world_m": [
+        3.8744495821170672,
+        0.02330490568998822,
+        0.11328144099443249
+      ],
+      "FL_foot_clearance_m": -0.01966100186109543,
+      "FL_contact": "False",
+      "FL_positive_contact": "False",
+      "roll_deg": 7.730108415539768,
+      "pitch_deg": 7.743105405239977,
+      "q": [
+        -0.2530929744243622,
+        0.25321272015571594,
+        -1.4101496934890747
+      ],
+      "qdot": [
+        -0.08367209136486053,
+        2.140533447265625,
+        3.8846120834350586
+      ],
+      "target": [
+        -0.2517845928668976,
+        0.7253536581993103,
+        -0.9577599763870239
+      ]
+    },
+    {
+      "condition": 0,
+      "time_s": 15.32,
+      "URDF_link": "FL_calflower1",
+      "native_merged_link": "FL_calf",
+      "native_geom": 9,
+      "sampled_cylinder_min_vertical_gap_m": 0.0029916318013077092,
+      "min_point_world_m": [
+        3.8759834027881688,
+        0.02405743911805569,
+        0.11768102709971623
+      ],
+      "FL_foot_clearance_m": -0.014593251049518585,
+      "FL_contact": "True",
+      "FL_positive_contact": "True",
+      "roll_deg": 7.076127605242684,
+      "pitch_deg": 7.6122879610352046,
+      "q": [
+        -0.24094347655773163,
+        0.26505813002586365,
+        -1.4384440183639526
+      ],
+      "qdot": [
+        1.2149503231048584,
+        1.1845396757125854,
+        -2.829437255859375
+      ],
+      "target": [
+        -0.2517845928668976,
+        0.7253536581993103,
+        -0.9577599763870239
+      ]
+    },
+    {
+      "condition": 0,
+      "time_s": 15.33,
+      "URDF_link": "FL_calflower1",
+      "native_merged_link": "FL_calf",
+      "native_geom": 9,
+      "sampled_cylinder_min_vertical_gap_m": 0.006453892359191887,
+      "min_point_world_m": [
+        3.8769034343771804,
+        0.023817015027461447,
+        0.12091683829895844
+      ],
+      "FL_foot_clearance_m": -0.010813765227794647,
+      "FL_contact": "True",
+      "FL_positive_contact": "True",
+      "roll_deg": 6.310315897341188,
+      "pitch_deg": 7.459028429449343,
+      "q": [
+        -0.22979846596717834,
+        0.27829501032829285,
+        -1.463018536567688
+      ],
+      "qdot": [
+        1.1145014762878418,
+        1.3236891031265259,
+        -2.4574570655822754
+      ],
+      "target": [
+        -0.4191260039806366,
+        0.5837306380271912,
+        -0.9577599763870239
+      ]
+    },
+    {
+      "condition": 0,
+      "time_s": 15.34,
+      "URDF_link": "FL_calflower1",
+      "native_merged_link": "FL_calf",
+      "native_geom": 9,
+      "sampled_cylinder_min_vertical_gap_m": 0.008912741571880323,
+      "min_point_world_m": [
+        3.8774419772918516,
+        0.023530183866125265,
+        0.1232285249542856
+      ],
+      "FL_foot_clearance_m": -0.008112959563732147,
+      "FL_contact": "True",
+      "FL_positive_contact": "True",
+      "roll_deg": 5.510439273907141,
+      "pitch_deg": 7.266870475096975,
+      "q": [
+        -0.21851031482219696,
+        0.2919345498085022,
+        -1.4835270643234253
+      ],
+      "qdot": [
+        1.1288151741027832,
+        1.3639543056488037,
+        -2.0508522987365723
+      ],
+      "target": [
+        -0.4191260039806366,
+        0.5837306380271912,
+        -0.9577599763870239
+      ]
+    },
+    {
+      "condition": 1,
+      "time_s": 14.65,
+      "URDF_link": "FL_calflower1",
+      "native_merged_link": "FL_calf",
+      "native_geom": 9,
+      "sampled_cylinder_min_vertical_gap_m": 0.056773744704713164,
+      "min_point_world_m": [
+        3.897028122575967,
+        0.2901910935336547,
+        0.18777958580153914
+      ],
+      "FL_foot_clearance_m": 0.041122496128082275,
+      "FL_contact": "False",
+      "FL_positive_contact": "False",
+      "roll_deg": 5.931070808921928,
+      "pitch_deg": 0.9379031653307376,
+      "q": [
+        -0.1231323629617691,
+        0.32694533467292786,
+        -1.475553035736084
+      ],
+      "qdot": [
+        -0.41173312067985535,
+        0.5843520760536194,
+        2.8404645919799805
+      ],
+      "target": [
+        -0.5337905883789062,
+        0.6905012130737305,
+        -0.9577599763870239
+      ]
+    },
+    {
+      "condition": 1,
+      "time_s": 14.66,
+      "URDF_link": "FL_calflower1",
+      "native_merged_link": "FL_calf",
+      "native_geom": 9,
+      "sampled_cylinder_min_vertical_gap_m": 0.03964732265477486,
+      "min_point_world_m": [
+        3.8898768136221302,
+        0.28237189178004113,
+        0.17161427343715135
+      ],
+      "FL_foot_clearance_m": 0.022528260946273804,
+      "FL_contact": "False",
+      "FL_positive_contact": "False",
+      "roll_deg": 4.850062376152731,
+      "pitch_deg": 1.692850085266223,
+      "q": [
+        -0.1318809688091278,
+        0.3377780616283417,
+        -1.439540982246399
+      ],
+      "qdot": [
+        -0.874860405921936,
+        1.0832715034484863,
+        3.6012086868286133
+      ],
+      "target": [
+        -0.5337905883789062,
+        0.6905012130737305,
+        -0.9577599763870239
+      ]
+    },
+    {
+      "condition": 1,
+      "time_s": 14.67,
+      "URDF_link": "FL_calflower1",
+      "native_merged_link": "FL_calf",
+      "native_geom": 9,
+      "sampled_cylinder_min_vertical_gap_m": 0.01965002068013219,
+      "min_point_world_m": [
+        3.879175889599776,
+        0.27178615821919405,
+        0.15312201225332872
+      ],
+      "FL_foot_clearance_m": 0.0007209330797195435,
+      "FL_contact": "False",
+      "FL_positive_contact": "False",
+      "roll_deg": 3.581911129861206,
+      "pitch_deg": 2.480888338808652,
+      "q": [
+        -0.14497728645801544,
+        0.3546502888202667,
+        -1.396819829940796
+      ],
+      "qdot": [
+        -1.3096318244934082,
+        1.6872224807739258,
+        4.272119522094727
+      ],
+      "target": [
+        -0.49085715413093567,
+        0.7837490439414978,
+        -0.9577599763870239
+      ]
+    },
+    {
+      "condition": 1,
+      "time_s": 14.68,
+      "URDF_link": "FL_calflower1",
+      "native_merged_link": "FL_calf",
+      "native_geom": 9,
+      "sampled_cylinder_min_vertical_gap_m": -0.00226346751555892,
+      "min_point_world_m": [
+        3.8650539371623327,
+        0.25904726386699317,
+        0.13326858088399424
+      ],
+      "FL_foot_clearance_m": -0.022997573018074036,
+      "FL_contact": "False",
+      "FL_positive_contact": "False",
+      "roll_deg": 2.1360011032421067,
+      "pitch_deg": 3.300143495601952,
+      "q": [
+        -0.16207367181777954,
+        0.37699946761131287,
+        -1.34839928150177
+      ],
+      "qdot": [
+        -1.7096377611160278,
+        2.2349190711975098,
+        4.842058181762695
+      ],
+      "target": [
+        -0.49085715413093567,
+        0.7837490439414978,
+        -0.9577599763870239
+      ]
+    },
+    {
+      "condition": 1,
+      "time_s": 14.69,
+      "URDF_link": "FL_calflower1",
+      "native_merged_link": "FL_calf",
+      "native_geom": 9,
+      "sampled_cylinder_min_vertical_gap_m": 0.0026556036382832104,
+      "min_point_world_m": [
+        3.8651627051176685,
+        0.2589999929744431,
+        0.13816306219321622
+      ],
+      "FL_foot_clearance_m": -0.01781173050403595,
+      "FL_contact": "True",
+      "FL_positive_contact": "True",
+      "roll_deg": 2.1372325975730866,
+      "pitch_deg": 3.014403512869754,
+      "q": [
+        -0.16333743929862976,
+        0.3996794819831848,
+        -1.377495288848877
+      ],
+      "qdot": [
+        -0.12637650966644287,
+        2.2680017948150635,
+        -2.9095988273620605
+      ],
+      "target": [
+        -0.4510381817817688,
+        0.5585733652114868,
+        -0.9577599763870239
+      ]
+    },
+    {
+      "condition": 1,
+      "time_s": 14.700000000000001,
+      "URDF_link": "FL_calflower1",
+      "native_merged_link": "FL_calf",
+      "native_geom": 9,
+      "sampled_cylinder_min_vertical_gap_m": 0.007153654957432198,
+      "min_point_world_m": [
+        3.864446693294702,
+        0.2583101944376268,
+        0.1427629279647495
+      ],
+      "FL_foot_clearance_m": -0.013088151812553406,
+      "FL_contact": "True",
+      "FL_positive_contact": "True",
+      "roll_deg": 2.0904570861121736,
+      "pitch_deg": 2.723293425485444,
+      "q": [
+        -0.16620536148548126,
+        0.4243064224720001,
+        -1.4061119556427002
+      ],
+      "qdot": [
+        -0.2867927849292755,
+        2.462693452835083,
+        -2.861663818359375
+      ],
+      "target": [
+        -0.4510381817817688,
+        0.5585733652114868,
+        -0.9577599763870239
+      ]
+    },
+    {
+      "condition": 1,
+      "time_s": 14.71,
+      "URDF_link": "FL_calflower1",
+      "native_merged_link": "FL_calf",
+      "native_geom": 9,
+      "sampled_cylinder_min_vertical_gap_m": 0.010748827603835498,
+      "min_point_world_m": [
+        3.864075117611126,
+        0.2574902731134613,
+        0.14638322046841812
+      ],
+      "FL_foot_clearance_m": -0.009299159049987793,
+      "FL_contact": "True",
+      "FL_positive_contact": "True",
+      "roll_deg": 2.0770634536646426,
+      "pitch_deg": 2.45398168853221,
+      "q": [
+        -0.17050234973430634,
+        0.4454704523086548,
+        -1.4300799369812012
+      ],
+      "qdot": [
+        -0.4296991229057312,
+        2.1164016723632812,
+        -2.3967933654785156
+      ],
+      "target": [
+        -0.4493923783302307,
+        0.4163788855075836,
+        -0.9577599763870239
+      ]
+    }
+  ]
+}
