@@ -8,11 +8,11 @@ import math
 LEGS=('FL','FR','RL','RR')
 
 
-def outside_course_boundary(kind,position,foot=False):
+def outside_course_boundary(kind,position,foot=False,terrain_x_end=7.):
     """Keep existing Y/uneven guards; an infinite FLAT plane has no X edge."""
     x,y=position[:2]
     y_out=not(-1.3<=y<=1.3) if foot else not(-1.25<y<1.25)
-    x_out=False if kind=='FLAT' else not(-1<=x<=7) if foot else not(-.95<x<6.95)
+    x_out=False if kind=='FLAT' else not(-1<=x<=terrain_x_end) if foot else not(-.95<x<terrain_x_end-.05)
     return bool(x_out or y_out)
 
 

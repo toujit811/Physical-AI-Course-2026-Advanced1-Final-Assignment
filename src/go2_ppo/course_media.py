@@ -36,12 +36,12 @@ def paired_layout(terrain):
     Only the displayed world-X axis expands. Never extrapolate finite terrain.
     """
     layout=make_layout(terrain)
-    # Measured post-goal base X reaches 8.358m on the unchanged finite terrain.
-    # The 9m axis endpoint is display-only, never a physical stopping boundary.
-    layout.plot_xlo=-1.;layout.plot_xhi=9.
+    # Preserve the old display for old captures; an extended physical exit must
+    # also appear completely in the profile. This axis is never a stop boundary.
+    layout.plot_xlo=-1.;layout.plot_xhi=max(9.,float(layout.x[-1]))
     layout.xppm=1120/(layout.plot_xhi-layout.plot_xlo);layout.zppm=layout.xppm*layout.exaggeration
     layout._section=layout._make_section();d=ImageDraw.Draw(layout._section)
-    for x in (7.5,8.,8.5,9.):
+    for x in np.arange(float(layout.x[-1])+.5,layout.plot_xhi+1e-8,.5):
         px=layout._section_xy([x],[layout.zlow])[0,0]
         d.line((px,118,px,123),fill=DARK,width=1)
         if x==round(x):d.text((px-9,124),f'{x:g}',font=font(13),fill=DARK)

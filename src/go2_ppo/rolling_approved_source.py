@@ -1,12 +1,28 @@
 """Exact heightfield gate for Issue #6554055922. No statistical or geometry fallback."""
 from pathlib import Path
-import hashlib
+import copy,hashlib
 import numpy as np
 from .rolling_uneven_terrain import quantize
 
 EXPECTED_SHA='69979149fa5814316b7abea1b4ea01ccb12a0dfd6d36bfe72f55ce79d4071913'
 
 class SourceMismatch(ValueError):pass
+
+def extend_flat_runout(terrain,end_x):
+    """Append real flat heightfield cells; leave the verified course untouched."""
+    end_x=float(end_x);x=np.asarray(terrain['x']);mm=np.asarray(terrain['height_mm'])
+    count=(end_x-7.)/.05
+    if not np.isfinite(end_x) or end_x<=7. or abs(count-round(count))>1e-8:
+        raise ValueError('Runout end must extend past7m on the existing0.05m grid')
+    if mm.shape!=(161,53) or terrain['metadata'].get('source_sha256')!=EXPECTED_SHA or np.any(mm[-1]) or np.any(terrain['original_height_m'][-1]):
+        raise ValueError('Runout requires the approved course with a zero-height exit seam')
+    result=copy.deepcopy(terrain);n=round(count)
+    result['x']=np.concatenate([x,7.+np.arange(1,n+1)*.05])
+    for key in ('height_mm','height_m','original_height_m','slope_deg'):
+        a=np.asarray(terrain[key]);result[key]=np.concatenate([a,np.zeros((n,53),dtype=a.dtype)])
+    result['metadata']['grid_shape']=list(result['height_mm'].shape)
+    result['metadata']['runout_extension']={'start_x_m':7.,'end_x_m':end_x,'height_m':0.,'approved_core_unchanged':True,'approved_prefix_mm_sha256':hashlib.sha256(mm.tobytes()).hexdigest()}
+    return result
 
 def verify_heightfield(path):
     path=Path(path);digest=hashlib.sha256(path.read_bytes()).hexdigest()

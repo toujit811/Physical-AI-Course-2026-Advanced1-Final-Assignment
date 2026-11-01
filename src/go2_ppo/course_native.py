@@ -8,7 +8,7 @@ from scipy.spatial.transform import Rotation
 from rsl_rl.runners import OnPolicyRunner
 from genesis.utils.misc import qd_to_torch
 from genesis.utils.geom import inv_quat,transform_by_quat
-from .rolling_approved_source import verify_heightfield
+from .rolling_approved_source import verify_heightfield,extend_flat_runout
 from .rolling_uneven_terrain import surface_height,save_audit
 from .rolling_uneven_media import RollingUnevenRecorder
 from .cpu_parallel_benchmark import Monitor,digest,system
@@ -38,7 +38,7 @@ def terrain_audit(ground,t,run):
     r={'integer_heightfield_max_error':float(np.max(abs(raw-t['height_mm']))),'metre_readback_max_error_m':float(np.max(abs(np.asarray(readback)-t['height_m'])))}
     X,Y=np.meshgrid(t['x'],t['y'],indexing='ij')
     points=np.concatenate([np.column_stack([X.ravel(),Y.ravel()])]+[np.column_stack([(X[:-1,:-1]+u*.05).ravel(),(Y[:-1,:-1]+v*.05).ravel()]) for u,v in ((.2,.3),(.8,.7))]).astype(np.float32)
-    native=ground.get_terrain_height(torch.tensor(points,device=gs.device)).reshape(-1).cpu().numpy();expected=surface_height(t,np.clip(points[:,0],-1,7),np.clip(points[:,1],-1.3,1.3))
+    native=ground.get_terrain_height(torch.tensor(points,device=gs.device)).reshape(-1).cpu().numpy();expected=surface_height(t,np.clip(points[:,0],float(t['x'][0]),float(t['x'][-1])),np.clip(points[:,1],-1.3,1.3))
     if not np.isfinite(np.r_[native,expected]).all():raise FloatingPointError('Nonfinite terrain audit')
     error=native-expected;r.update(query_points=len(points),query_max_error_m=float(abs(error).max()),native_terrain_class=type(ground).__name__,origin_m=[-1,-1.3,0],horizontal_scale_m=.05,vertical_scale_m=.001)
     if r['integer_heightfield_max_error']!=0 or max(r['metre_readback_max_error_m'],r['query_max_error_m'])>1e-5:raise ValueError('Native source/query mismatch')
@@ -55,12 +55,17 @@ def run(a):
     original_t=copy.deepcopy(t)
     active=np.flatnonzero(np.max(t['height_m'],axis=1)>0);finish=float(t['x'][active[-1]+1])
     assert abs(finish-6.4)<1e-8
+    runout_end=getattr(a,'runout_end_x',None)
+    if runout_end is not None:
+        if a.kind!='ROLLING_UNEVEN':raise ValueError('Runout extension is only for the finite uneven course')
+        t=extend_flat_runout(t,runout_end)
+    terrain_end=float(t['x'][-1])
     paired=getattr(a,'paired',False);post_goal=getattr(a,'post_goal_seconds',3.) if paired else 0.
     tracker=CourseTracker(finish_x=finish,confirmation_s=0. if a.raw_only or paired else .2,post_goal_s=post_goal)
     old_reference=historical_reference(json.loads((ROOT/'reports/issue3-results.json').read_text()),a.kind,a.condition)
     if a.kind=='FLAT':
         t=copy.deepcopy(t);t['height_mm']=np.zeros_like(t['height_mm']);t['height_m']=np.zeros_like(t['height_m']);t['original_height_m']=np.zeros_like(t['original_height_m']);t['metadata']['kind']='FLAT'
-    goal_config=dict(finish_x_m=finish,approved_last_nonzero_x_m=float(original_t['x'][active[-1]]),first_flat_exit_x_m=finish,terrain_x_bounds=None if a.kind=='FLAT' else [-1,7],foot_test='native sphere centre X minus radius > finish',confirmation_s=tracker.confirmation,max_sim_s=60.,stall_window_s=6.,stall_progress_m=.1,raw_only=a.raw_only)
+    goal_config=dict(finish_x_m=finish,approved_last_nonzero_x_m=float(original_t['x'][active[-1]]),first_flat_exit_x_m=finish,terrain_x_bounds=None if a.kind=='FLAT' else [-1,terrain_end],runout_extension=t['metadata'].get('runout_extension'),foot_test='native sphere centre X minus radius > finish',confirmation_s=tracker.confirmation,max_sim_s=60.,stall_window_s=6.,stall_progress_m=.1,raw_only=a.raw_only)
     goal_config.update(paired_standard=paired,post_goal_recording_s=post_goal,post_goal_safety_observations='logged, no early cut; engine/state/resource/wall errors still stop' if paired else None)
     dump(run/'course-config.json',goal_config)
     t['provenance']={'label':'NEW NATIVE FULL COURSE / '+a.kind+' / D13550','source_sha256':t['metadata']['source_sha256']}
@@ -112,7 +117,7 @@ def run(a):
             nonlocal current,fallen,outside
             current=tm;p=robot.get_pos()[0].cpu().numpy();quat=robot.get_quat()[0].cpu().numpy();vel=robot.get_vel()[0].cpu().numpy();q=robot.get_dofs_position(indices)[0].cpu().numpy();qv=robot.get_dofs_velocity(indices)[0].cpu().numpy();tau=robot.get_dofs_control_force(indices)[0].cpu().numpy();applied=qd_to_torch(solver.dyn_state.dofs.qf_applied,transpose=True,copy=True)[0,indices].cpu().numpy()
             if not np.isfinite(np.r_[p,quat,vel,q,qv,tau,applied,targets]).all():raise FloatingPointError('Nonfinite robot state/control')
-            roll,pitch=tilt_degrees(quat);outside_now=outside_course_boundary(a.kind,p);outside|=outside_now;support=float(ground.get_terrain_height(torch.tensor(np.clip(p[:2],[-1,-1.3],[7,1.3]),device=gs.device)).reshape(-1)[0]);isfall=p[2]-support<s2['minimum_base_clearance_m'] or max(abs(roll),abs(pitch))>s2['fall_angle_deg'];fallen|=bool(isfall)
+            roll,pitch=tilt_degrees(quat);outside_now=outside_course_boundary(a.kind,p,terrain_x_end=terrain_end);outside|=outside_now;support=float(ground.get_terrain_height(torch.tensor(np.clip(p[:2],[-1,-1.3],[terrain_end,1.3]),device=gs.device)).reshape(-1)[0]);isfall=p[2]-support<s2['minimum_base_clearance_m'] or max(abs(roll),abs(pitch))>s2['fall_angle_deg'];fallen|=bool(isfall)
             row={'time_s':tm,'x_m':float(p[0]),'y_m':float(p[1]),'height_m':float(p[2]),'distance_m':float(p[0]-initial_x),'roll_deg':roll,'pitch_deg':pitch,'ground_height_m':support,'base_clearance_m':float(p[2]-support),'world_vx_m_s':float(vel[0]),'fallen':bool(isfall or outside_now),'physical_fallen':bool(isfall),'out_of_terrain':bool(outside_now),'unexpected_floor_contact':False,'quaternion_wxyz':json.dumps(quat.tolist())}
             for i,n in enumerate(names):
                 for suffix,value in (('position_rad',q[i]),('velocity_rad_s',qv[i]),('control_Nm',tau[i]),('qf_applied_Nm',applied[i]),('target_rad',targets[i])):row[n+'_'+suffix]=float(value)
@@ -121,15 +126,15 @@ def run(a):
                 if not ok:continue
                 ga,gb=int(a0),int(b0);me,other=(ga,gb) if ga in robotids else (gb,ga)
                 if other not in groundids or me not in robotids:continue
-                pt=point.cpu().numpy();force=(fa if me==ga else fb).cpu().numpy();leg=footids.get(me);positive=bool(np.linalg.norm(force)>1e-6);z=float(ground.get_terrain_height(torch.tensor(np.clip(pt[:2],[-1,-1.3],[7,1.3]),device=gs.device)).reshape(-1)[0])
+                pt=point.cpu().numpy();force=(fa if me==ga else fb).cpu().numpy();leg=footids.get(me);positive=bool(np.linalg.norm(force)>1e-6);z=float(ground.get_terrain_height(torch.tensor(np.clip(pt[:2],[-1,-1.3],[terrain_end,1.3]),device=gs.device)).reshape(-1)[0])
                 if not np.isfinite(np.r_[pt,force,float(pen),z]).all():raise FloatingPointError('Nonfinite contact')
                 contacts.append({'time_s':tm,'contact_geometry_time_s':max(0,tm-dt),'robot_geom':me,'terrain_geom':other,'part':leg or robotids[me],'foot':leg is not None,'positive_force':positive,'position_m':pt.tolist(),'force_on_robot_N':force.tolist(),'penetration_m':float(pen),'native_support_z_m':z,'point_surface_difference_m':float(pt[2]-z)})
                 if leg:pairs[leg].append(pt);loaded[leg].append(positive)
                 else:row['unexpected_floor_contact']=True
             origins=robot.get_links_pos()[0].cpu().numpy();lv=robot.get_links_vel()[0].cpu().numpy();omega=robot.get_links_ang()[0].cpu().numpy();rot=Rotation.from_quat(quat[[1,2,3,0]])
             for leg,g in feet.items():
-                center=g.get_pos()[0].cpu().numpy();idx=g.link.idx-robot.link_start;vpoint=point_velocity(lv[idx],omega[idx],center-origins[idx]);speeds=[math.hypot(*point_velocity(lv[idx],omega[idx],pt-origins[idx])[:2]) for pt in pairs[leg]];foutside=outside_course_boundary(a.kind,center,foot=True);row['out_of_terrain']|=foutside;row['fallen']|=foutside
-                height=float(ground.get_terrain_height(torch.tensor(np.clip(center[:2],[-1,-1.3],[7,1.3]),device=gs.device)).reshape(-1)[0]);bottom=float(center[2]-float(g.data[0]));fq=[q[names.index(leg+'_'+j+'_joint')] for j in ('hip','thigh','calf')];fk=rot.apply(kin.fk(leg,fq))+p
+                center=g.get_pos()[0].cpu().numpy();idx=g.link.idx-robot.link_start;vpoint=point_velocity(lv[idx],omega[idx],center-origins[idx]);speeds=[math.hypot(*point_velocity(lv[idx],omega[idx],pt-origins[idx])[:2]) for pt in pairs[leg]];foutside=outside_course_boundary(a.kind,center,foot=True,terrain_x_end=terrain_end);row['out_of_terrain']|=foutside;row['fallen']|=foutside
+                height=float(ground.get_terrain_height(torch.tensor(np.clip(center[:2],[-1,-1.3],[terrain_end,1.3]),device=gs.device)).reshape(-1)[0]);bottom=float(center[2]-float(g.data[0]));fq=[q[names.index(leg+'_'+j+'_joint')] for j in ('hip','thigh','calf')];fk=rot.apply(kin.fk(leg,fq))+p
                 row.update({leg+'_contact':bool(pairs[leg]),leg+'_positive_force_contact':any(loaded[leg]),leg+'_clearance_m':bottom-height,leg+'_terrain_height_m':height,leg+'_bottom_z_m':bottom,leg+'_slip_m_s':float(np.mean(speeds)) if speeds else 0.,leg+'_center_speed_m_s':math.hypot(*vpoint[:2]),leg+'_FK_error_m':float(np.linalg.norm(fk-center))})
                 row[leg+'_sphere_radius_m']=float(g.data[0])
                 for i,axis in enumerate('xyz'):row[leg+'_center_'+axis+'_m']=float(center[i])
@@ -196,6 +201,7 @@ def run(a):
 if __name__=='__main__':
     p=argparse.ArgumentParser(description=__doc__);p.add_argument('--name',required=True);p.add_argument('--source',default=str(SOURCE));p.add_argument('--kind',required=True,choices=['FLAT','ROLLING_UNEVEN']);p.add_argument('--condition',type=int,default=2,choices=range(3));p.add_argument('--substeps',type=int,default=2,choices=[2]);p.add_argument('--wall-cap',type=float,default=900.);p.add_argument('--raw-only',action='store_true')
     p.add_argument('--paired',action='store_true',help='same-run raw + standard, no cards, immediate goal plus actual post-goal capture');p.add_argument('--post-goal-seconds',type=float,default=3.)
+    p.add_argument('--runout-end-x',type=float,help='append a physical flat exit to the approved uneven heightfield; keep its core and FINISH unchanged')
     args=p.parse_args()
     if args.paired and args.raw_only:p.error('--paired and --raw-only are mutually exclusive')
     torch.set_num_threads(4);raise SystemExit(run(args))

@@ -4,7 +4,7 @@ Only terrain wiring and recording cameras differ from the existing Stage2 base.
 No terrain generation, Genesis initialization, policy loading or training occurs
 on import. The caller must verify approved source hashes before construction.
 """
-import copy
+import copy,hashlib
 import numpy as np
 from .stage1_flat import flat_env_class,torque_setup
 from .stage2_boundary import query_points
@@ -15,7 +15,12 @@ def terrain_options(terrain):
     if not isinstance(terrain,dict) or 'height_mm' not in terrain:
         raise ValueError('Verified terrain with integer millimetre samples is required')
     mm=np.asarray(terrain['height_mm'])
-    if mm.shape!=(161,53) or mm.dtype!=np.int16:
+    extension=terrain.get('metadata',{}).get('runout_extension')
+    if extension:
+        x=np.asarray(terrain.get('x',[]));expected_n=161+round((float(extension['end_x_m'])-7.)/.05)
+        if mm.shape!=(expected_n,53) or expected_n<=161 or x.shape!=(expected_n,) or not np.allclose(x,-1.+np.arange(expected_n)*.05,rtol=0,atol=1e-10) or np.any(mm[160:]) or hashlib.sha256(mm[:161].tobytes()).hexdigest()!=extension['approved_prefix_mm_sha256']:
+            raise ValueError('Runout must preserve the approved core and append a flat continuous exit')
+    if (mm.shape!=(161,53) and not extension) or mm.dtype!=np.int16:
         raise ValueError('Native rolling terrain requires161x53 int16 millimetres')
     if 'height_m' in terrain:
         h=np.asarray(terrain['height_m'])

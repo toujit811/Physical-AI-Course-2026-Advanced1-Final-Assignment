@@ -62,7 +62,7 @@
       "source_relative": "scripts/rolling_approved_source.py",
       "source_sha256": "dc51fe5a540655bb5b29753702662dec72b05a0dc39dc20658567b3d266fc009",
       "integrated_path": "src/go2_ppo/rolling_approved_source.py",
-      "integrated_sha256": "e772551ed90cd2674525774d423db013abcbdf4994105fafecf99891ac3c4240",
+      "integrated_sha256": "9342672bffa09ce6ae7aeb0f88995aa41e539ad9f1aa1378bfa0bc68327dfc73",
       "changes": "package-relative imports and repository paths only; native env adaptations separately versioned"
     },
     {
@@ -78,7 +78,7 @@
       "source_relative": "scripts/rolling_native_env.py",
       "source_sha256": "3c3c5545b203c357e9d61e5a989aff2d1a875eeffd190d3d56eef3bb792185fa",
       "integrated_path": "src/go2_ppo/rolling_native_env.py",
-      "integrated_sha256": "0ffa31e7400a930eb542351fcafbf3e96a8318705c7d02c1cf793cbb0dd6ada9",
+      "integrated_sha256": "d8c3f26173df4b805fa1d5dc183a0bed06f9fd9025b95849445151523829297c",
       "changes": "package paths; optional original FLAT URDF plane; preserve approved rolling native physics/controller"
     },
     {
@@ -339,15 +339,15 @@
     },
     {
       "path": "src/go2_ppo/course_completion.py",
-      "sha256": "f262ac9040e9a44f2a9b718e13dae1f580a6af069aee8e105329216b2f530965"
+      "sha256": "9c5421f98a13efffd7284717d0deb7c9ec1df3d9ad8c75c07d226eae9b3489ea"
     },
     {
       "path": "src/go2_ppo/course_media.py",
-      "sha256": "d884922a450194b1c8874df2d7523928ac2257fc8ac6fc512497dcd4b4017cc0"
+      "sha256": "d7159c663c0fc21edfb805ded654cc5f2e27d3824c9923eff0b7a0965a0fa676"
     },
     {
       "path": "src/go2_ppo/course_native.py",
-      "sha256": "1f02eea350ac65596b48205162c8b19fae1b5155f7f2b369766f0e091c04e3db"
+      "sha256": "10daa01b5b2e8669e68320efb7e545eee224390913775a125fb494add5e9f1be"
     }
   ],
   "new_tests": [
