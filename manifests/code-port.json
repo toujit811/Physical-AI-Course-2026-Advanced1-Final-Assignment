@@ -328,6 +328,14 @@
     {
       "path": "src/go2_ppo/training_env.py",
       "sha256": "06b40b1640e9acf6c8409df7aa895d081b259a001b10ee9b81bd169643d878b5"
+    },
+    {
+      "path": "src/go2_ppo/presentation.py",
+      "sha256": "caf130917f03343a3b69b7ece88d89656320ffd751ab464dea7fad10b6e14c21"
+    },
+    {
+      "path": "src/go2_ppo/presentation_media.py",
+      "sha256": "8be76d3d476ebf60f2e062cac6b7878e44e8195619be745abbdf2b3b868082f7"
     }
   ],
   "new_tests": [
@@ -337,6 +345,8 @@
     "tests/test_port_manifest.py",
     "tests/test_resume_and_bootstrap.py",
     "tests/test_selection.py",
-    "tests/test_training_constraints.py"
+    "tests/test_training_constraints.py",
+    "tests/test_presentation.py",
+    "tests/test_presentation_media.py"
   ]
 }

@@ -1,0 +1,1563 @@
+{
+  "authority_issue": 4,
+  "source_main": "8fe46546679bb06b9b167104aace3ba5bf601153",
+  "checkpoint_sha256": "5d7fa7222067ff915942f2be546f9a9b3dcd6126b07eb3d7c8ea7fb4c05a4565",
+  "native_runs": 0,
+  "PPO_updates": 0,
+  "heldout": "UNOPENED_NOT_PERFORMED",
+  "final_standalone_videos": 18,
+  "missing_videos": 0,
+  "pilot_videos_preserved": 1,
+  "source_preservation": {
+    "status": "PASS",
+    "files": 9449,
+    "bytes": 607241266
+  },
+  "tests": {
+    "new": 19,
+    "existing": 68,
+    "total": 87,
+    "pure_stdlib_only": 15,
+    "status": "PASS"
+  },
+  "media_QA": "PASS",
+  "original_full20s_numeric_pass_count": 4,
+  "original_full20s_numeric_fail_count": 2,
+  "F": "USER_REVIEW_PENDING",
+  "limitations": [
+    "Original side camera Z actually tracks (true90 orientation retained); source RGB/cameras preserved, only HUD fixed. Fixed-Z capture cannot be recovered without forbidden new simulation/re-render/warping.",
+    "Exact continuous crossing time unknown within 0.01s sample bracket; reported time is first observed100Hz sample, not interpolation.",
+    "Lossy MP4 static card pixels vary minutely; all50 input frames identical, decoded max mean difference<0.1/255, no added simulated motion.",
+    "Human F evaluation and full human dynamic viewing remain pending; agent inspected start/mid/last/card from all18 decoded videos."
+  ],
+  "started_at_utc": "2026-11-01T12:26:52.047446+00:00",
+  "finished_media_utc": "2026-11-01T12:29:46.579024+00:00",
+  "runs": [
+    {
+      "goal": {
+        "goal_distance_m": 4.0,
+        "goal_reached": true,
+        "first_crossing_sample_s": 16.740000000000002,
+        "crossing_bracket": {
+          "before": {
+            "time_s": 16.73,
+            "x_m": 3.9976658821105957
+          },
+          "at_or_after": {
+            "time_s": 16.740000000000002,
+            "x_m": 4.000373840332031
+          }
+        },
+        "end_reason": "GOAL_REACHED",
+        "presentation_end_sim_s": 16.740000000000002,
+        "start_x_m": 0.0,
+        "goal_x_m": 4.0,
+        "historical_numeric_pass": true,
+        "historical_numeric_gates": {
+          "A": true,
+          "B": true,
+          "C": true,
+          "D": true,
+          "E": true
+        },
+        "historical_evaluation_sim_s": 20.0,
+        "historical_status": "NUMERIC_PASS_VISUAL_PENDING",
+        "F": "USER_REVIEW_PENDING",
+        "nonfoot_events": [],
+        "errors": [],
+        "goal_is_presentation_only": true,
+        "arrival_time_definition": "first observed 100Hz sample; exact crossing lies in saved bracket",
+        "recorded_end_sim_s": 20.0,
+        "end_sample_x_m": 4.000373840332031,
+        "progress_at_end_sample_m": 4.000373840332031,
+        "goal_in_saved_terrain_and_lane": true,
+        "source_run_id": "issue3-D13550-FLAT-c0",
+        "checkpoint_sha256": "5d7fa7222067ff915942f2be546f9a9b3dcd6126b07eb3d7c8ea7fb4c05a4565",
+        "numerical_gate_source": "logs/rolling-native/issue3-D13550-FLAT-c0/result.json",
+        "source_result_sha256": "ad21fde4b8c3a92077fe0eeedcebd1455f5337466d84fecc1670a02ed5d20435",
+        "source_side_camera_z_range_m": [
+          0.13974881172180176,
+          0.26999998092651367
+        ],
+        "source_side_z_fixed": false,
+        "original_world_x4_tick_y_range_px": [
+          341.7544378073852,
+          417.14621348086655
+        ],
+        "source_camera_note": "Preserved source actually tracks camera Z; HUD only fixed. No re-render, crop, stabilization or new physics.",
+        "full_state_samples": 2001,
+        "full_control_samples": 1001,
+        "full_source_frames_per_view": 501
+      },
+      "videos": [
+        {
+          "path": "reports/generated/issue4/videos-v1/issue3-D13550-FLAT-c0/side/presentation.mp4",
+          "sha256": "b9233abe98c7791dbafe95a6c09cdc1bc115154e85269a07ab1189b18e40c8c6",
+          "frames": 470,
+          "fps": 25.0,
+          "size": [
+            1280,
+            720
+          ],
+          "duration_s": 18.8,
+          "codec": "H.264 High",
+          "pixel_format": "yuv420p",
+          "color": "SDR BT.709",
+          "progressive": true,
+          "audio": false,
+          "faststart": true,
+          "bytes": 1383744,
+          "actual_pts": {
+            "status": "PASS",
+            "count": 470,
+            "first_pts_s": 0.0,
+            "last_pts_s": 18.76,
+            "max_error_s": 0.0
+          },
+          "source_run_id": "issue3-D13550-FLAT-c0",
+          "view": "side",
+          "checkpoint_sha256": "5d7fa7222067ff915942f2be546f9a9b3dcd6126b07eb3d7c8ea7fb4c05a4565",
+          "motion_frames": 420,
+          "last_real_sim_s": 16.76,
+          "last_real_x_m": 4.006043910980225,
+          "end_card_frames": 50,
+          "end_card_duration_s": 2.0,
+          "end_card_start_video_pts_s": 16.8,
+          "final_sim_s_not_video_duration": true,
+          "decoded_baseline_y_range_px": [
+            43,
+            44
+          ],
+          "decoded_end_card_exact_pixels_identical": false,
+          "all_preencode_end_card_frames_identical": true,
+          "inspection_images": {
+            "0": "decoded-000000.png",
+            "210": "decoded-000210.png",
+            "419": "decoded-000419.png",
+            "420": "decoded-000420.png",
+            "469": "decoded-000469.png"
+          },
+          "all_raw_rgb_regions_identical_before_encode": true,
+          "source_native_steps": 0,
+          "source_rgb_pil_resize_scale": 1.3,
+          "source_rgb_origin_px": [
+            224,
+            70
+          ],
+          "old_numerical_gates_preserved": true,
+          "hud_baseline_y_range_px": [
+            43,
+            43
+          ]
+        },
+        {
+          "path": "reports/generated/issue4/videos-v1/issue3-D13550-FLAT-c0/oblique/presentation.mp4",
+          "sha256": "28509072b4259240a2d3e5cd702a48a2da9cb52561ed2fcfe172abda929841f5",
+          "frames": 470,
+          "fps": 25.0,
+          "size": [
+            1280,
+            720
+          ],
+          "duration_s": 18.8,
+          "codec": "H.264 High",
+          "pixel_format": "yuv420p",
+          "color": "SDR BT.709",
+          "progressive": true,
+          "audio": false,
+          "faststart": true,
+          "bytes": 911045,
+          "actual_pts": {
+            "status": "PASS",
+            "count": 470,
+            "first_pts_s": 0.0,
+            "last_pts_s": 18.76,
+            "max_error_s": 0.0
+          },
+          "source_run_id": "issue3-D13550-FLAT-c0",
+          "view": "oblique",
+          "checkpoint_sha256": "5d7fa7222067ff915942f2be546f9a9b3dcd6126b07eb3d7c8ea7fb4c05a4565",
+          "motion_frames": 420,
+          "last_real_sim_s": 16.76,
+          "last_real_x_m": 4.006043910980225,
+          "end_card_frames": 50,
+          "end_card_duration_s": 2.0,
+          "end_card_start_video_pts_s": 16.8,
+          "final_sim_s_not_video_duration": true,
+          "decoded_baseline_y_range_px": [
+            43,
+            44
+          ],
+          "decoded_end_card_exact_pixels_identical": false,
+          "all_preencode_end_card_frames_identical": true,
+          "inspection_images": {
+            "0": "decoded-000000.png",
+            "210": "decoded-000210.png",
+            "419": "decoded-000419.png",
+            "420": "decoded-000420.png",
+            "469": "decoded-000469.png"
+          },
+          "all_raw_rgb_regions_identical_before_encode": true,
+          "source_native_steps": 0,
+          "source_rgb_pil_resize_scale": 1.3,
+          "source_rgb_origin_px": [
+            224,
+            70
+          ],
+          "old_numerical_gates_preserved": true,
+          "hud_baseline_y_range_px": [
+            43,
+            43
+          ]
+        },
+        {
+          "path": "reports/generated/issue4/videos-v1/issue3-D13550-FLAT-c0/overhead/presentation.mp4",
+          "sha256": "d2ef8e245a6255e4f71e29470b736d32f613214244e910768720843f3cd36f16",
+          "frames": 470,
+          "fps": 25.0,
+          "size": [
+            1280,
+            720
+          ],
+          "duration_s": 18.8,
+          "codec": "H.264 High",
+          "pixel_format": "yuv420p",
+          "color": "SDR BT.709",
+          "progressive": true,
+          "audio": false,
+          "faststart": true,
+          "bytes": 654572,
+          "actual_pts": {
+            "status": "PASS",
+            "count": 470,
+            "first_pts_s": 0.0,
+            "last_pts_s": 18.76,
+            "max_error_s": 0.0
+          },
+          "source_run_id": "issue3-D13550-FLAT-c0",
+          "view": "overhead",
+          "checkpoint_sha256": "5d7fa7222067ff915942f2be546f9a9b3dcd6126b07eb3d7c8ea7fb4c05a4565",
+          "motion_frames": 420,
+          "last_real_sim_s": 16.76,
+          "last_real_x_m": 4.006043910980225,
+          "end_card_frames": 50,
+          "end_card_duration_s": 2.0,
+          "end_card_start_video_pts_s": 16.8,
+          "final_sim_s_not_video_duration": true,
+          "decoded_baseline_y_range_px": [
+            43,
+            43
+          ],
+          "decoded_end_card_exact_pixels_identical": false,
+          "all_preencode_end_card_frames_identical": true,
+          "inspection_images": {
+            "0": "decoded-000000.png",
+            "210": "decoded-000210.png",
+            "419": "decoded-000419.png",
+            "420": "decoded-000420.png",
+            "469": "decoded-000469.png"
+          },
+          "all_raw_rgb_regions_identical_before_encode": true,
+          "source_native_steps": 0,
+          "source_rgb_pil_resize_scale": 1.3,
+          "source_rgb_origin_px": [
+            224,
+            70
+          ],
+          "old_numerical_gates_preserved": true,
+          "hud_baseline_y_range_px": [
+            43,
+            43
+          ]
+        }
+      ]
+    },
+    {
+      "goal": {
+        "goal_distance_m": 4.0,
+        "goal_reached": true,
+        "first_crossing_sample_s": 16.51,
+        "crossing_bracket": {
+          "before": {
+            "time_s": 16.5,
+            "x_m": 3.9984166622161865
+          },
+          "at_or_after": {
+            "time_s": 16.51,
+            "x_m": 4.0015058517456055
+          }
+        },
+        "end_reason": "GOAL_REACHED",
+        "presentation_end_sim_s": 16.51,
+        "start_x_m": 0.0,
+        "goal_x_m": 4.0,
+        "historical_numeric_pass": true,
+        "historical_numeric_gates": {
+          "A": true,
+          "B": true,
+          "C": true,
+          "D": true,
+          "E": true
+        },
+        "historical_evaluation_sim_s": 20.0,
+        "historical_status": "NUMERIC_PASS_VISUAL_PENDING",
+        "F": "USER_REVIEW_PENDING",
+        "nonfoot_events": [],
+        "errors": [],
+        "goal_is_presentation_only": true,
+        "arrival_time_definition": "first observed 100Hz sample; exact crossing lies in saved bracket",
+        "recorded_end_sim_s": 20.0,
+        "end_sample_x_m": 4.0015058517456055,
+        "progress_at_end_sample_m": 4.0015058517456055,
+        "goal_in_saved_terrain_and_lane": true,
+        "source_run_id": "issue3-D13550-FLAT-c1",
+        "checkpoint_sha256": "5d7fa7222067ff915942f2be546f9a9b3dcd6126b07eb3d7c8ea7fb4c05a4565",
+        "numerical_gate_source": "logs/rolling-native/issue3-D13550-FLAT-c1/result.json",
+        "source_result_sha256": "c50e5cc0a1706da7d4089ee97c5fb24f8b62a5c1888ac7cb1d999438b72fb355",
+        "source_side_camera_z_range_m": [
+          0.14005154371261597,
+          0.26999998092651367
+        ],
+        "source_side_z_fixed": false,
+        "original_world_x4_tick_y_range_px": [
+          364.3099966420834,
+          603.1316518877004
+        ],
+        "source_camera_note": "Preserved source actually tracks camera Z; HUD only fixed. No re-render, crop, stabilization or new physics.",
+        "full_state_samples": 2001,
+        "full_control_samples": 1001,
+        "full_source_frames_per_view": 501
+      },
+      "videos": [
+        {
+          "path": "reports/generated/issue4/videos-v1/issue3-D13550-FLAT-c1/side/presentation.mp4",
+          "sha256": "dd9a09b04559f05d7e46de7e822173a198c87bb5d1cea980d5e8e07fee288085",
+          "frames": 464,
+          "fps": 25.0,
+          "size": [
+            1280,
+            720
+          ],
+          "duration_s": 18.56,
+          "codec": "H.264 High",
+          "pixel_format": "yuv420p",
+          "color": "SDR BT.709",
+          "progressive": true,
+          "audio": false,
+          "faststart": true,
+          "bytes": 1330060,
+          "actual_pts": {
+            "status": "PASS",
+            "count": 464,
+            "first_pts_s": 0.0,
+            "last_pts_s": 18.52,
+            "max_error_s": 0.0
+          },
+          "source_run_id": "issue3-D13550-FLAT-c1",
+          "view": "side",
+          "checkpoint_sha256": "5d7fa7222067ff915942f2be546f9a9b3dcd6126b07eb3d7c8ea7fb4c05a4565",
+          "motion_frames": 414,
+          "last_real_sim_s": 16.52,
+          "last_real_x_m": 4.004385948181152,
+          "end_card_frames": 50,
+          "end_card_duration_s": 2.0,
+          "end_card_start_video_pts_s": 16.56,
+          "final_sim_s_not_video_duration": true,
+          "decoded_baseline_y_range_px": [
+            43,
+            44
+          ],
+          "decoded_end_card_exact_pixels_identical": false,
+          "all_preencode_end_card_frames_identical": true,
+          "inspection_images": {
+            "0": "decoded-000000.png",
+            "207": "decoded-000207.png",
+            "413": "decoded-000413.png",
+            "414": "decoded-000414.png",
+            "463": "decoded-000463.png"
+          },
+          "all_raw_rgb_regions_identical_before_encode": true,
+          "source_native_steps": 0,
+          "source_rgb_pil_resize_scale": 1.3,
+          "source_rgb_origin_px": [
+            224,
+            70
+          ],
+          "old_numerical_gates_preserved": true,
+          "hud_baseline_y_range_px": [
+            43,
+            43
+          ]
+        },
+        {
+          "path": "reports/generated/issue4/videos-v1/issue3-D13550-FLAT-c1/oblique/presentation.mp4",
+          "sha256": "c56b1619a557ca7c54ca21a9e2b06e8cd6cfd4f1803f4f2e6bbd4b76ab032d37",
+          "frames": 464,
+          "fps": 25.0,
+          "size": [
+            1280,
+            720
+          ],
+          "duration_s": 18.56,
+          "codec": "H.264 High",
+          "pixel_format": "yuv420p",
+          "color": "SDR BT.709",
+          "progressive": true,
+          "audio": false,
+          "faststart": true,
+          "bytes": 910699,
+          "actual_pts": {
+            "status": "PASS",
+            "count": 464,
+            "first_pts_s": 0.0,
+            "last_pts_s": 18.52,
+            "max_error_s": 0.0
+          },
+          "source_run_id": "issue3-D13550-FLAT-c1",
+          "view": "oblique",
+          "checkpoint_sha256": "5d7fa7222067ff915942f2be546f9a9b3dcd6126b07eb3d7c8ea7fb4c05a4565",
+          "motion_frames": 414,
+          "last_real_sim_s": 16.52,
+          "last_real_x_m": 4.004385948181152,
+          "end_card_frames": 50,
+          "end_card_duration_s": 2.0,
+          "end_card_start_video_pts_s": 16.56,
+          "final_sim_s_not_video_duration": true,
+          "decoded_baseline_y_range_px": [
+            43,
+            44
+          ],
+          "decoded_end_card_exact_pixels_identical": false,
+          "all_preencode_end_card_frames_identical": true,
+          "inspection_images": {
+            "0": "decoded-000000.png",
+            "207": "decoded-000207.png",
+            "413": "decoded-000413.png",
+            "414": "decoded-000414.png",
+            "463": "decoded-000463.png"
+          },
+          "all_raw_rgb_regions_identical_before_encode": true,
+          "source_native_steps": 0,
+          "source_rgb_pil_resize_scale": 1.3,
+          "source_rgb_origin_px": [
+            224,
+            70
+          ],
+          "old_numerical_gates_preserved": true,
+          "hud_baseline_y_range_px": [
+            43,
+            43
+          ]
+        },
+        {
+          "path": "reports/generated/issue4/videos-v1/issue3-D13550-FLAT-c1/overhead/presentation.mp4",
+          "sha256": "5fdaf275e2eb5eef0033390e721c36c937f3545b010b5ccccba4ac46aea9194c",
+          "frames": 464,
+          "fps": 25.0,
+          "size": [
+            1280,
+            720
+          ],
+          "duration_s": 18.56,
+          "codec": "H.264 High",
+          "pixel_format": "yuv420p",
+          "color": "SDR BT.709",
+          "progressive": true,
+          "audio": false,
+          "faststart": true,
+          "bytes": 637722,
+          "actual_pts": {
+            "status": "PASS",
+            "count": 464,
+            "first_pts_s": 0.0,
+            "last_pts_s": 18.52,
+            "max_error_s": 0.0
+          },
+          "source_run_id": "issue3-D13550-FLAT-c1",
+          "view": "overhead",
+          "checkpoint_sha256": "5d7fa7222067ff915942f2be546f9a9b3dcd6126b07eb3d7c8ea7fb4c05a4565",
+          "motion_frames": 414,
+          "last_real_sim_s": 16.52,
+          "last_real_x_m": 4.004385948181152,
+          "end_card_frames": 50,
+          "end_card_duration_s": 2.0,
+          "end_card_start_video_pts_s": 16.56,
+          "final_sim_s_not_video_duration": true,
+          "decoded_baseline_y_range_px": [
+            43,
+            43
+          ],
+          "decoded_end_card_exact_pixels_identical": false,
+          "all_preencode_end_card_frames_identical": true,
+          "inspection_images": {
+            "0": "decoded-000000.png",
+            "207": "decoded-000207.png",
+            "413": "decoded-000413.png",
+            "414": "decoded-000414.png",
+            "463": "decoded-000463.png"
+          },
+          "all_raw_rgb_regions_identical_before_encode": true,
+          "source_native_steps": 0,
+          "source_rgb_pil_resize_scale": 1.3,
+          "source_rgb_origin_px": [
+            224,
+            70
+          ],
+          "old_numerical_gates_preserved": true,
+          "hud_baseline_y_range_px": [
+            43,
+            43
+          ]
+        }
+      ]
+    },
+    {
+      "goal": {
+        "goal_distance_m": 4.0,
+        "goal_reached": true,
+        "first_crossing_sample_s": 16.59,
+        "crossing_bracket": {
+          "before": {
+            "time_s": 16.580000000000002,
+            "x_m": 3.998732089996338
+          },
+          "at_or_after": {
+            "time_s": 16.59,
+            "x_m": 4.000899314880371
+          }
+        },
+        "end_reason": "GOAL_REACHED",
+        "presentation_end_sim_s": 16.59,
+        "start_x_m": 0.0,
+        "goal_x_m": 4.0,
+        "historical_numeric_pass": true,
+        "historical_numeric_gates": {
+          "A": true,
+          "B": true,
+          "C": true,
+          "D": true,
+          "E": true
+        },
+        "historical_evaluation_sim_s": 20.0,
+        "historical_status": "NUMERIC_PASS_VISUAL_PENDING",
+        "F": "USER_REVIEW_PENDING",
+        "nonfoot_events": [],
+        "errors": [],
+        "goal_is_presentation_only": true,
+        "arrival_time_definition": "first observed 100Hz sample; exact crossing lies in saved bracket",
+        "recorded_end_sim_s": 20.0,
+        "end_sample_x_m": 4.000899314880371,
+        "progress_at_end_sample_m": 4.000899314880371,
+        "goal_in_saved_terrain_and_lane": true,
+        "source_run_id": "issue3-D13550-FLAT-c2",
+        "checkpoint_sha256": "5d7fa7222067ff915942f2be546f9a9b3dcd6126b07eb3d7c8ea7fb4c05a4565",
+        "numerical_gate_source": "logs/rolling-native/issue3-D13550-FLAT-c2/result.json",
+        "source_result_sha256": "d074ddd029a6ddab9e3a4dbd59010f85466f4c25702f26ba241689f1ae0aa337",
+        "source_side_camera_z_range_m": [
+          0.14046573638916016,
+          0.26999998092651367
+        ],
+        "source_side_z_fixed": false,
+        "original_world_x4_tick_y_range_px": [
+          365.11451661712795,
+          847.083371448035
+        ],
+        "source_camera_note": "Preserved source actually tracks camera Z; HUD only fixed. No re-render, crop, stabilization or new physics.",
+        "full_state_samples": 2001,
+        "full_control_samples": 1001,
+        "full_source_frames_per_view": 501
+      },
+      "videos": [
+        {
+          "path": "reports/generated/issue4/videos-v1/issue3-D13550-FLAT-c2/side/presentation.mp4",
+          "sha256": "69deed5b7e07b38445a2020db135e2069428a617d748c57cd5bccbabb0f96b14",
+          "frames": 466,
+          "fps": 25.0,
+          "size": [
+            1280,
+            720
+          ],
+          "duration_s": 18.64,
+          "codec": "H.264 High",
+          "pixel_format": "yuv420p",
+          "color": "SDR BT.709",
+          "progressive": true,
+          "audio": false,
+          "faststart": true,
+          "bytes": 1325099,
+          "actual_pts": {
+            "status": "PASS",
+            "count": 466,
+            "first_pts_s": 0.0,
+            "last_pts_s": 18.6,
+            "max_error_s": 0.0
+          },
+          "source_run_id": "issue3-D13550-FLAT-c2",
+          "view": "side",
+          "checkpoint_sha256": "5d7fa7222067ff915942f2be546f9a9b3dcd6126b07eb3d7c8ea7fb4c05a4565",
+          "motion_frames": 416,
+          "last_real_sim_s": 16.6,
+          "last_real_x_m": 4.00293493270874,
+          "end_card_frames": 50,
+          "end_card_duration_s": 2.0,
+          "end_card_start_video_pts_s": 16.64,
+          "final_sim_s_not_video_duration": true,
+          "decoded_baseline_y_range_px": [
+            43,
+            43
+          ],
+          "decoded_end_card_exact_pixels_identical": false,
+          "all_preencode_end_card_frames_identical": true,
+          "inspection_images": {
+            "0": "decoded-000000.png",
+            "208": "decoded-000208.png",
+            "415": "decoded-000415.png",
+            "416": "decoded-000416.png",
+            "465": "decoded-000465.png"
+          },
+          "all_raw_rgb_regions_identical_before_encode": true,
+          "source_native_steps": 0,
+          "source_rgb_pil_resize_scale": 1.3,
+          "source_rgb_origin_px": [
+            224,
+            70
+          ],
+          "old_numerical_gates_preserved": true,
+          "hud_baseline_y_range_px": [
+            43,
+            43
+          ]
+        },
+        {
+          "path": "reports/generated/issue4/videos-v1/issue3-D13550-FLAT-c2/oblique/presentation.mp4",
+          "sha256": "ee96c5bdb8acb9c191832a4587de4fa9d72c5c0d20484c6b33bb1eeaff64e901",
+          "frames": 466,
+          "fps": 25.0,
+          "size": [
+            1280,
+            720
+          ],
+          "duration_s": 18.64,
+          "codec": "H.264 High",
+          "pixel_format": "yuv420p",
+          "color": "SDR BT.709",
+          "progressive": true,
+          "audio": false,
+          "faststart": true,
+          "bytes": 914051,
+          "actual_pts": {
+            "status": "PASS",
+            "count": 466,
+            "first_pts_s": 0.0,
+            "last_pts_s": 18.6,
+            "max_error_s": 0.0
+          },
+          "source_run_id": "issue3-D13550-FLAT-c2",
+          "view": "oblique",
+          "checkpoint_sha256": "5d7fa7222067ff915942f2be546f9a9b3dcd6126b07eb3d7c8ea7fb4c05a4565",
+          "motion_frames": 416,
+          "last_real_sim_s": 16.6,
+          "last_real_x_m": 4.00293493270874,
+          "end_card_frames": 50,
+          "end_card_duration_s": 2.0,
+          "end_card_start_video_pts_s": 16.64,
+          "final_sim_s_not_video_duration": true,
+          "decoded_baseline_y_range_px": [
+            43,
+            44
+          ],
+          "decoded_end_card_exact_pixels_identical": false,
+          "all_preencode_end_card_frames_identical": true,
+          "inspection_images": {
+            "0": "decoded-000000.png",
+            "208": "decoded-000208.png",
+            "415": "decoded-000415.png",
+            "416": "decoded-000416.png",
+            "465": "decoded-000465.png"
+          },
+          "all_raw_rgb_regions_identical_before_encode": true,
+          "source_native_steps": 0,
+          "source_rgb_pil_resize_scale": 1.3,
+          "source_rgb_origin_px": [
+            224,
+            70
+          ],
+          "old_numerical_gates_preserved": true,
+          "hud_baseline_y_range_px": [
+            43,
+            43
+          ]
+        },
+        {
+          "path": "reports/generated/issue4/videos-v1/issue3-D13550-FLAT-c2/overhead/presentation.mp4",
+          "sha256": "91630081244cbe31f9946944d9e5d0db23243a50966ee76fa945007fc5178d05",
+          "frames": 466,
+          "fps": 25.0,
+          "size": [
+            1280,
+            720
+          ],
+          "duration_s": 18.64,
+          "codec": "H.264 High",
+          "pixel_format": "yuv420p",
+          "color": "SDR BT.709",
+          "progressive": true,
+          "audio": false,
+          "faststart": true,
+          "bytes": 641330,
+          "actual_pts": {
+            "status": "PASS",
+            "count": 466,
+            "first_pts_s": 0.0,
+            "last_pts_s": 18.6,
+            "max_error_s": 0.0
+          },
+          "source_run_id": "issue3-D13550-FLAT-c2",
+          "view": "overhead",
+          "checkpoint_sha256": "5d7fa7222067ff915942f2be546f9a9b3dcd6126b07eb3d7c8ea7fb4c05a4565",
+          "motion_frames": 416,
+          "last_real_sim_s": 16.6,
+          "last_real_x_m": 4.00293493270874,
+          "end_card_frames": 50,
+          "end_card_duration_s": 2.0,
+          "end_card_start_video_pts_s": 16.64,
+          "final_sim_s_not_video_duration": true,
+          "decoded_baseline_y_range_px": [
+            43,
+            43
+          ],
+          "decoded_end_card_exact_pixels_identical": false,
+          "all_preencode_end_card_frames_identical": true,
+          "inspection_images": {
+            "0": "decoded-000000.png",
+            "208": "decoded-000208.png",
+            "415": "decoded-000415.png",
+            "416": "decoded-000416.png",
+            "465": "decoded-000465.png"
+          },
+          "all_raw_rgb_regions_identical_before_encode": true,
+          "source_native_steps": 0,
+          "source_rgb_pil_resize_scale": 1.3,
+          "source_rgb_origin_px": [
+            224,
+            70
+          ],
+          "old_numerical_gates_preserved": true,
+          "hud_baseline_y_range_px": [
+            43,
+            43
+          ]
+        }
+      ]
+    },
+    {
+      "goal": {
+        "goal_distance_m": 4.0,
+        "goal_reached": true,
+        "first_crossing_sample_s": 16.96,
+        "crossing_bracket": {
+          "before": {
+            "time_s": 16.95,
+            "x_m": 3.9983484745025635
+          },
+          "at_or_after": {
+            "time_s": 16.96,
+            "x_m": 4.000905990600586
+          }
+        },
+        "end_reason": "GOAL_REACHED",
+        "presentation_end_sim_s": 16.96,
+        "start_x_m": 0.0,
+        "goal_x_m": 4.0,
+        "historical_numeric_pass": false,
+        "historical_numeric_gates": {
+          "progress": true,
+          "joint_input": true,
+          "posture": true,
+          "no_abnormal_contact": false
+        },
+        "historical_evaluation_sim_s": 20.0,
+        "historical_status": "TASK_FAIL",
+        "F": "USER_REVIEW_PENDING",
+        "nonfoot_events": [
+          {
+            "time_s": 15.32,
+            "contact_geometry_time_s": 15.31,
+            "robot_geom": 9,
+            "terrain_geom": 0,
+            "part": "FL_calf",
+            "foot": false,
+            "positive_force": false,
+            "position_m": [
+              3.874589443206787,
+              0.023006439208984375,
+              0.11405559629201889
+            ],
+            "force_on_robot_N": [
+              -0.0,
+              -0.0,
+              0.0
+            ],
+            "penetration_m": 0.0016238284297287464,
+            "native_support_z_m": 0.1148909479379654,
+            "point_surface_difference_m": -0.0008353516459465027
+          },
+          {
+            "time_s": 15.32,
+            "contact_geometry_time_s": 15.31,
+            "robot_geom": 9,
+            "terrain_geom": 0,
+            "part": "FL_calf",
+            "foot": false,
+            "positive_force": false,
+            "position_m": [
+              3.874962329864502,
+              0.025061964988708496,
+              0.11422763764858246
+            ],
+            "force_on_robot_N": [
+              -0.0,
+              -0.0,
+              0.0
+            ],
+            "penetration_m": 0.0015381211414933205,
+            "native_support_z_m": 0.11501450836658478,
+            "point_surface_difference_m": -0.0007868707180023193
+          }
+        ],
+        "errors": [],
+        "goal_is_presentation_only": true,
+        "arrival_time_definition": "first observed 100Hz sample; exact crossing lies in saved bracket",
+        "recorded_end_sim_s": 20.0,
+        "end_sample_x_m": 4.000905990600586,
+        "progress_at_end_sample_m": 4.000905990600586,
+        "goal_in_saved_terrain_and_lane": true,
+        "source_run_id": "issue3-D13550-ROLLING_UNEVEN-c0",
+        "checkpoint_sha256": "5d7fa7222067ff915942f2be546f9a9b3dcd6126b07eb3d7c8ea7fb4c05a4565",
+        "numerical_gate_source": "logs/rolling-native/issue3-D13550-ROLLING_UNEVEN-c0/result.json",
+        "source_result_sha256": "46778644ef12714d89186a04f1d0e0016538e64d45a06afdeddb36a48eb05065",
+        "source_side_camera_z_range_m": [
+          0.1393854320049286,
+          0.3296286463737488
+        ],
+        "source_side_z_fixed": false,
+        "original_world_x4_tick_y_range_px": [
+          327.0173509335449,
+          391.2607045555424
+        ],
+        "source_camera_note": "Preserved source actually tracks camera Z; HUD only fixed. No re-render, crop, stabilization or new physics.",
+        "full_state_samples": 2001,
+        "full_control_samples": 1001,
+        "full_source_frames_per_view": 501
+      },
+      "videos": [
+        {
+          "path": "reports/generated/issue4/videos-v1/issue3-D13550-ROLLING_UNEVEN-c0/side/presentation.mp4",
+          "sha256": "34b2981901a5fb7c0be5999b080ee3f778287b8dcccedbc8a21228d1dd70c29a",
+          "frames": 475,
+          "fps": 25.0,
+          "size": [
+            1280,
+            720
+          ],
+          "duration_s": 19.0,
+          "codec": "H.264 High",
+          "pixel_format": "yuv420p",
+          "color": "SDR BT.709",
+          "progressive": true,
+          "audio": false,
+          "faststart": true,
+          "bytes": 2185569,
+          "actual_pts": {
+            "status": "PASS",
+            "count": 475,
+            "first_pts_s": 0.0,
+            "last_pts_s": 18.96,
+            "max_error_s": 0.0
+          },
+          "source_run_id": "issue3-D13550-ROLLING_UNEVEN-c0",
+          "view": "side",
+          "checkpoint_sha256": "5d7fa7222067ff915942f2be546f9a9b3dcd6126b07eb3d7c8ea7fb4c05a4565",
+          "motion_frames": 425,
+          "last_real_sim_s": 16.96,
+          "last_real_x_m": 4.000905990600586,
+          "end_card_frames": 50,
+          "end_card_duration_s": 2.0,
+          "end_card_start_video_pts_s": 17.0,
+          "final_sim_s_not_video_duration": true,
+          "decoded_baseline_y_range_px": [
+            43,
+            44
+          ],
+          "decoded_end_card_exact_pixels_identical": false,
+          "all_preencode_end_card_frames_identical": true,
+          "inspection_images": {
+            "0": "decoded-000000.png",
+            "212": "decoded-000212.png",
+            "424": "decoded-000424.png",
+            "425": "decoded-000425.png",
+            "474": "decoded-000474.png"
+          },
+          "all_raw_rgb_regions_identical_before_encode": true,
+          "source_native_steps": 0,
+          "source_rgb_pil_resize_scale": 1.3,
+          "source_rgb_origin_px": [
+            224,
+            70
+          ],
+          "old_numerical_gates_preserved": true,
+          "hud_baseline_y_range_px": [
+            43,
+            43
+          ]
+        },
+        {
+          "path": "reports/generated/issue4/videos-v1/issue3-D13550-ROLLING_UNEVEN-c0/oblique/presentation.mp4",
+          "sha256": "ed74ad5b1c1d9ed6a4e3f85e9aee9f6ca7ee65bc948fd07d97338f9acb0c1f7c",
+          "frames": 475,
+          "fps": 25.0,
+          "size": [
+            1280,
+            720
+          ],
+          "duration_s": 19.0,
+          "codec": "H.264 High",
+          "pixel_format": "yuv420p",
+          "color": "SDR BT.709",
+          "progressive": true,
+          "audio": false,
+          "faststart": true,
+          "bytes": 1697120,
+          "actual_pts": {
+            "status": "PASS",
+            "count": 475,
+            "first_pts_s": 0.0,
+            "last_pts_s": 18.96,
+            "max_error_s": 0.0
+          },
+          "source_run_id": "issue3-D13550-ROLLING_UNEVEN-c0",
+          "view": "oblique",
+          "checkpoint_sha256": "5d7fa7222067ff915942f2be546f9a9b3dcd6126b07eb3d7c8ea7fb4c05a4565",
+          "motion_frames": 425,
+          "last_real_sim_s": 16.96,
+          "last_real_x_m": 4.000905990600586,
+          "end_card_frames": 50,
+          "end_card_duration_s": 2.0,
+          "end_card_start_video_pts_s": 17.0,
+          "final_sim_s_not_video_duration": true,
+          "decoded_baseline_y_range_px": [
+            43,
+            43
+          ],
+          "decoded_end_card_exact_pixels_identical": false,
+          "all_preencode_end_card_frames_identical": true,
+          "inspection_images": {
+            "0": "decoded-000000.png",
+            "212": "decoded-000212.png",
+            "424": "decoded-000424.png",
+            "425": "decoded-000425.png",
+            "474": "decoded-000474.png"
+          },
+          "all_raw_rgb_regions_identical_before_encode": true,
+          "source_native_steps": 0,
+          "source_rgb_pil_resize_scale": 1.3,
+          "source_rgb_origin_px": [
+            224,
+            70
+          ],
+          "old_numerical_gates_preserved": true,
+          "hud_baseline_y_range_px": [
+            43,
+            43
+          ]
+        },
+        {
+          "path": "reports/generated/issue4/videos-v1/issue3-D13550-ROLLING_UNEVEN-c0/overhead/presentation.mp4",
+          "sha256": "cd64d0d262aaa7fc80a21f3ab1c15c836e2dbb702fa2840148991f4635b4d804",
+          "frames": 475,
+          "fps": 25.0,
+          "size": [
+            1280,
+            720
+          ],
+          "duration_s": 19.0,
+          "codec": "H.264 High",
+          "pixel_format": "yuv420p",
+          "color": "SDR BT.709",
+          "progressive": true,
+          "audio": false,
+          "faststart": true,
+          "bytes": 759111,
+          "actual_pts": {
+            "status": "PASS",
+            "count": 475,
+            "first_pts_s": 0.0,
+            "last_pts_s": 18.96,
+            "max_error_s": 0.0
+          },
+          "source_run_id": "issue3-D13550-ROLLING_UNEVEN-c0",
+          "view": "overhead",
+          "checkpoint_sha256": "5d7fa7222067ff915942f2be546f9a9b3dcd6126b07eb3d7c8ea7fb4c05a4565",
+          "motion_frames": 425,
+          "last_real_sim_s": 16.96,
+          "last_real_x_m": 4.000905990600586,
+          "end_card_frames": 50,
+          "end_card_duration_s": 2.0,
+          "end_card_start_video_pts_s": 17.0,
+          "final_sim_s_not_video_duration": true,
+          "decoded_baseline_y_range_px": [
+            43,
+            43
+          ],
+          "decoded_end_card_exact_pixels_identical": false,
+          "all_preencode_end_card_frames_identical": true,
+          "inspection_images": {
+            "0": "decoded-000000.png",
+            "212": "decoded-000212.png",
+            "424": "decoded-000424.png",
+            "425": "decoded-000425.png",
+            "474": "decoded-000474.png"
+          },
+          "all_raw_rgb_regions_identical_before_encode": true,
+          "source_native_steps": 0,
+          "source_rgb_pil_resize_scale": 1.3,
+          "source_rgb_origin_px": [
+            224,
+            70
+          ],
+          "old_numerical_gates_preserved": true,
+          "hud_baseline_y_range_px": [
+            43,
+            43
+          ]
+        }
+      ]
+    },
+    {
+      "goal": {
+        "goal_distance_m": 4.0,
+        "goal_reached": true,
+        "first_crossing_sample_s": 16.28,
+        "crossing_bracket": {
+          "before": {
+            "time_s": 16.27,
+            "x_m": 3.999185085296631
+          },
+          "at_or_after": {
+            "time_s": 16.28,
+            "x_m": 4.001739501953125
+          }
+        },
+        "end_reason": "GOAL_REACHED",
+        "presentation_end_sim_s": 16.28,
+        "start_x_m": 0.0,
+        "goal_x_m": 4.0,
+        "historical_numeric_pass": false,
+        "historical_numeric_gates": {
+          "progress": true,
+          "joint_input": true,
+          "posture": true,
+          "no_abnormal_contact": false
+        },
+        "historical_evaluation_sim_s": 20.0,
+        "historical_status": "TASK_FAIL",
+        "F": "USER_REVIEW_PENDING",
+        "nonfoot_events": [
+          {
+            "time_s": 14.69,
+            "contact_geometry_time_s": 14.68,
+            "robot_geom": 9,
+            "terrain_geom": 0,
+            "part": "FL_calf",
+            "foot": false,
+            "positive_force": false,
+            "position_m": [
+              3.864922523498535,
+              0.24998199939727783,
+              0.13471448421478271
+            ],
+            "force_on_robot_N": [
+              -0.0,
+              -0.0,
+              0.0
+            ],
+            "penetration_m": 0.0005767620168626308,
+            "native_support_z_m": 0.13501445949077606,
+            "point_surface_difference_m": -0.00029997527599334717
+          },
+          {
+            "time_s": 14.69,
+            "contact_geometry_time_s": 14.68,
+            "robot_geom": 9,
+            "terrain_geom": 0,
+            "part": "FL_calf",
+            "foot": false,
+            "positive_force": false,
+            "position_m": [
+              3.8653383255004883,
+              0.259196400642395,
+              0.13435174524784088
+            ],
+            "force_on_robot_N": [
+              -0.0,
+              -0.0,
+              0.0
+            ],
+            "penetration_m": 0.002216812688857317,
+            "native_support_z_m": 0.13548415899276733,
+            "point_surface_difference_m": -0.0011324137449264526
+          }
+        ],
+        "errors": [],
+        "goal_is_presentation_only": true,
+        "arrival_time_definition": "first observed 100Hz sample; exact crossing lies in saved bracket",
+        "recorded_end_sim_s": 20.0,
+        "end_sample_x_m": 4.001739501953125,
+        "progress_at_end_sample_m": 4.001739501953125,
+        "goal_in_saved_terrain_and_lane": true,
+        "source_run_id": "issue3-D13550-ROLLING_UNEVEN-c1",
+        "checkpoint_sha256": "5d7fa7222067ff915942f2be546f9a9b3dcd6126b07eb3d7c8ea7fb4c05a4565",
+        "numerical_gate_source": "logs/rolling-native/issue3-D13550-ROLLING_UNEVEN-c1/result.json",
+        "source_result_sha256": "34a88d163ba7619dea93d80c4c647dcb2ccf0df46d0c5ec1a3717acf5e21937e",
+        "source_side_camera_z_range_m": [
+          0.1406855583190918,
+          0.3409676253795624
+        ],
+        "source_side_z_fixed": false,
+        "original_world_x4_tick_y_range_px": [
+          327.8999908141883,
+          441.96630354983904
+        ],
+        "source_camera_note": "Preserved source actually tracks camera Z; HUD only fixed. No re-render, crop, stabilization or new physics.",
+        "full_state_samples": 2001,
+        "full_control_samples": 1001,
+        "full_source_frames_per_view": 501
+      },
+      "videos": [
+        {
+          "path": "reports/generated/issue4/videos-v1/issue3-D13550-ROLLING_UNEVEN-c1/side/presentation.mp4",
+          "sha256": "477b70330578ca684090f2cd0170427bdff7c2fa4e4d407722ed2693718f80a2",
+          "frames": 458,
+          "fps": 25.0,
+          "size": [
+            1280,
+            720
+          ],
+          "duration_s": 18.32,
+          "codec": "H.264 High",
+          "pixel_format": "yuv420p",
+          "color": "SDR BT.709",
+          "progressive": true,
+          "audio": false,
+          "faststart": true,
+          "bytes": 2116454,
+          "actual_pts": {
+            "status": "PASS",
+            "count": 458,
+            "first_pts_s": 0.0,
+            "last_pts_s": 18.28,
+            "max_error_s": 0.0
+          },
+          "source_run_id": "issue3-D13550-ROLLING_UNEVEN-c1",
+          "view": "side",
+          "checkpoint_sha256": "5d7fa7222067ff915942f2be546f9a9b3dcd6126b07eb3d7c8ea7fb4c05a4565",
+          "motion_frames": 408,
+          "last_real_sim_s": 16.28,
+          "last_real_x_m": 4.001739501953125,
+          "end_card_frames": 50,
+          "end_card_duration_s": 2.0,
+          "end_card_start_video_pts_s": 16.32,
+          "final_sim_s_not_video_duration": true,
+          "decoded_baseline_y_range_px": [
+            44,
+            44
+          ],
+          "decoded_end_card_exact_pixels_identical": false,
+          "all_preencode_end_card_frames_identical": true,
+          "inspection_images": {
+            "0": "decoded-000000.png",
+            "204": "decoded-000204.png",
+            "407": "decoded-000407.png",
+            "408": "decoded-000408.png",
+            "457": "decoded-000457.png"
+          },
+          "all_raw_rgb_regions_identical_before_encode": true,
+          "source_native_steps": 0,
+          "source_rgb_pil_resize_scale": 1.3,
+          "source_rgb_origin_px": [
+            224,
+            70
+          ],
+          "old_numerical_gates_preserved": true,
+          "hud_baseline_y_range_px": [
+            43,
+            43
+          ]
+        },
+        {
+          "path": "reports/generated/issue4/videos-v1/issue3-D13550-ROLLING_UNEVEN-c1/oblique/presentation.mp4",
+          "sha256": "784f9502deb5d7997fe042a9e510541f071a859db299dabff6ab40a3675702a3",
+          "frames": 458,
+          "fps": 25.0,
+          "size": [
+            1280,
+            720
+          ],
+          "duration_s": 18.32,
+          "codec": "H.264 High",
+          "pixel_format": "yuv420p",
+          "color": "SDR BT.709",
+          "progressive": true,
+          "audio": false,
+          "faststart": true,
+          "bytes": 1633675,
+          "actual_pts": {
+            "status": "PASS",
+            "count": 458,
+            "first_pts_s": 0.0,
+            "last_pts_s": 18.28,
+            "max_error_s": 0.0
+          },
+          "source_run_id": "issue3-D13550-ROLLING_UNEVEN-c1",
+          "view": "oblique",
+          "checkpoint_sha256": "5d7fa7222067ff915942f2be546f9a9b3dcd6126b07eb3d7c8ea7fb4c05a4565",
+          "motion_frames": 408,
+          "last_real_sim_s": 16.28,
+          "last_real_x_m": 4.001739501953125,
+          "end_card_frames": 50,
+          "end_card_duration_s": 2.0,
+          "end_card_start_video_pts_s": 16.32,
+          "final_sim_s_not_video_duration": true,
+          "decoded_baseline_y_range_px": [
+            43,
+            44
+          ],
+          "decoded_end_card_exact_pixels_identical": false,
+          "all_preencode_end_card_frames_identical": true,
+          "inspection_images": {
+            "0": "decoded-000000.png",
+            "204": "decoded-000204.png",
+            "407": "decoded-000407.png",
+            "408": "decoded-000408.png",
+            "457": "decoded-000457.png"
+          },
+          "all_raw_rgb_regions_identical_before_encode": true,
+          "source_native_steps": 0,
+          "source_rgb_pil_resize_scale": 1.3,
+          "source_rgb_origin_px": [
+            224,
+            70
+          ],
+          "old_numerical_gates_preserved": true,
+          "hud_baseline_y_range_px": [
+            43,
+            43
+          ]
+        },
+        {
+          "path": "reports/generated/issue4/videos-v1/issue3-D13550-ROLLING_UNEVEN-c1/overhead/presentation.mp4",
+          "sha256": "f039df81dcbc23263744001237b13c948cde9cfe3c818568d66fd8c5927d9d26",
+          "frames": 458,
+          "fps": 25.0,
+          "size": [
+            1280,
+            720
+          ],
+          "duration_s": 18.32,
+          "codec": "H.264 High",
+          "pixel_format": "yuv420p",
+          "color": "SDR BT.709",
+          "progressive": true,
+          "audio": false,
+          "faststart": true,
+          "bytes": 746448,
+          "actual_pts": {
+            "status": "PASS",
+            "count": 458,
+            "first_pts_s": 0.0,
+            "last_pts_s": 18.28,
+            "max_error_s": 0.0
+          },
+          "source_run_id": "issue3-D13550-ROLLING_UNEVEN-c1",
+          "view": "overhead",
+          "checkpoint_sha256": "5d7fa7222067ff915942f2be546f9a9b3dcd6126b07eb3d7c8ea7fb4c05a4565",
+          "motion_frames": 408,
+          "last_real_sim_s": 16.28,
+          "last_real_x_m": 4.001739501953125,
+          "end_card_frames": 50,
+          "end_card_duration_s": 2.0,
+          "end_card_start_video_pts_s": 16.32,
+          "final_sim_s_not_video_duration": true,
+          "decoded_baseline_y_range_px": [
+            43,
+            43
+          ],
+          "decoded_end_card_exact_pixels_identical": false,
+          "all_preencode_end_card_frames_identical": true,
+          "inspection_images": {
+            "0": "decoded-000000.png",
+            "204": "decoded-000204.png",
+            "407": "decoded-000407.png",
+            "408": "decoded-000408.png",
+            "457": "decoded-000457.png"
+          },
+          "all_raw_rgb_regions_identical_before_encode": true,
+          "source_native_steps": 0,
+          "source_rgb_pil_resize_scale": 1.3,
+          "source_rgb_origin_px": [
+            224,
+            70
+          ],
+          "old_numerical_gates_preserved": true,
+          "hud_baseline_y_range_px": [
+            43,
+            43
+          ]
+        }
+      ]
+    },
+    {
+      "goal": {
+        "goal_distance_m": 4.0,
+        "goal_reached": true,
+        "first_crossing_sample_s": 17.53,
+        "crossing_bracket": {
+          "before": {
+            "time_s": 17.52,
+            "x_m": 3.9995481967926025
+          },
+          "at_or_after": {
+            "time_s": 17.53,
+            "x_m": 4.000477313995361
+          }
+        },
+        "end_reason": "GOAL_REACHED",
+        "presentation_end_sim_s": 17.53,
+        "start_x_m": 0.0,
+        "goal_x_m": 4.0,
+        "historical_numeric_pass": true,
+        "historical_numeric_gates": {
+          "progress": true,
+          "joint_input": true,
+          "posture": true,
+          "no_abnormal_contact": true
+        },
+        "historical_evaluation_sim_s": 20.0,
+        "historical_status": "NUMERIC_PASS_VISUAL_PENDING",
+        "F": "USER_REVIEW_PENDING",
+        "nonfoot_events": [],
+        "errors": [],
+        "goal_is_presentation_only": true,
+        "arrival_time_definition": "first observed 100Hz sample; exact crossing lies in saved bracket",
+        "recorded_end_sim_s": 20.0,
+        "end_sample_x_m": 4.000477313995361,
+        "progress_at_end_sample_m": 4.000477313995361,
+        "goal_in_saved_terrain_and_lane": true,
+        "source_run_id": "issue3-D13550-ROLLING_UNEVEN-c2",
+        "checkpoint_sha256": "5d7fa7222067ff915942f2be546f9a9b3dcd6126b07eb3d7c8ea7fb4c05a4565",
+        "numerical_gate_source": "logs/rolling-native/issue3-D13550-ROLLING_UNEVEN-c2/result.json",
+        "source_result_sha256": "85dd7274bed968e45d75feb0eb7899fe71dcf71604d4312712904e8629470aa4",
+        "source_side_camera_z_range_m": [
+          0.14190354943275452,
+          0.3384142220020294
+        ],
+        "source_side_z_fixed": false,
+        "original_world_x4_tick_y_range_px": [
+          328.6762645474078,
+          386.81870691543674
+        ],
+        "source_camera_note": "Preserved source actually tracks camera Z; HUD only fixed. No re-render, crop, stabilization or new physics.",
+        "full_state_samples": 2001,
+        "full_control_samples": 1001,
+        "full_source_frames_per_view": 501
+      },
+      "videos": [
+        {
+          "path": "reports/generated/issue4/videos-v1/issue3-D13550-ROLLING_UNEVEN-c2/side/presentation.mp4",
+          "sha256": "c4bf65ef4f9f4258eec912ea5a605a900c363c0863646f43ee65742fb8083e69",
+          "frames": 490,
+          "fps": 25.0,
+          "size": [
+            1280,
+            720
+          ],
+          "duration_s": 19.6,
+          "codec": "H.264 High",
+          "pixel_format": "yuv420p",
+          "color": "SDR BT.709",
+          "progressive": true,
+          "audio": false,
+          "faststart": true,
+          "bytes": 2245337,
+          "actual_pts": {
+            "status": "PASS",
+            "count": 490,
+            "first_pts_s": 0.0,
+            "last_pts_s": 19.56,
+            "max_error_s": 0.0
+          },
+          "source_run_id": "issue3-D13550-ROLLING_UNEVEN-c2",
+          "view": "side",
+          "checkpoint_sha256": "5d7fa7222067ff915942f2be546f9a9b3dcd6126b07eb3d7c8ea7fb4c05a4565",
+          "motion_frames": 440,
+          "last_real_sim_s": 17.56,
+          "last_real_x_m": 4.003106594085693,
+          "end_card_frames": 50,
+          "end_card_duration_s": 2.0,
+          "end_card_start_video_pts_s": 17.6,
+          "final_sim_s_not_video_duration": true,
+          "decoded_baseline_y_range_px": [
+            44,
+            44
+          ],
+          "decoded_end_card_exact_pixels_identical": false,
+          "all_preencode_end_card_frames_identical": true,
+          "inspection_images": {
+            "0": "decoded-000000.png",
+            "220": "decoded-000220.png",
+            "439": "decoded-000439.png",
+            "440": "decoded-000440.png",
+            "489": "decoded-000489.png"
+          },
+          "all_raw_rgb_regions_identical_before_encode": true,
+          "source_native_steps": 0,
+          "source_rgb_pil_resize_scale": 1.3,
+          "source_rgb_origin_px": [
+            224,
+            70
+          ],
+          "old_numerical_gates_preserved": true,
+          "hud_baseline_y_range_px": [
+            43,
+            43
+          ]
+        },
+        {
+          "path": "reports/generated/issue4/videos-v1/issue3-D13550-ROLLING_UNEVEN-c2/oblique/presentation.mp4",
+          "sha256": "5d5f02f0998245c5439a6a635cc3e96c823ccbc28dc3de925f2b832dc5934879",
+          "frames": 490,
+          "fps": 25.0,
+          "size": [
+            1280,
+            720
+          ],
+          "duration_s": 19.6,
+          "codec": "H.264 High",
+          "pixel_format": "yuv420p",
+          "color": "SDR BT.709",
+          "progressive": true,
+          "audio": false,
+          "faststart": true,
+          "bytes": 1712981,
+          "actual_pts": {
+            "status": "PASS",
+            "count": 490,
+            "first_pts_s": 0.0,
+            "last_pts_s": 19.56,
+            "max_error_s": 0.0
+          },
+          "source_run_id": "issue3-D13550-ROLLING_UNEVEN-c2",
+          "view": "oblique",
+          "checkpoint_sha256": "5d7fa7222067ff915942f2be546f9a9b3dcd6126b07eb3d7c8ea7fb4c05a4565",
+          "motion_frames": 440,
+          "last_real_sim_s": 17.56,
+          "last_real_x_m": 4.003106594085693,
+          "end_card_frames": 50,
+          "end_card_duration_s": 2.0,
+          "end_card_start_video_pts_s": 17.6,
+          "final_sim_s_not_video_duration": true,
+          "decoded_baseline_y_range_px": [
+            43,
+            44
+          ],
+          "decoded_end_card_exact_pixels_identical": false,
+          "all_preencode_end_card_frames_identical": true,
+          "inspection_images": {
+            "0": "decoded-000000.png",
+            "220": "decoded-000220.png",
+            "439": "decoded-000439.png",
+            "440": "decoded-000440.png",
+            "489": "decoded-000489.png"
+          },
+          "all_raw_rgb_regions_identical_before_encode": true,
+          "source_native_steps": 0,
+          "source_rgb_pil_resize_scale": 1.3,
+          "source_rgb_origin_px": [
+            224,
+            70
+          ],
+          "old_numerical_gates_preserved": true,
+          "hud_baseline_y_range_px": [
+            43,
+            43
+          ]
+        },
+        {
+          "path": "reports/generated/issue4/videos-v1/issue3-D13550-ROLLING_UNEVEN-c2/overhead/presentation.mp4",
+          "sha256": "f9c5dff5b59aa0dec9e0025e1323c1e4675d1bb1aeebd19b826d7f732cce7d56",
+          "frames": 490,
+          "fps": 25.0,
+          "size": [
+            1280,
+            720
+          ],
+          "duration_s": 19.6,
+          "codec": "H.264 High",
+          "pixel_format": "yuv420p",
+          "color": "SDR BT.709",
+          "progressive": true,
+          "audio": false,
+          "faststart": true,
+          "bytes": 765240,
+          "actual_pts": {
+            "status": "PASS",
+            "count": 490,
+            "first_pts_s": 0.0,
+            "last_pts_s": 19.56,
+            "max_error_s": 0.0
+          },
+          "source_run_id": "issue3-D13550-ROLLING_UNEVEN-c2",
+          "view": "overhead",
+          "checkpoint_sha256": "5d7fa7222067ff915942f2be546f9a9b3dcd6126b07eb3d7c8ea7fb4c05a4565",
+          "motion_frames": 440,
+          "last_real_sim_s": 17.56,
+          "last_real_x_m": 4.003106594085693,
+          "end_card_frames": 50,
+          "end_card_duration_s": 2.0,
+          "end_card_start_video_pts_s": 17.6,
+          "final_sim_s_not_video_duration": true,
+          "decoded_baseline_y_range_px": [
+            43,
+            43
+          ],
+          "decoded_end_card_exact_pixels_identical": false,
+          "all_preencode_end_card_frames_identical": true,
+          "inspection_images": {
+            "0": "decoded-000000.png",
+            "220": "decoded-000220.png",
+            "439": "decoded-000439.png",
+            "440": "decoded-000440.png",
+            "489": "decoded-000489.png"
+          },
+          "all_raw_rgb_regions_identical_before_encode": true,
+          "source_native_steps": 0,
+          "source_rgb_pil_resize_scale": 1.3,
+          "source_rgb_origin_px": [
+            224,
+            70
+          ],
+          "old_numerical_gates_preserved": true,
+          "hud_baseline_y_range_px": [
+            43,
+            43
+          ]
+        }
+      ]
+    }
+  ],
+  "source_manifest": "reports/generated/issue4/videos-v1/source-before.json",
+  "QA": "reports/generated/issue4/videos-v1/independent-qa.json",
+  "index": "reports/generated/issue4/videos-v1/index.html",
+  "goal_csv": "reports/generated/issue4/videos-v1/goal-results.csv",
+  "graph": "reports/generated/issue4/videos-v1/goal-and-ruler-validation.png"
+}
