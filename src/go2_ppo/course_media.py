@@ -1,0 +1,167 @@
+"""Direct native full-course capture, fixed-Z cameras and independent end cards."""
+import csv,json,math
+from pathlib import Path
+import numpy as np
+from PIL import Image,ImageDraw
+from .rolling_uneven_media import camera_calibration,is_true_90_side,font
+from .presentation_media import make_layout,write_csv,dump,verify_pts
+from .presentation import ruler_ticks
+from .video_materials import writer,sha,inspect_video
+from .course_completion import LEGS
+
+VIEWS=('side','oblique','overhead');BG=(246,246,240);DARK=(25,48,48);GREEN=(20,113,78);RED=(170,40,36)
+
+
+def show_gate_in_native_camera(mesh):
+    """Genesis1.4.5 regular raster cameras skip Mesh.is_marker=True.
+
+    The returned external pyrender mesh remains visual-only, with no entity,
+    mass or collision. Clear only its render-filter attribute, not camera mode.
+    """
+    if not hasattr(mesh,'is_marker'):raise TypeError('Expected native external visual mesh')
+    mesh.is_marker=False
+    return mesh
+
+
+def camera_poses(base_pos):
+    x,y,_=base_pos
+    return dict(side=dict(pos=(x+.05,y-.95,.34),lookat=(x+.05,y,.34),up=(0,0,1)),
+        oblique=dict(pos=(x+1.1,y-1.7,1.12),lookat=(x+.25,y,.20),up=(0,0,1)),
+        overhead=dict(pos=(x+.5,0,3.3),lookat=(x+.5,0,0),up=(0,1,0)))
+
+
+def course_timeline(times):
+    times=list(map(float,times))
+    if not times or abs(times[0])>1e-8 or any(not math.isfinite(t) for t in times) or any(b<=a for a,b in zip(times,times[1:])):
+        raise ValueError('Nonmonotonic real source times')
+    if any(abs(t-i/25)>1e-7 for i,t in enumerate(times[:-1])) or times[-1]>(len(times)-1)/25+1e-8:
+        raise ValueError('Missing scheduled source25fps frame')
+    records=[]
+    for i,t in enumerate(times):
+        kind='terminal_real_snapshot' if abs(t-i/25)>1e-7 else 'recorded_motion'
+        records.append(dict(output_frame=i,video_pts_s=i/25,kind=kind,simulation_time_s=t,source_frame=i,frozen_at_sim_s=None))
+    for _ in range(50):
+        i=len(records);records.append(dict(output_frame=i,video_pts_s=i/25,kind='end_card',simulation_time_s=None,source_frame=None,frozen_at_sim_s=times[-1]))
+    return records
+
+
+def compose_course(layout,rgb,view,row,finish,start,old_pass,completion,contact_first,run_id,condition=2):
+    t=float(row['time_s']);x=float(row['x_m']);pos=[x,float(row['y_m']),float(row['height_m'])]
+    image=layout._annotated(rgb,view,t,pos,[]);d=ImageDraw.Draw(image)
+    d.rectangle((0,0,1279,69),fill=BG);d.rectangle((0,70,223,538),fill=BG)
+    d.text((18,6),f'{run_id} / {view.upper()} / 新規native連続走行・原速 / カメラZ固定',font=font(17),fill=DARK)
+    d.text((16,33),'世界X距離目盛り',font=font(16),fill=DARK);d.text((16,53),'固定HUD：高さとは別',font=font(12),fill=DARK)
+    calibration=row['_calibration'];ticks=ruler_ticks(calibration,np.arange(-1,7.00001,.5));markers=ruler_ticks(calibration,[start,finish])
+    d.line((224,43,1055,43),fill=DARK,width=2)
+    for tick in ticks:
+        px=tick['hud_x_px'];wx=tick['world_xyz_m'][0];major=abs(wx-round(wx))<1e-8
+        if px is None or not 226<=px<=1053:continue
+        d.line((px,43,px,49 if major else 46),fill=DARK,width=2 if major else 1)
+        if major and 240<=px<=1040 and all(q['hud_x_px'] is None or abs(q['hud_x_px']-px)>60 for q in markers):
+            d.text((px,51),f'{wx:g}m',anchor='mt',font=font(13),fill=DARK)
+    for label,color,tick in zip(('START','FINISH'),(GREEN,RED),markers):
+        px=tick['hud_x_px']
+        if px is not None and 226<=px<=1053:
+            d.line((px,27,px,49),fill=color,width=3)
+            d.text((min(1020,max(258,px)),51),label,anchor='mt',font=font(12),fill=color)
+    trailing=[float(row[l+'_center_x_m'])-float(row[l+'_sphere_radius_m']) for l in LEGS]
+    passed=sum(v>finish for v in trailing);remaining=max(0.,finish-min(trailing))
+    lines=[(83,'全4足コース通過',DARK,19),(117,f'START X={start:.2f}',GREEN,18),(147,f'FINISH X={finish:.2f}',RED,18),
+        (187,f'全足通過 {passed}/4',GREEN if passed==4 else DARK,23),(223,f'後端残り {remaining:.3f}m',DARK,18),
+        (261,f'進行 {x-start:.3f} m',DARK,19),(297,f'sim経過 {t:.2f} s',DARK,21),
+        (335,f'旧20秒c{condition}：'+('PASS' if old_pass else 'FAIL'),DARK,16),(363,'F：本人確認未済',DARK,16),
+        (398,'新run：非足接触あり' if contact_first is not None and t>=contact_first-1e-8 else '新run：非足接触なし',RED if contact_first is not None and t>=contact_first-1e-8 else DARK,15)]
+    if contact_first is not None and t>=contact_first-1e-8:lines.append((425,f'初回 {contact_first:.2f}秒',RED,15))
+    if t>=float(completion.get('terminal_sim_s') or float('inf'))-1e-8:
+        lines.append((470,'踏破成功' if completion['success'] else '未踏破',GREEN if completion['success'] else RED,22))
+    elif passed==4:lines.append((470,'0.2秒 安定確認中',DARK,16))
+    for y,text,color,size in lines:d.text((16,y),text,font=font(size),fill=color)
+    for wx,label,color in ((start,'START',GREEN),(finish,'FINISH',RED)):
+        sx=layout._section_xy([wx],[layout.zlow])[0,0];d.line((sx,570,sx,690),fill=color,width=2)
+        d.text((sx+3,570),label,font=font(12),fill=color)
+    return image,dict(baseline_y_px=43.,world_ticks=ticks,gate_markers=markers,min_trailing_foot_x_m=min(trailing),passed_feet=passed)
+
+
+def result_card(result,view):
+    image=Image.new('RGB',(1280,720),(239,244,241));d=ImageDraw.Draw(image);c=result['completion'];success=c['success'];s=result['new_run_safety']
+    d.rectangle((0,0,1279,78),fill=(25,65,57));d.text((36,20),'結果静止画 — シミュレーション時間外（2秒）',font=font(29),fill='white')
+    d.text((38,102),f"{result['run_id']} / {view.upper()} / D13550・PPO更新なし",font=font(22),fill=DARK)
+    lines=[(160,'踏破成功：全4足が終端を完全通過' if success else '未踏破：'+c['reason'],GREEN if success else RED,33),
+        (219,f"START X={result['start_x_m']:.2f} → FINISH X={c['finish_x_m']:.2f}m",DARK,25),
+        (267,f"実sim終了 {result['terminal_sim_s']:.2f}秒 / base進行 {result['distance_m']:.3f}m",DARK,25),
+        (313,f"初回全足通過 {c['first_all_feet_pass_s']}秒 / 安定確認完了 {c['confirmed_at_sim_s']}秒",DARK,21),
+        (355,'全足球の後端X > FINISH、base通過、0.20秒連続保持',DARK,22),
+        (397,f"新run：非足接触{s['nonfoot_contact_points']}点 / 関節可動域判定 {'PASS' if s['joint_input_pass'] else 'FAIL'}",RED if s['nonfoot_contact_points'] or not s['joint_input_pass'] else GREEN,22),
+        (440,f"転倒={s['physical_fall']} / 逸脱={s['boundary_excursion']} / 計算異常={s['engine_error']}",DARK,22),
+        (481,'旧20秒評価：4/6合格、ROLLING c0/c1非足接触FAILのまま',DARK,22),
+        (525,'F：本人による動画評価は未済 / 正式モデル採用保留',DARK,22),
+        (571,'新規native t=0→終了イベントの全実フレームを使用',DARK,21),
+        (614,'全4足通過と旧20秒安全ゲートは別判定',DARK,20),
+        (657,'既存20秒映像の切り抜き・疑似走行・速度変更なし',DARK,20)]
+    for y,text,color,size in lines:d.text((38,y),text,font=font(size),fill=color)
+    return image
+
+
+class CourseRecorder:
+    def __init__(self,directory,terrain):
+        self.output=Path(directory);self.output.mkdir(parents=True,exist_ok=False)
+        self.terrain=terrain;self.records=[];self.handles={};self.camera_z={};self.closed=False
+        np.savez_compressed(self.output/'terrain-input.npz',x=terrain['x'],y=terrain['y'],height_m=terrain['height_m'])
+        for view in VIEWS:
+            (self.output/'raw'/view).mkdir(parents=True)
+            self.handles[view]=writer(self.output/f'native-{view}-raw.mp4')
+
+    def capture(self,cameras,tm,state,terminal=False):
+        if self.closed:raise ValueError('Capture after close')
+        index=len(self.records)//3;expected=index/25
+        if self.records and tm<=self.records[-1]['simulation_time_s']+1e-8:return
+        if abs(tm-expected)>1e-7 and not terminal:raise ValueError('Missing native25fps source frame')
+        for view in VIEWS:
+            camera=cameras[view];cal=camera_calibration(camera)
+            if view=='side' and not is_true_90_side(cal):raise ValueError('Not true90side')
+            z=float(cal['pos'][2]);self.camera_z.setdefault(view,z)
+            if abs(z-self.camera_z[view])>1e-7:raise ValueError('Camera Z moved')
+            rgb=camera.render()[0]
+            if hasattr(rgb,'cpu'):rgb=rgb.cpu().numpy()
+            rgb=np.asarray(rgb).reshape((360,640,3))
+            if rgb.dtype!=np.uint8:raise ValueError('Native RGB is not uint8')
+            raw=self.output/'raw'/view/f'frame{index:06d}.png';Image.fromarray(rgb).save(raw)
+            self.handles[view].append_data(np.asarray(Image.fromarray(rgb).resize((1280,720),Image.Resampling.LANCZOS)))
+            record=dict(frame=index,view=view,simulation_time_s=float(tm),video_pts_s=expected,
+                terminal_offgrid=abs(tm-expected)>1e-7,raw_png=str(raw.resolve()),raw_png_sha256=sha(raw),
+                base_position_m=[float(state[k]) for k in ('x_m','y_m','height_m')],**cal)
+            self.records.append(record)
+
+    def close(self):
+        if self.closed:return
+        self.closed=True
+        for handle in self.handles.values():handle.close()
+        with (self.output/'camera-frame-map.jsonl').open('w') as stream:
+            for record in self.records:stream.write(json.dumps(record,allow_nan=False)+'\n')
+        write_csv(self.output/'frame-map.csv',[{k:r[k] for k in ('frame','view','simulation_time_s','video_pts_s','terminal_offgrid','raw_png','raw_png_sha256')} for r in self.records])
+        dump(self.output/'recording-metadata.json',dict(kind='direct native full-course capture',frames_per_view=len(self.records)//3,fps=25,world_camera_z_m=self.camera_z,raw_source_size=[640,360],video_size=[1280,720],new_physics_by_recorder=0,pose_replay=False))
+
+    def present(self,result,states):
+        if not self.closed:raise ValueError('Close native capture before encoding presentation')
+        layout=make_layout(self.terrain);validations={};completion=result['completion']
+        for view in VIEWS:
+            records=[r for r in self.records if r['view']==view];times=[r['simulation_time_s'] for r in records]
+            mapping=course_timeline(times);path=self.output/f'course-{view}.mp4';audits=[]
+            with writer(path) as handle:
+                for i,r in enumerate(records):
+                    state=dict(states[round(r['simulation_time_s']*100)]);state['_calibration']=r
+                    with Image.open(r['raw_png']) as src:rgb=np.asarray(src.convert('RGB'))
+                    frame,audit=compose_course(layout,rgb,view,state,completion['finish_x_m'],result['start_x_m'],result.get('historical_numeric_pass',result.get('historical_c2_numeric_pass')),completion,result['new_run_safety']['first_nonfoot_sim_s'],result['run_id'],result.get('historical_condition',2))
+                    expected=np.asarray(Image.fromarray(rgb).resize((832,468),Image.Resampling.LANCZOS))
+                    if not np.array_equal(np.asarray(frame)[70:538,224:1056],expected):raise ValueError('HUD touched native RGB')
+                    handle.append_data(np.asarray(frame));audit.update(source_frame=i,simulation_time_s=r['simulation_time_s'],video_pts_s=i/25,raw_png_sha256=r['raw_png_sha256']);audits.append(audit)
+                    if i in (0,len(records)//2,len(records)-1):frame.save(self.output/f'{view}-frame{i:06d}.png')
+                card=result_card(result,view);card.save(self.output/f'{view}-result.png')
+                for _ in range(50):handle.append_data(np.asarray(card))
+            write_csv(self.output/f'{view}-timeline.csv',mapping)
+            with (self.output/f'{view}-hud-map.jsonl').open('w') as stream:
+                for record in audits:stream.write(json.dumps(record,allow_nan=False)+'\n')
+            for file in (path,self.output/f'native-{view}-raw.mp4'):
+                v=inspect_video(file,decode=True);v['actual_pts']=verify_pts(file,v['frames']);validations[file.name]=v
+            if validations[path.name]['frames']!=len(records)+50:raise ValueError('Frame count mismatch')
+        dump(self.output/'video-validation.json',validations);return validations

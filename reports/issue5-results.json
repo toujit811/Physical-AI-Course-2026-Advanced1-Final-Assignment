@@ -1,0 +1,2355 @@
+{
+  "authority_issue": 5,
+  "source_branch": "issue4/video-goal-hud",
+  "source_commit": "dfcadd4275a26b7d3a25a2ff936275b492147dc9",
+  "implementation_branch": "issue5/native-course-completion",
+  "new_native_runs": 6,
+  "native_run_order": [
+    "FLATc2v1",
+    "ROLLINGc2v1",
+    "FLATc0v1",
+    "FLATc1v1",
+    "FLATc2v2",
+    "ROLLINGc2v2"
+  ],
+  "final_priority_runs": 2,
+  "all_new_mp4_files": 36,
+  "primary_new_mp4_files": 12,
+  "new_PPO_updates": 0,
+  "heldout": "UNOPENED_NOT_PERFORMED",
+  "final_FLAT_c2": "NOT_COMPLETED_OUT_OF_BOUNDS",
+  "final_ROLLING_c2": "COURSE_COMPLETED",
+  "existing20s_evaluation": "UNCHANGED_4_OF_6_NUMERIC_PASS_ROLLING_c0_c1_NONFOOT_FAIL",
+  "F": "USER_REVIEW_PENDING",
+  "tests": {
+    "new": 16,
+    "previous": 87,
+    "total": 103,
+    "stdlib_core": 10,
+    "status": "PASS"
+  },
+  "source_preservation": {
+    "status": "PASS",
+    "files": 9736,
+    "bytes": 695314553
+  },
+  "native_marker_failure_retained_v1": 4,
+  "final_v2_native_marker_QA": "PASS",
+  "numerical_verification": "All6 time grids, raw RGB/hash/K-E/FK/support/contact/physics/source/MP4PTS verified; v1 ground marker visualFAIL explicitly retained.",
+  "limitations": [
+    "FLATc1/c2: forefoot crossesX7 before last hind-foot trailing extent crosses6.40; exit placement0.60m constrains completion. Not a fall or solver failure.",
+    "FLATc0: lateral course boundary; FLAT ground is an infinite physical plane but comparison course lane is finite.",
+    "The selected6.40 line includes the actual quantized relief tail beyond preview mainactivity6.00. No goal or threshold relaxed after failure.",
+    "Terminal native snapshots may lie between25fps grid points and use next videoPTS, explicitly mapped; no future simulation or interpolated poses.",
+    "Human F/comfort assessment pending; retained v1 lacks visible native ground gates."
+  ],
+  "index": "reports/generated/issue5/index.html",
+  "CSV": "reports/generated/issue5/course-results.csv",
+  "graph": "reports/generated/issue5/course-verification.png",
+  "detailed_QA": "reports/generated/issue5/independent-qa.json",
+  "runs": [
+    {
+      "run": "issue5-D13550-FLAT-c2-v2",
+      "QA": "PASS",
+      "physics_camera_timing_QA": "PASS",
+      "native_ground_gate_RGB": {
+        "START": {
+          "matching_native_rgb_pixels": 127,
+          "visible": true
+        },
+        "FINISH": {
+          "matching_native_rgb_pixels": 132,
+          "visible": true
+        }
+      },
+      "entire_physics_matches_prior_v1": true,
+      "course_success": false,
+      "reason": "OUT_OF_BOUNDS",
+      "terminal_sim_s": 27.330000000000002,
+      "terminal_xyz_m": [
+        6.659389972686768,
+        0.8822197914123535,
+        0.32903772592544556
+      ],
+      "first_all_feet_s": null,
+      "confirmed_s": null,
+      "terminal_min_foot_trailing_x_m": 6.3885525016784666,
+      "first20s_trajectory_exact": true,
+      "max_independent_FK_error_m": 8.451860703939934e-07,
+      "actual_camera_Z_range_m": {
+        "side": [
+          0.3400000035762787,
+          0.3400000035762787
+        ],
+        "oblique": [
+          1.1199998649136365,
+          1.1200001191875684
+        ],
+        "overhead": [
+          3.299999952316284,
+          3.299999952316284
+        ]
+      },
+      "decoded_HUD_baseline_Y_range_px": {
+        "side": [
+          43,
+          44
+        ],
+        "oblique": [
+          43,
+          44
+        ],
+        "overhead": [
+          43,
+          44
+        ]
+      },
+      "terminal_frame_mapping": {
+        "side": {
+          "simulation_time_s": "27.330000000000002",
+          "video_pts_s": "27.36",
+          "kind": "terminal_real_snapshot"
+        },
+        "oblique": {
+          "simulation_time_s": "27.330000000000002",
+          "video_pts_s": "27.36",
+          "kind": "terminal_real_snapshot"
+        },
+        "overhead": {
+          "simulation_time_s": "27.330000000000002",
+          "video_pts_s": "27.36",
+          "kind": "terminal_real_snapshot"
+        }
+      },
+      "movies": {
+        "native-side-raw.mp4": {
+          "path": "logs/course-native/issue5-D13550-FLAT-c2-v2/native-media/native-side-raw.mp4",
+          "sha256": "5317ae14ba78e79bc494e20df1196d62c55be86d92f931ce073506b54fe12d87",
+          "frames": 685,
+          "fps": 25.0,
+          "size": [
+            1280,
+            720
+          ],
+          "duration_s": 27.4,
+          "codec": "H.264 High",
+          "pixel_format": "yuv420p",
+          "color": "SDR BT.709",
+          "progressive": true,
+          "audio": false,
+          "faststart": true,
+          "bytes": 2353773,
+          "actual_pts": {
+            "status": "PASS",
+            "count": 685,
+            "first_pts_s": 0.0,
+            "last_pts_s": 27.36,
+            "max_error_s": 0.0
+          }
+        },
+        "course-side.mp4": {
+          "path": "logs/course-native/issue5-D13550-FLAT-c2-v2/native-media/course-side.mp4",
+          "sha256": "a17f62fb17fec149e33f8cce4162a1c6f2896868259fa5d405e83854cfc47676",
+          "frames": 735,
+          "fps": 25.0,
+          "size": [
+            1280,
+            720
+          ],
+          "duration_s": 29.4,
+          "codec": "H.264 High",
+          "pixel_format": "yuv420p",
+          "color": "SDR BT.709",
+          "progressive": true,
+          "audio": false,
+          "faststart": true,
+          "bytes": 2134190,
+          "actual_pts": {
+            "status": "PASS",
+            "count": 735,
+            "first_pts_s": 0.0,
+            "last_pts_s": 29.36,
+            "max_error_s": 0.0
+          }
+        },
+        "native-oblique-raw.mp4": {
+          "path": "logs/course-native/issue5-D13550-FLAT-c2-v2/native-media/native-oblique-raw.mp4",
+          "sha256": "e578cb5c69497651856244da7fad3f3a0464443ddb7df5dd2a649d8df981e09f",
+          "frames": 685,
+          "fps": 25.0,
+          "size": [
+            1280,
+            720
+          ],
+          "duration_s": 27.4,
+          "codec": "H.264 High",
+          "pixel_format": "yuv420p",
+          "color": "SDR BT.709",
+          "progressive": true,
+          "audio": false,
+          "faststart": true,
+          "bytes": 1283525,
+          "actual_pts": {
+            "status": "PASS",
+            "count": 685,
+            "first_pts_s": 0.0,
+            "last_pts_s": 27.36,
+            "max_error_s": 0.0
+          }
+        },
+        "course-oblique.mp4": {
+          "path": "logs/course-native/issue5-D13550-FLAT-c2-v2/native-media/course-oblique.mp4",
+          "sha256": "02bd326e08b51e3cc62e3ed65877dcdf0e89cd1c5c44e099f8aeaa4589044740",
+          "frames": 735,
+          "fps": 25.0,
+          "size": [
+            1280,
+            720
+          ],
+          "duration_s": 29.4,
+          "codec": "H.264 High",
+          "pixel_format": "yuv420p",
+          "color": "SDR BT.709",
+          "progressive": true,
+          "audio": false,
+          "faststart": true,
+          "bytes": 1506921,
+          "actual_pts": {
+            "status": "PASS",
+            "count": 735,
+            "first_pts_s": 0.0,
+            "last_pts_s": 29.36,
+            "max_error_s": 0.0
+          }
+        },
+        "native-overhead-raw.mp4": {
+          "path": "logs/course-native/issue5-D13550-FLAT-c2-v2/native-media/native-overhead-raw.mp4",
+          "sha256": "4b6ca8cf0d0157c295ee7356c584fa4984289a1c78fbf8485d7807e5e56d4440",
+          "frames": 685,
+          "fps": 25.0,
+          "size": [
+            1280,
+            720
+          ],
+          "duration_s": 27.4,
+          "codec": "H.264 High",
+          "pixel_format": "yuv420p",
+          "color": "SDR BT.709",
+          "progressive": true,
+          "audio": false,
+          "faststart": true,
+          "bytes": 870730,
+          "actual_pts": {
+            "status": "PASS",
+            "count": 685,
+            "first_pts_s": 0.0,
+            "last_pts_s": 27.36,
+            "max_error_s": 0.0
+          }
+        },
+        "course-overhead.mp4": {
+          "path": "logs/course-native/issue5-D13550-FLAT-c2-v2/native-media/course-overhead.mp4",
+          "sha256": "d6cee6cf9b1e8ebcc8db65c4fc6c2c1803308c6cffcb0957f015caa3cf7ebaf7",
+          "frames": 735,
+          "fps": 25.0,
+          "size": [
+            1280,
+            720
+          ],
+          "duration_s": 29.4,
+          "codec": "H.264 High",
+          "pixel_format": "yuv420p",
+          "color": "SDR BT.709",
+          "progressive": true,
+          "audio": false,
+          "faststart": true,
+          "bytes": 1222102,
+          "actual_pts": {
+            "status": "PASS",
+            "count": 735,
+            "first_pts_s": 0.0,
+            "last_pts_s": 29.36,
+            "max_error_s": 0.0
+          }
+        }
+      },
+      "new_run_safety": {
+        "physical_fall": false,
+        "boundary_excursion": true,
+        "engine_error": false,
+        "nonfoot_contact_points": 0,
+        "first_nonfoot_sim_s": null,
+        "joint_input_pass": true,
+        "max_joint_excursion_rad": 0.0,
+        "max_FK_error_m": 8.451860703939934e-07
+      },
+      "completion": {
+        "reason": "OUT_OF_BOUNDS",
+        "success": false,
+        "finish_x_m": 6.4,
+        "confirmation_s": 0.2,
+        "max_sim_s": 60.0,
+        "first_all_feet_pass_s": null,
+        "confirmation_start_s": null,
+        "confirmed_at_sim_s": null,
+        "terminal_sim_s": 27.330000000000002,
+        "first_each_foot_pass": {
+          "FL": {
+            "at_or_after_sim_s": 25.060000000000002,
+            "trailing_x_m": 6.407426670074463,
+            "previous_sim_s": 25.05,
+            "previous_trailing_x_m": 6.395784690856933
+          },
+          "FR": {
+            "at_or_after_sim_s": 25.54,
+            "trailing_x_m": 6.402100875854492,
+            "previous_sim_s": 25.53,
+            "previous_trailing_x_m": 6.3972147254943845
+          },
+          "RL": {
+            "at_or_after_sim_s": 27.21,
+            "trailing_x_m": 6.404896572113037,
+            "previous_sim_s": 27.2,
+            "previous_trailing_x_m": 6.398971393585205
+          }
+        },
+        "last_measurement": {
+          "time_s": 27.330000000000002,
+          "x_m": 6.659389972686768,
+          "trailing_x_m": {
+            "FL": 6.981469467163086,
+            "FR": 6.783934429168701,
+            "RL": 6.415380790710449,
+            "RR": 6.3885525016784666
+          },
+          "physical_fallen": false,
+          "out_of_terrain": true
+        },
+        "foot_predicate": "all native sphere centre X minus radius > finish; base X > finish; continuous0.20s, no fall/boundary/solver/state error",
+        "error": null
+      },
+      "native_wall_including_media_s": 77.3106289159914,
+      "recording_started_before_first_step": true,
+      "physical_build": {
+        "entities": 2,
+        "robot_urdf_sha256": "4f306754e9b3d73930ac8362aa456eb8912f2e886665618e7eced9627c1704a4",
+        "sim": {
+          "dt": 0.02,
+          "substeps": 2,
+          "substeps_local": 1,
+          "gravity": [
+            0.0,
+            0.0,
+            -9.81
+          ],
+          "floor_height": 0.0,
+          "requires_grad": false
+        },
+        "rigid": {
+          "dt": 0.02,
+          "gravity": [
+            0.0,
+            0.0,
+            -9.81
+          ],
+          "enable_collision": true,
+          "enable_joint_limit": true,
+          "enable_self_collision": false,
+          "enable_neutral_collision": false,
+          "enable_adjacent_collision": false,
+          "disable_constraint": false,
+          "max_collision_pairs": 20,
+          "max_contacts": 100,
+          "multiplier_collision_broad_phase": 8,
+          "integrator": 2,
+          "IK_max_targets": 6,
+          "batch_links_info": false,
+          "batch_joints_info": false,
+          "batch_dofs_info": false,
+          "constraint_solver": 1,
+          "iterations": 25,
+          "tolerance": 1e-05,
+          "ls_iterations": 50,
+          "ls_tolerance": 0.01,
+          "noslip_iterations": 0,
+          "noslip_tolerance": 1e-06,
+          "friction_cone": 0,
+          "contact_resolution": 0,
+          "enable_torsional_friction": false,
+          "enable_rolling_friction": false,
+          "impratio": 1.0,
+          "contact_pruning_tolerance": 0.02,
+          "sparse_solve": null,
+          "constraint_timeconst": 0.01,
+          "box_box_detection": false,
+          "use_hibernation": false,
+          "hibernation_thresh_vel": null,
+          "max_dynamic_constraints": 8,
+          "enable_multi_contact": true,
+          "enable_mujoco_compatibility": false,
+          "use_gjk_collision": false,
+          "enable_contact_patch": false,
+          "broadphase_traversal": null
+        },
+        "robot_dofs": 18,
+        "ground_collision_geoms": [
+          0
+        ],
+        "ground_only": true,
+        "substep_dt_s": 0.01
+      },
+      "native_positive_foot_contacts": {
+        "FL": 1024,
+        "FR": 1113,
+        "RL": 1703,
+        "RR": 891
+      },
+      "terminal_foot_centers_xyz_m": {
+        "FL": [
+          7.003469467163086,
+          0.9567964673042297,
+          0.09006898105144501
+        ],
+        "FR": [
+          6.805934429168701,
+          0.7036420106887817,
+          0.018764615058898926
+        ],
+        "RL": [
+          6.437380790710449,
+          1.063351035118103,
+          0.020740032196044922
+        ],
+        "RR": [
+          6.410552501678467,
+          0.6982001066207886,
+          0.08199368417263031
+        ]
+      },
+      "terminal_foot_trailing_x_m": {
+        "FL": 6.981469467163086,
+        "FR": 6.783934429168701,
+        "RL": 6.415380790710449,
+        "RR": 6.3885525016784666
+      }
+    },
+    {
+      "run": "issue5-D13550-ROLLING_UNEVEN-c2-v2",
+      "QA": "PASS",
+      "physics_camera_timing_QA": "PASS",
+      "native_ground_gate_RGB": {
+        "START": {
+          "matching_native_rgb_pixels": 127,
+          "visible": true
+        },
+        "FINISH": {
+          "matching_native_rgb_pixels": 240,
+          "visible": true
+        }
+      },
+      "entire_physics_matches_prior_v1": true,
+      "course_success": true,
+      "reason": "COURSE_COMPLETED",
+      "terminal_sim_s": 30.1,
+      "terminal_xyz_m": [
+        6.7498955726623535,
+        0.17698895931243896,
+        0.33253583312034607
+      ],
+      "first_all_feet_s": 29.900000000000002,
+      "confirmed_s": 30.1,
+      "terminal_min_foot_trailing_x_m": 6.433797672271728,
+      "first20s_trajectory_exact": true,
+      "max_independent_FK_error_m": 9.092590343374e-07,
+      "actual_camera_Z_range_m": {
+        "side": [
+          0.3400000035762787,
+          0.3400000035762787
+        ],
+        "oblique": [
+          1.119999743068886,
+          1.1200002078766664
+        ],
+        "overhead": [
+          3.299999952316284,
+          3.299999952316284
+        ]
+      },
+      "decoded_HUD_baseline_Y_range_px": {
+        "side": [
+          43,
+          44
+        ],
+        "oblique": [
+          43,
+          44
+        ],
+        "overhead": [
+          43,
+          44
+        ]
+      },
+      "terminal_frame_mapping": {
+        "side": {
+          "simulation_time_s": "30.1",
+          "video_pts_s": "30.12",
+          "kind": "terminal_real_snapshot"
+        },
+        "oblique": {
+          "simulation_time_s": "30.1",
+          "video_pts_s": "30.12",
+          "kind": "terminal_real_snapshot"
+        },
+        "overhead": {
+          "simulation_time_s": "30.1",
+          "video_pts_s": "30.12",
+          "kind": "terminal_real_snapshot"
+        }
+      },
+      "movies": {
+        "native-side-raw.mp4": {
+          "path": "logs/course-native/issue5-D13550-ROLLING_UNEVEN-c2-v2/native-media/native-side-raw.mp4",
+          "sha256": "169f1d0914fbf61a2412c4e42ec71207158c0fe16b4bc85e80d8d31bbd97c611",
+          "frames": 754,
+          "fps": 25.0,
+          "size": [
+            1280,
+            720
+          ],
+          "duration_s": 30.16,
+          "codec": "H.264 High",
+          "pixel_format": "yuv420p",
+          "color": "SDR BT.709",
+          "progressive": true,
+          "audio": false,
+          "faststart": true,
+          "bytes": 4797542,
+          "actual_pts": {
+            "status": "PASS",
+            "count": 754,
+            "first_pts_s": 0.0,
+            "last_pts_s": 30.12,
+            "max_error_s": 0.0
+          }
+        },
+        "course-side.mp4": {
+          "path": "logs/course-native/issue5-D13550-ROLLING_UNEVEN-c2-v2/native-media/course-side.mp4",
+          "sha256": "361118c0371cc15926054bab3f07352f62d90465fde57be68cd1c5f71471ac1a",
+          "frames": 804,
+          "fps": 25.0,
+          "size": [
+            1280,
+            720
+          ],
+          "duration_s": 32.16,
+          "codec": "H.264 High",
+          "pixel_format": "yuv420p",
+          "color": "SDR BT.709",
+          "progressive": true,
+          "audio": false,
+          "faststart": true,
+          "bytes": 3414802,
+          "actual_pts": {
+            "status": "PASS",
+            "count": 804,
+            "first_pts_s": 0.0,
+            "last_pts_s": 32.12,
+            "max_error_s": 0.0
+          }
+        },
+        "native-oblique-raw.mp4": {
+          "path": "logs/course-native/issue5-D13550-ROLLING_UNEVEN-c2-v2/native-media/native-oblique-raw.mp4",
+          "sha256": "92d7177839e2bd3c31ecfe031be7fe3bfab9d5782004b19929250d13dcf7f1b3",
+          "frames": 754,
+          "fps": 25.0,
+          "size": [
+            1280,
+            720
+          ],
+          "duration_s": 30.16,
+          "codec": "H.264 High",
+          "pixel_format": "yuv420p",
+          "color": "SDR BT.709",
+          "progressive": true,
+          "audio": false,
+          "faststart": true,
+          "bytes": 3756856,
+          "actual_pts": {
+            "status": "PASS",
+            "count": 754,
+            "first_pts_s": 0.0,
+            "last_pts_s": 30.12,
+            "max_error_s": 0.0
+          }
+        },
+        "course-oblique.mp4": {
+          "path": "logs/course-native/issue5-D13550-ROLLING_UNEVEN-c2-v2/native-media/course-oblique.mp4",
+          "sha256": "69b9824731952aca46d80ef027d83381053977200863299cd2d5c42cf89fa7ac",
+          "frames": 804,
+          "fps": 25.0,
+          "size": [
+            1280,
+            720
+          ],
+          "duration_s": 32.16,
+          "codec": "H.264 High",
+          "pixel_format": "yuv420p",
+          "color": "SDR BT.709",
+          "progressive": true,
+          "audio": false,
+          "faststart": true,
+          "bytes": 2865454,
+          "actual_pts": {
+            "status": "PASS",
+            "count": 804,
+            "first_pts_s": 0.0,
+            "last_pts_s": 32.12,
+            "max_error_s": 0.0
+          }
+        },
+        "native-overhead-raw.mp4": {
+          "path": "logs/course-native/issue5-D13550-ROLLING_UNEVEN-c2-v2/native-media/native-overhead-raw.mp4",
+          "sha256": "f8edcb8e961cb80775e551da63e32baff3cad34d8e073e00fce62bd26a7bbe36",
+          "frames": 754,
+          "fps": 25.0,
+          "size": [
+            1280,
+            720
+          ],
+          "duration_s": 30.16,
+          "codec": "H.264 High",
+          "pixel_format": "yuv420p",
+          "color": "SDR BT.709",
+          "progressive": true,
+          "audio": false,
+          "faststart": true,
+          "bytes": 2683084,
+          "actual_pts": {
+            "status": "PASS",
+            "count": 754,
+            "first_pts_s": 0.0,
+            "last_pts_s": 30.12,
+            "max_error_s": 0.0
+          }
+        },
+        "course-overhead.mp4": {
+          "path": "logs/course-native/issue5-D13550-ROLLING_UNEVEN-c2-v2/native-media/course-overhead.mp4",
+          "sha256": "f84d9ed8ed596c519c88cdbb2f810f7defebae4d48f9a25768893e44bc68d661",
+          "frames": 804,
+          "fps": 25.0,
+          "size": [
+            1280,
+            720
+          ],
+          "duration_s": 32.16,
+          "codec": "H.264 High",
+          "pixel_format": "yuv420p",
+          "color": "SDR BT.709",
+          "progressive": true,
+          "audio": false,
+          "faststart": true,
+          "bytes": 2274639,
+          "actual_pts": {
+            "status": "PASS",
+            "count": 804,
+            "first_pts_s": 0.0,
+            "last_pts_s": 32.12,
+            "max_error_s": 0.0
+          }
+        }
+      },
+      "new_run_safety": {
+        "physical_fall": false,
+        "boundary_excursion": false,
+        "engine_error": false,
+        "nonfoot_contact_points": 0,
+        "first_nonfoot_sim_s": null,
+        "joint_input_pass": true,
+        "max_joint_excursion_rad": 0.0,
+        "max_FK_error_m": 9.092590343374e-07
+      },
+      "completion": {
+        "reason": "COURSE_COMPLETED",
+        "success": true,
+        "finish_x_m": 6.4,
+        "confirmation_s": 0.2,
+        "max_sim_s": 60.0,
+        "first_all_feet_pass_s": 29.900000000000002,
+        "confirmation_start_s": 29.900000000000002,
+        "confirmed_at_sim_s": 30.1,
+        "terminal_sim_s": 30.1,
+        "first_each_foot_pass": {
+          "FR": {
+            "at_or_after_sim_s": 27.11,
+            "trailing_x_m": 6.406723812103271,
+            "previous_sim_s": 27.1,
+            "previous_trailing_x_m": 6.397290065765381
+          },
+          "FL": {
+            "at_or_after_sim_s": 27.26,
+            "trailing_x_m": 6.403437450408935,
+            "previous_sim_s": 27.25,
+            "previous_trailing_x_m": 6.395970180511474
+          },
+          "RR": {
+            "at_or_after_sim_s": 28.650000000000002,
+            "trailing_x_m": 6.409075572967529,
+            "previous_sim_s": 28.64,
+            "previous_trailing_x_m": 6.398866012573242
+          },
+          "RL": {
+            "at_or_after_sim_s": 29.900000000000002,
+            "trailing_x_m": 6.400276496887207,
+            "previous_sim_s": 29.89,
+            "previous_trailing_x_m": 6.394085243225097
+          }
+        },
+        "last_measurement": {
+          "time_s": 30.1,
+          "x_m": 6.7498955726623535,
+          "trailing_x_m": {
+            "FL": 6.958350017547607,
+            "FR": 6.938171222686767,
+            "RL": 6.433797672271728,
+            "RR": 6.6470549850463865
+          },
+          "physical_fallen": false,
+          "out_of_terrain": false
+        },
+        "foot_predicate": "all native sphere centre X minus radius > finish; base X > finish; continuous0.20s, no fall/boundary/solver/state error",
+        "error": null
+      },
+      "native_wall_including_media_s": 95.40584800002398,
+      "recording_started_before_first_step": true,
+      "physical_build": {
+        "entities": 2,
+        "robot_urdf_sha256": "4f306754e9b3d73930ac8362aa456eb8912f2e886665618e7eced9627c1704a4",
+        "sim": {
+          "dt": 0.02,
+          "substeps": 2,
+          "substeps_local": 1,
+          "gravity": [
+            0.0,
+            0.0,
+            -9.81
+          ],
+          "floor_height": 0.0,
+          "requires_grad": false
+        },
+        "rigid": {
+          "dt": 0.02,
+          "gravity": [
+            0.0,
+            0.0,
+            -9.81
+          ],
+          "enable_collision": true,
+          "enable_joint_limit": true,
+          "enable_self_collision": false,
+          "enable_neutral_collision": false,
+          "enable_adjacent_collision": false,
+          "disable_constraint": false,
+          "max_collision_pairs": 128,
+          "max_contacts": 135,
+          "multiplier_collision_broad_phase": 8,
+          "integrator": 2,
+          "IK_max_targets": 6,
+          "batch_links_info": false,
+          "batch_joints_info": false,
+          "batch_dofs_info": false,
+          "constraint_solver": 1,
+          "iterations": 25,
+          "tolerance": 1e-05,
+          "ls_iterations": 50,
+          "ls_tolerance": 0.01,
+          "noslip_iterations": 0,
+          "noslip_tolerance": 1e-06,
+          "friction_cone": 0,
+          "contact_resolution": 0,
+          "enable_torsional_friction": false,
+          "enable_rolling_friction": false,
+          "impratio": 1.0,
+          "contact_pruning_tolerance": 0.02,
+          "sparse_solve": null,
+          "constraint_timeconst": 0.01,
+          "box_box_detection": false,
+          "use_hibernation": false,
+          "hibernation_thresh_vel": null,
+          "max_dynamic_constraints": 8,
+          "enable_multi_contact": true,
+          "enable_mujoco_compatibility": false,
+          "use_gjk_collision": false,
+          "enable_contact_patch": false,
+          "broadphase_traversal": null
+        },
+        "robot_dofs": 18,
+        "ground_collision_geoms": [
+          0
+        ],
+        "ground_only": true,
+        "substep_dt_s": 0.01
+      },
+      "native_positive_foot_contacts": {
+        "FL": 1093,
+        "FR": 1260,
+        "RL": 1817,
+        "RR": 1160
+      },
+      "terminal_foot_centers_xyz_m": {
+        "FL": [
+          6.980350017547607,
+          0.4498470723628998,
+          0.07804057002067566
+        ],
+        "FR": [
+          6.960171222686768,
+          0.13008350133895874,
+          0.020391210913658142
+        ],
+        "RL": [
+          6.4557976722717285,
+          0.18269801139831543,
+          0.020258188247680664
+        ],
+        "RR": [
+          6.669054985046387,
+          -0.12023209780454636,
+          0.06599155068397522
+        ]
+      },
+      "terminal_foot_trailing_x_m": {
+        "FL": 6.958350017547607,
+        "FR": 6.938171222686767,
+        "RL": 6.433797672271728,
+        "RR": 6.6470549850463865
+      }
+    },
+    {
+      "run": "issue5-D13550-FLAT-c0-v1",
+      "QA": "FAIL_NATIVE_GATES_MISSING",
+      "physics_camera_timing_QA": "PASS",
+      "native_ground_gate_RGB": {
+        "START": {
+          "matching_native_rgb_pixels": 0,
+          "visible": false
+        },
+        "FINISH": {
+          "matching_native_rgb_pixels": 0,
+          "visible": false
+        }
+      },
+      "entire_physics_matches_prior_v1": null,
+      "course_success": false,
+      "reason": "OUT_OF_BOUNDS",
+      "terminal_sim_s": 21.580000000000002,
+      "terminal_xyz_m": [
+        5.079258918762207,
+        -1.0682398080825806,
+        0.32482585310935974
+      ],
+      "first_all_feet_s": null,
+      "confirmed_s": null,
+      "terminal_min_foot_trailing_x_m": 4.735883548736572,
+      "first20s_trajectory_exact": true,
+      "max_independent_FK_error_m": 8.27992017379856e-07,
+      "actual_camera_Z_range_m": {
+        "side": [
+          0.3400000035762787,
+          0.3400000035762787
+        ],
+        "oblique": [
+          1.1199997973987363,
+          1.1200001846007779
+        ],
+        "overhead": [
+          3.299999952316284,
+          3.299999952316284
+        ]
+      },
+      "decoded_HUD_baseline_Y_range_px": {
+        "side": [
+          43,
+          44
+        ],
+        "oblique": [
+          43,
+          44
+        ],
+        "overhead": [
+          43,
+          44
+        ]
+      },
+      "terminal_frame_mapping": {
+        "side": {
+          "simulation_time_s": "21.580000000000002",
+          "video_pts_s": "21.6",
+          "kind": "terminal_real_snapshot"
+        },
+        "oblique": {
+          "simulation_time_s": "21.580000000000002",
+          "video_pts_s": "21.6",
+          "kind": "terminal_real_snapshot"
+        },
+        "overhead": {
+          "simulation_time_s": "21.580000000000002",
+          "video_pts_s": "21.6",
+          "kind": "terminal_real_snapshot"
+        }
+      },
+      "movies": {
+        "native-side-raw.mp4": {
+          "path": "logs/course-native/issue5-D13550-FLAT-c0-v1/native-media/native-side-raw.mp4",
+          "sha256": "042bc196ab3db5558bce95c67f091e74765c1ca12989f245861db1d4bb9ad6af",
+          "frames": 541,
+          "fps": 25.0,
+          "size": [
+            1280,
+            720
+          ],
+          "duration_s": 21.64,
+          "codec": "H.264 High",
+          "pixel_format": "yuv420p",
+          "color": "SDR BT.709",
+          "progressive": true,
+          "audio": false,
+          "faststart": true,
+          "bytes": 1786995,
+          "actual_pts": {
+            "status": "PASS",
+            "count": 541,
+            "first_pts_s": 0.0,
+            "last_pts_s": 21.6,
+            "max_error_s": 0.0
+          }
+        },
+        "course-side.mp4": {
+          "path": "logs/course-native/issue5-D13550-FLAT-c0-v1/native-media/course-side.mp4",
+          "sha256": "60b43d44a5fb98057beb7d8611a97442842766f6e235873439ccdb33a99d7f84",
+          "frames": 591,
+          "fps": 25.0,
+          "size": [
+            1280,
+            720
+          ],
+          "duration_s": 23.64,
+          "codec": "H.264 High",
+          "pixel_format": "yuv420p",
+          "color": "SDR BT.709",
+          "progressive": true,
+          "audio": false,
+          "faststart": true,
+          "bytes": 1692821,
+          "actual_pts": {
+            "status": "PASS",
+            "count": 591,
+            "first_pts_s": 0.0,
+            "last_pts_s": 23.6,
+            "max_error_s": 0.0
+          }
+        },
+        "native-oblique-raw.mp4": {
+          "path": "logs/course-native/issue5-D13550-FLAT-c0-v1/native-media/native-oblique-raw.mp4",
+          "sha256": "e38b7fc67a9ab7cf640ab986e47835b31210c73f8327ebc76e10c8a55dae9249",
+          "frames": 541,
+          "fps": 25.0,
+          "size": [
+            1280,
+            720
+          ],
+          "duration_s": 21.64,
+          "codec": "H.264 High",
+          "pixel_format": "yuv420p",
+          "color": "SDR BT.709",
+          "progressive": true,
+          "audio": false,
+          "faststart": true,
+          "bytes": 804631,
+          "actual_pts": {
+            "status": "PASS",
+            "count": 541,
+            "first_pts_s": 0.0,
+            "last_pts_s": 21.6,
+            "max_error_s": 0.0
+          }
+        },
+        "course-oblique.mp4": {
+          "path": "logs/course-native/issue5-D13550-FLAT-c0-v1/native-media/course-oblique.mp4",
+          "sha256": "f0fa86378994f298f084dacf7b971aab7b92d542a72a07326de5cee899505448",
+          "frames": 591,
+          "fps": 25.0,
+          "size": [
+            1280,
+            720
+          ],
+          "duration_s": 23.64,
+          "codec": "H.264 High",
+          "pixel_format": "yuv420p",
+          "color": "SDR BT.709",
+          "progressive": true,
+          "audio": false,
+          "faststart": true,
+          "bytes": 1075051,
+          "actual_pts": {
+            "status": "PASS",
+            "count": 591,
+            "first_pts_s": 0.0,
+            "last_pts_s": 23.6,
+            "max_error_s": 0.0
+          }
+        },
+        "native-overhead-raw.mp4": {
+          "path": "logs/course-native/issue5-D13550-FLAT-c0-v1/native-media/native-overhead-raw.mp4",
+          "sha256": "b7c5b7a36616b32e8d55b75f8397354d1a35274c4f557ec13b7e7e0d2e60a98e",
+          "frames": 541,
+          "fps": 25.0,
+          "size": [
+            1280,
+            720
+          ],
+          "duration_s": 21.64,
+          "codec": "H.264 High",
+          "pixel_format": "yuv420p",
+          "color": "SDR BT.709",
+          "progressive": true,
+          "audio": false,
+          "faststart": true,
+          "bytes": 597972,
+          "actual_pts": {
+            "status": "PASS",
+            "count": 541,
+            "first_pts_s": 0.0,
+            "last_pts_s": 21.6,
+            "max_error_s": 0.0
+          }
+        },
+        "course-overhead.mp4": {
+          "path": "logs/course-native/issue5-D13550-FLAT-c0-v1/native-media/course-overhead.mp4",
+          "sha256": "c3c60b1533fb96dd03dc1fb04af4bf4b08c60537f21520ceddbddc0c6f7b908a",
+          "frames": 591,
+          "fps": 25.0,
+          "size": [
+            1280,
+            720
+          ],
+          "duration_s": 23.64,
+          "codec": "H.264 High",
+          "pixel_format": "yuv420p",
+          "color": "SDR BT.709",
+          "progressive": true,
+          "audio": false,
+          "faststart": true,
+          "bytes": 948784,
+          "actual_pts": {
+            "status": "PASS",
+            "count": 591,
+            "first_pts_s": 0.0,
+            "last_pts_s": 23.6,
+            "max_error_s": 0.0
+          }
+        }
+      },
+      "new_run_safety": {
+        "physical_fall": false,
+        "boundary_excursion": true,
+        "engine_error": false,
+        "nonfoot_contact_points": 0,
+        "first_nonfoot_sim_s": null,
+        "joint_input_pass": true,
+        "max_joint_excursion_rad": 0.0,
+        "max_FK_error_m": 8.27992017379856e-07
+      },
+      "completion": {
+        "reason": "OUT_OF_BOUNDS",
+        "success": false,
+        "finish_x_m": 6.4,
+        "confirmation_s": 0.2,
+        "max_sim_s": 60.0,
+        "first_all_feet_pass_s": null,
+        "confirmation_start_s": null,
+        "confirmed_at_sim_s": null,
+        "terminal_sim_s": 21.580000000000002,
+        "first_each_foot_pass": {},
+        "last_measurement": {
+          "time_s": 21.580000000000002,
+          "x_m": 5.079258918762207,
+          "trailing_x_m": {
+            "FL": 5.359353855133056,
+            "FR": 5.13218004989624,
+            "RL": 4.923878982543945,
+            "RR": 4.735883548736572
+          },
+          "physical_fallen": false,
+          "out_of_terrain": true
+        },
+        "foot_predicate": "all native sphere centre X minus radius > finish; base X > finish; continuous0.20s, no fall/boundary/solver/state error",
+        "error": null
+      },
+      "native_wall_including_media_s": 61.270357542001875,
+      "recording_started_before_first_step": true,
+      "physical_build": {
+        "entities": 2,
+        "robot_urdf_sha256": "4f306754e9b3d73930ac8362aa456eb8912f2e886665618e7eced9627c1704a4",
+        "sim": {
+          "dt": 0.02,
+          "substeps": 2,
+          "substeps_local": 1,
+          "gravity": [
+            0.0,
+            0.0,
+            -9.81
+          ],
+          "floor_height": 0.0,
+          "requires_grad": false
+        },
+        "rigid": {
+          "dt": 0.02,
+          "gravity": [
+            0.0,
+            0.0,
+            -9.81
+          ],
+          "enable_collision": true,
+          "enable_joint_limit": true,
+          "enable_self_collision": false,
+          "enable_neutral_collision": false,
+          "enable_adjacent_collision": false,
+          "disable_constraint": false,
+          "max_collision_pairs": 20,
+          "max_contacts": 100,
+          "multiplier_collision_broad_phase": 8,
+          "integrator": 2,
+          "IK_max_targets": 6,
+          "batch_links_info": false,
+          "batch_joints_info": false,
+          "batch_dofs_info": false,
+          "constraint_solver": 1,
+          "iterations": 25,
+          "tolerance": 1e-05,
+          "ls_iterations": 50,
+          "ls_tolerance": 0.01,
+          "noslip_iterations": 0,
+          "noslip_tolerance": 1e-06,
+          "friction_cone": 0,
+          "contact_resolution": 0,
+          "enable_torsional_friction": false,
+          "enable_rolling_friction": false,
+          "impratio": 1.0,
+          "contact_pruning_tolerance": 0.02,
+          "sparse_solve": null,
+          "constraint_timeconst": 0.01,
+          "box_box_detection": false,
+          "use_hibernation": false,
+          "hibernation_thresh_vel": null,
+          "max_dynamic_constraints": 8,
+          "enable_multi_contact": true,
+          "enable_mujoco_compatibility": false,
+          "use_gjk_collision": false,
+          "enable_contact_patch": false,
+          "broadphase_traversal": null
+        },
+        "robot_dofs": 18,
+        "ground_collision_geoms": [
+          0
+        ],
+        "ground_only": true,
+        "substep_dt_s": 0.01
+      },
+      "native_positive_foot_contacts": {
+        "FL": 783,
+        "FR": 923,
+        "RL": 1316,
+        "RR": 754
+      },
+      "terminal_foot_centers_xyz_m": {
+        "FL": [
+          5.381353855133057,
+          -1.1154775619506836,
+          0.0175628662109375
+        ],
+        "FR": [
+          5.15418004989624,
+          -1.3026412725448608,
+          0.07863176614046097
+        ],
+        "RL": [
+          4.945878982543945,
+          -0.8000013828277588,
+          0.053559765219688416
+        ],
+        "RR": [
+          4.757883548736572,
+          -1.089583396911621,
+          0.017876088619232178
+        ]
+      },
+      "terminal_foot_trailing_x_m": {
+        "FL": 5.359353855133056,
+        "FR": 5.13218004989624,
+        "RL": 4.923878982543945,
+        "RR": 4.735883548736572
+      }
+    },
+    {
+      "run": "issue5-D13550-FLAT-c1-v1",
+      "QA": "FAIL_NATIVE_GATES_MISSING",
+      "physics_camera_timing_QA": "PASS",
+      "native_ground_gate_RGB": {
+        "START": {
+          "matching_native_rgb_pixels": 0,
+          "visible": false
+        },
+        "FINISH": {
+          "matching_native_rgb_pixels": 0,
+          "visible": false
+        }
+      },
+      "entire_physics_matches_prior_v1": null,
+      "course_success": false,
+      "reason": "OUT_OF_BOUNDS",
+      "terminal_sim_s": 27.330000000000002,
+      "terminal_xyz_m": [
+        6.654870986938477,
+        0.715518057346344,
+        0.32903775572776794
+      ],
+      "first_all_feet_s": null,
+      "confirmed_s": null,
+      "terminal_min_foot_trailing_x_m": 6.3764274864196775,
+      "first20s_trajectory_exact": true,
+      "max_independent_FK_error_m": 8.616577180069928e-07,
+      "actual_camera_Z_range_m": {
+        "side": [
+          0.3400000035762787,
+          0.3400000035762787
+        ],
+        "oblique": [
+          1.1199998562488076,
+          1.1200001209803774
+        ],
+        "overhead": [
+          3.299999952316284,
+          3.299999952316284
+        ]
+      },
+      "decoded_HUD_baseline_Y_range_px": {
+        "side": [
+          43,
+          44
+        ],
+        "oblique": [
+          43,
+          44
+        ],
+        "overhead": [
+          43,
+          44
+        ]
+      },
+      "terminal_frame_mapping": {
+        "side": {
+          "simulation_time_s": "27.330000000000002",
+          "video_pts_s": "27.36",
+          "kind": "terminal_real_snapshot"
+        },
+        "oblique": {
+          "simulation_time_s": "27.330000000000002",
+          "video_pts_s": "27.36",
+          "kind": "terminal_real_snapshot"
+        },
+        "overhead": {
+          "simulation_time_s": "27.330000000000002",
+          "video_pts_s": "27.36",
+          "kind": "terminal_real_snapshot"
+        }
+      },
+      "movies": {
+        "native-side-raw.mp4": {
+          "path": "logs/course-native/issue5-D13550-FLAT-c1-v1/native-media/native-side-raw.mp4",
+          "sha256": "bd83cfe007569f762bcd88222babf7fe78e7c8191781b6a57352abb9bc91af70",
+          "frames": 685,
+          "fps": 25.0,
+          "size": [
+            1280,
+            720
+          ],
+          "duration_s": 27.4,
+          "codec": "H.264 High",
+          "pixel_format": "yuv420p",
+          "color": "SDR BT.709",
+          "progressive": true,
+          "audio": false,
+          "faststart": true,
+          "bytes": 2236592,
+          "actual_pts": {
+            "status": "PASS",
+            "count": 685,
+            "first_pts_s": 0.0,
+            "last_pts_s": 27.36,
+            "max_error_s": 0.0
+          }
+        },
+        "course-side.mp4": {
+          "path": "logs/course-native/issue5-D13550-FLAT-c1-v1/native-media/course-side.mp4",
+          "sha256": "a12a9812c822b0e90993b46f5da8b99e3eb4d079af10752d3d8919a570008014",
+          "frames": 735,
+          "fps": 25.0,
+          "size": [
+            1280,
+            720
+          ],
+          "duration_s": 29.4,
+          "codec": "H.264 High",
+          "pixel_format": "yuv420p",
+          "color": "SDR BT.709",
+          "progressive": true,
+          "audio": false,
+          "faststart": true,
+          "bytes": 2056728,
+          "actual_pts": {
+            "status": "PASS",
+            "count": 735,
+            "first_pts_s": 0.0,
+            "last_pts_s": 29.36,
+            "max_error_s": 0.0
+          }
+        },
+        "native-oblique-raw.mp4": {
+          "path": "logs/course-native/issue5-D13550-FLAT-c1-v1/native-media/native-oblique-raw.mp4",
+          "sha256": "4aba4e915d017844fbf945844fc1e74928d93f2589656e758a51821e8000f5ec",
+          "frames": 685,
+          "fps": 25.0,
+          "size": [
+            1280,
+            720
+          ],
+          "duration_s": 27.4,
+          "codec": "H.264 High",
+          "pixel_format": "yuv420p",
+          "color": "SDR BT.709",
+          "progressive": true,
+          "audio": false,
+          "faststart": true,
+          "bytes": 1042263,
+          "actual_pts": {
+            "status": "PASS",
+            "count": 685,
+            "first_pts_s": 0.0,
+            "last_pts_s": 27.36,
+            "max_error_s": 0.0
+          }
+        },
+        "course-oblique.mp4": {
+          "path": "logs/course-native/issue5-D13550-FLAT-c1-v1/native-media/course-oblique.mp4",
+          "sha256": "9d4459b107c1c0d4aa4c63104abc43d32148ad2872304c3b3596339df7d29119",
+          "frames": 735,
+          "fps": 25.0,
+          "size": [
+            1280,
+            720
+          ],
+          "duration_s": 29.4,
+          "codec": "H.264 High",
+          "pixel_format": "yuv420p",
+          "color": "SDR BT.709",
+          "progressive": true,
+          "audio": false,
+          "faststart": true,
+          "bytes": 1324614,
+          "actual_pts": {
+            "status": "PASS",
+            "count": 735,
+            "first_pts_s": 0.0,
+            "last_pts_s": 29.36,
+            "max_error_s": 0.0
+          }
+        },
+        "native-overhead-raw.mp4": {
+          "path": "logs/course-native/issue5-D13550-FLAT-c1-v1/native-media/native-overhead-raw.mp4",
+          "sha256": "03d299bc4b1213041a3a451a329e7011042f6de5cbe11cde1676c7c2aa942465",
+          "frames": 685,
+          "fps": 25.0,
+          "size": [
+            1280,
+            720
+          ],
+          "duration_s": 27.4,
+          "codec": "H.264 High",
+          "pixel_format": "yuv420p",
+          "color": "SDR BT.709",
+          "progressive": true,
+          "audio": false,
+          "faststart": true,
+          "bytes": 760389,
+          "actual_pts": {
+            "status": "PASS",
+            "count": 685,
+            "first_pts_s": 0.0,
+            "last_pts_s": 27.36,
+            "max_error_s": 0.0
+          }
+        },
+        "course-overhead.mp4": {
+          "path": "logs/course-native/issue5-D13550-FLAT-c1-v1/native-media/course-overhead.mp4",
+          "sha256": "917d7a53367be2897f198d0b01d9d1756ba34b540825f8dd582963da50549c77",
+          "frames": 735,
+          "fps": 25.0,
+          "size": [
+            1280,
+            720
+          ],
+          "duration_s": 29.4,
+          "codec": "H.264 High",
+          "pixel_format": "yuv420p",
+          "color": "SDR BT.709",
+          "progressive": true,
+          "audio": false,
+          "faststart": true,
+          "bytes": 1134413,
+          "actual_pts": {
+            "status": "PASS",
+            "count": 735,
+            "first_pts_s": 0.0,
+            "last_pts_s": 29.36,
+            "max_error_s": 0.0
+          }
+        }
+      },
+      "new_run_safety": {
+        "physical_fall": false,
+        "boundary_excursion": true,
+        "engine_error": false,
+        "nonfoot_contact_points": 0,
+        "first_nonfoot_sim_s": null,
+        "joint_input_pass": true,
+        "max_joint_excursion_rad": 0.0,
+        "max_FK_error_m": 8.616577180069928e-07
+      },
+      "completion": {
+        "reason": "OUT_OF_BOUNDS",
+        "success": false,
+        "finish_x_m": 6.4,
+        "confirmation_s": 0.2,
+        "max_sim_s": 60.0,
+        "first_all_feet_pass_s": null,
+        "confirmation_start_s": null,
+        "confirmed_at_sim_s": null,
+        "terminal_sim_s": 27.330000000000002,
+        "first_each_foot_pass": {
+          "FL": {
+            "at_or_after_sim_s": 25.05,
+            "trailing_x_m": 6.401561096191406,
+            "previous_sim_s": 25.04,
+            "previous_trailing_x_m": 6.389792755126953
+          },
+          "FR": {
+            "at_or_after_sim_s": 25.75,
+            "trailing_x_m": 6.402998760223388,
+            "previous_sim_s": 25.740000000000002,
+            "previous_trailing_x_m": 6.397533252716064
+          },
+          "RL": {
+            "at_or_after_sim_s": 27.2,
+            "trailing_x_m": 6.401989772796631,
+            "previous_sim_s": 27.19,
+            "previous_trailing_x_m": 6.395430877685547
+          }
+        },
+        "last_measurement": {
+          "time_s": 27.330000000000002,
+          "x_m": 6.654870986938477,
+          "trailing_x_m": {
+            "FL": 6.979404285430908,
+            "FR": 6.772030666351318,
+            "RL": 6.418164089202881,
+            "RR": 6.3764274864196775
+          },
+          "physical_fallen": false,
+          "out_of_terrain": true
+        },
+        "foot_predicate": "all native sphere centre X minus radius > finish; base X > finish; continuous0.20s, no fall/boundary/solver/state error",
+        "error": null
+      },
+      "native_wall_including_media_s": 78.94477233401267,
+      "recording_started_before_first_step": true,
+      "physical_build": {
+        "entities": 2,
+        "robot_urdf_sha256": "4f306754e9b3d73930ac8362aa456eb8912f2e886665618e7eced9627c1704a4",
+        "sim": {
+          "dt": 0.02,
+          "substeps": 2,
+          "substeps_local": 1,
+          "gravity": [
+            0.0,
+            0.0,
+            -9.81
+          ],
+          "floor_height": 0.0,
+          "requires_grad": false
+        },
+        "rigid": {
+          "dt": 0.02,
+          "gravity": [
+            0.0,
+            0.0,
+            -9.81
+          ],
+          "enable_collision": true,
+          "enable_joint_limit": true,
+          "enable_self_collision": false,
+          "enable_neutral_collision": false,
+          "enable_adjacent_collision": false,
+          "disable_constraint": false,
+          "max_collision_pairs": 20,
+          "max_contacts": 100,
+          "multiplier_collision_broad_phase": 8,
+          "integrator": 2,
+          "IK_max_targets": 6,
+          "batch_links_info": false,
+          "batch_joints_info": false,
+          "batch_dofs_info": false,
+          "constraint_solver": 1,
+          "iterations": 25,
+          "tolerance": 1e-05,
+          "ls_iterations": 50,
+          "ls_tolerance": 0.01,
+          "noslip_iterations": 0,
+          "noslip_tolerance": 1e-06,
+          "friction_cone": 0,
+          "contact_resolution": 0,
+          "enable_torsional_friction": false,
+          "enable_rolling_friction": false,
+          "impratio": 1.0,
+          "contact_pruning_tolerance": 0.02,
+          "sparse_solve": null,
+          "constraint_timeconst": 0.01,
+          "box_box_detection": false,
+          "use_hibernation": false,
+          "hibernation_thresh_vel": null,
+          "max_dynamic_constraints": 8,
+          "enable_multi_contact": true,
+          "enable_mujoco_compatibility": false,
+          "use_gjk_collision": false,
+          "enable_contact_patch": false,
+          "broadphase_traversal": null
+        },
+        "robot_dofs": 18,
+        "ground_collision_geoms": [
+          0
+        ],
+        "ground_only": true,
+        "substep_dt_s": 0.01
+      },
+      "native_positive_foot_contacts": {
+        "FL": 1023,
+        "FR": 1107,
+        "RL": 1696,
+        "RR": 886
+      },
+      "terminal_foot_centers_xyz_m": {
+        "FL": [
+          7.001404285430908,
+          0.7756196856498718,
+          0.08966091275215149
+        ],
+        "FR": [
+          6.794030666351318,
+          0.5312532186508179,
+          0.018816471099853516
+        ],
+        "RL": [
+          6.440164089202881,
+          0.9054514169692993,
+          0.02071911096572876
+        ],
+        "RR": [
+          6.398427486419678,
+          0.5423594117164612,
+          0.08165980875492096
+        ]
+      },
+      "terminal_foot_trailing_x_m": {
+        "FL": 6.979404285430908,
+        "FR": 6.772030666351318,
+        "RL": 6.418164089202881,
+        "RR": 6.3764274864196775
+      }
+    },
+    {
+      "run": "issue5-D13550-FLAT-c2-v1",
+      "QA": "FAIL_NATIVE_GATES_MISSING",
+      "physics_camera_timing_QA": "PASS",
+      "native_ground_gate_RGB": {
+        "START": {
+          "matching_native_rgb_pixels": 0,
+          "visible": false
+        },
+        "FINISH": {
+          "matching_native_rgb_pixels": 0,
+          "visible": false
+        }
+      },
+      "entire_physics_matches_prior_v1": null,
+      "course_success": false,
+      "reason": "OUT_OF_BOUNDS",
+      "terminal_sim_s": 27.330000000000002,
+      "terminal_xyz_m": [
+        6.659389972686768,
+        0.8822197914123535,
+        0.32903772592544556
+      ],
+      "first_all_feet_s": null,
+      "confirmed_s": null,
+      "terminal_min_foot_trailing_x_m": 6.3885525016784666,
+      "first20s_trajectory_exact": true,
+      "max_independent_FK_error_m": 8.451860703939934e-07,
+      "actual_camera_Z_range_m": {
+        "side": [
+          0.3400000035762787,
+          0.3400000035762787
+        ],
+        "oblique": [
+          1.1199998649136365,
+          1.1200001191875684
+        ],
+        "overhead": [
+          3.299999952316284,
+          3.299999952316284
+        ]
+      },
+      "decoded_HUD_baseline_Y_range_px": {
+        "side": [
+          43,
+          44
+        ],
+        "oblique": [
+          43,
+          44
+        ],
+        "overhead": [
+          43,
+          44
+        ]
+      },
+      "terminal_frame_mapping": {
+        "side": {
+          "simulation_time_s": "27.330000000000002",
+          "video_pts_s": "27.36",
+          "kind": "terminal_real_snapshot"
+        },
+        "oblique": {
+          "simulation_time_s": "27.330000000000002",
+          "video_pts_s": "27.36",
+          "kind": "terminal_real_snapshot"
+        },
+        "overhead": {
+          "simulation_time_s": "27.330000000000002",
+          "video_pts_s": "27.36",
+          "kind": "terminal_real_snapshot"
+        }
+      },
+      "movies": {
+        "native-side-raw.mp4": {
+          "path": "logs/course-native/issue5-D13550-FLAT-c2-v1/native-media/native-side-raw.mp4",
+          "sha256": "2297e39c51d6ccc413bb5f1cb1ac102f34147875ce6db20d65f30bd5a8858566",
+          "frames": 685,
+          "fps": 25.0,
+          "size": [
+            1280,
+            720
+          ],
+          "duration_s": 27.4,
+          "codec": "H.264 High",
+          "pixel_format": "yuv420p",
+          "color": "SDR BT.709",
+          "progressive": true,
+          "audio": false,
+          "faststart": true,
+          "bytes": 2223869,
+          "actual_pts": {
+            "status": "PASS",
+            "count": 685,
+            "first_pts_s": 0.0,
+            "last_pts_s": 27.36,
+            "max_error_s": 0.0
+          }
+        },
+        "course-side.mp4": {
+          "path": "logs/course-native/issue5-D13550-FLAT-c2-v1/native-media/course-side.mp4",
+          "sha256": "4b0a4c50a5b85ef85c6d025e8f5c054698c88eb6af0173c4346e74c7f2ba387e",
+          "frames": 735,
+          "fps": 25.0,
+          "size": [
+            1280,
+            720
+          ],
+          "duration_s": 29.4,
+          "codec": "H.264 High",
+          "pixel_format": "yuv420p",
+          "color": "SDR BT.709",
+          "progressive": true,
+          "audio": false,
+          "faststart": true,
+          "bytes": 2041553,
+          "actual_pts": {
+            "status": "PASS",
+            "count": 735,
+            "first_pts_s": 0.0,
+            "last_pts_s": 29.36,
+            "max_error_s": 0.0
+          }
+        },
+        "native-oblique-raw.mp4": {
+          "path": "logs/course-native/issue5-D13550-FLAT-c2-v1/native-media/native-oblique-raw.mp4",
+          "sha256": "d7c942a05681ebdabe302a05009dd2538280c9add4d5e740026f281c340abd80",
+          "frames": 685,
+          "fps": 25.0,
+          "size": [
+            1280,
+            720
+          ],
+          "duration_s": 27.4,
+          "codec": "H.264 High",
+          "pixel_format": "yuv420p",
+          "color": "SDR BT.709",
+          "progressive": true,
+          "audio": false,
+          "faststart": true,
+          "bytes": 1044063,
+          "actual_pts": {
+            "status": "PASS",
+            "count": 685,
+            "first_pts_s": 0.0,
+            "last_pts_s": 27.36,
+            "max_error_s": 0.0
+          }
+        },
+        "course-oblique.mp4": {
+          "path": "logs/course-native/issue5-D13550-FLAT-c2-v1/native-media/course-oblique.mp4",
+          "sha256": "23d52be643718ca7fb2f90a445c4dcac48578355e9c588743523bc635d2ff382",
+          "frames": 735,
+          "fps": 25.0,
+          "size": [
+            1280,
+            720
+          ],
+          "duration_s": 29.4,
+          "codec": "H.264 High",
+          "pixel_format": "yuv420p",
+          "color": "SDR BT.709",
+          "progressive": true,
+          "audio": false,
+          "faststart": true,
+          "bytes": 1325861,
+          "actual_pts": {
+            "status": "PASS",
+            "count": 735,
+            "first_pts_s": 0.0,
+            "last_pts_s": 29.36,
+            "max_error_s": 0.0
+          }
+        },
+        "native-overhead-raw.mp4": {
+          "path": "logs/course-native/issue5-D13550-FLAT-c2-v1/native-media/native-overhead-raw.mp4",
+          "sha256": "5b878ab4265f79bd04e162ce8de17b277c20ac3d10ad8348efc3595606de72d8",
+          "frames": 685,
+          "fps": 25.0,
+          "size": [
+            1280,
+            720
+          ],
+          "duration_s": 27.4,
+          "codec": "H.264 High",
+          "pixel_format": "yuv420p",
+          "color": "SDR BT.709",
+          "progressive": true,
+          "audio": false,
+          "faststart": true,
+          "bytes": 765671,
+          "actual_pts": {
+            "status": "PASS",
+            "count": 685,
+            "first_pts_s": 0.0,
+            "last_pts_s": 27.36,
+            "max_error_s": 0.0
+          }
+        },
+        "course-overhead.mp4": {
+          "path": "logs/course-native/issue5-D13550-FLAT-c2-v1/native-media/course-overhead.mp4",
+          "sha256": "697208f60ffb77494294cba14666381e46a66482c9e97366d8d70a2c0ad762d4",
+          "frames": 735,
+          "fps": 25.0,
+          "size": [
+            1280,
+            720
+          ],
+          "duration_s": 29.4,
+          "codec": "H.264 High",
+          "pixel_format": "yuv420p",
+          "color": "SDR BT.709",
+          "progressive": true,
+          "audio": false,
+          "faststart": true,
+          "bytes": 1139479,
+          "actual_pts": {
+            "status": "PASS",
+            "count": 735,
+            "first_pts_s": 0.0,
+            "last_pts_s": 29.36,
+            "max_error_s": 0.0
+          }
+        }
+      },
+      "new_run_safety": {
+        "physical_fall": false,
+        "boundary_excursion": true,
+        "engine_error": false,
+        "nonfoot_contact_points": 0,
+        "first_nonfoot_sim_s": null,
+        "joint_input_pass": true,
+        "max_joint_excursion_rad": 0.0,
+        "max_FK_error_m": 8.451860703939934e-07
+      },
+      "completion": {
+        "reason": "OUT_OF_BOUNDS",
+        "success": false,
+        "finish_x_m": 6.4,
+        "confirmation_s": 0.2,
+        "max_sim_s": 60.0,
+        "first_all_feet_pass_s": null,
+        "confirmation_start_s": null,
+        "confirmed_at_sim_s": null,
+        "terminal_sim_s": 27.330000000000002,
+        "first_each_foot_pass": {
+          "FL": {
+            "at_or_after_sim_s": 25.060000000000002,
+            "trailing_x_m": 6.407426670074463,
+            "previous_sim_s": 25.05,
+            "previous_trailing_x_m": 6.395784690856933
+          },
+          "FR": {
+            "at_or_after_sim_s": 25.54,
+            "trailing_x_m": 6.402100875854492,
+            "previous_sim_s": 25.53,
+            "previous_trailing_x_m": 6.3972147254943845
+          },
+          "RL": {
+            "at_or_after_sim_s": 27.21,
+            "trailing_x_m": 6.404896572113037,
+            "previous_sim_s": 27.2,
+            "previous_trailing_x_m": 6.398971393585205
+          }
+        },
+        "last_measurement": {
+          "time_s": 27.330000000000002,
+          "x_m": 6.659389972686768,
+          "trailing_x_m": {
+            "FL": 6.981469467163086,
+            "FR": 6.783934429168701,
+            "RL": 6.415380790710449,
+            "RR": 6.3885525016784666
+          },
+          "physical_fallen": false,
+          "out_of_terrain": true
+        },
+        "foot_predicate": "all native sphere centre X minus radius > finish; base X > finish; continuous0.20s, no fall/boundary/solver/state error",
+        "error": null
+      },
+      "native_wall_including_media_s": 77.77296012500301,
+      "recording_started_before_first_step": true,
+      "physical_build": {
+        "entities": 2,
+        "robot_urdf_sha256": "4f306754e9b3d73930ac8362aa456eb8912f2e886665618e7eced9627c1704a4",
+        "sim": {
+          "dt": 0.02,
+          "substeps": 2,
+          "substeps_local": 1,
+          "gravity": [
+            0.0,
+            0.0,
+            -9.81
+          ],
+          "floor_height": 0.0,
+          "requires_grad": false
+        },
+        "rigid": {
+          "dt": 0.02,
+          "gravity": [
+            0.0,
+            0.0,
+            -9.81
+          ],
+          "enable_collision": true,
+          "enable_joint_limit": true,
+          "enable_self_collision": false,
+          "enable_neutral_collision": false,
+          "enable_adjacent_collision": false,
+          "disable_constraint": false,
+          "max_collision_pairs": 20,
+          "max_contacts": 100,
+          "multiplier_collision_broad_phase": 8,
+          "integrator": 2,
+          "IK_max_targets": 6,
+          "batch_links_info": false,
+          "batch_joints_info": false,
+          "batch_dofs_info": false,
+          "constraint_solver": 1,
+          "iterations": 25,
+          "tolerance": 1e-05,
+          "ls_iterations": 50,
+          "ls_tolerance": 0.01,
+          "noslip_iterations": 0,
+          "noslip_tolerance": 1e-06,
+          "friction_cone": 0,
+          "contact_resolution": 0,
+          "enable_torsional_friction": false,
+          "enable_rolling_friction": false,
+          "impratio": 1.0,
+          "contact_pruning_tolerance": 0.02,
+          "sparse_solve": null,
+          "constraint_timeconst": 0.01,
+          "box_box_detection": false,
+          "use_hibernation": false,
+          "hibernation_thresh_vel": null,
+          "max_dynamic_constraints": 8,
+          "enable_multi_contact": true,
+          "enable_mujoco_compatibility": false,
+          "use_gjk_collision": false,
+          "enable_contact_patch": false,
+          "broadphase_traversal": null
+        },
+        "robot_dofs": 18,
+        "ground_collision_geoms": [
+          0
+        ],
+        "ground_only": true,
+        "substep_dt_s": 0.01
+      },
+      "native_positive_foot_contacts": {
+        "FL": 1024,
+        "FR": 1113,
+        "RL": 1703,
+        "RR": 891
+      },
+      "terminal_foot_centers_xyz_m": {
+        "FL": [
+          7.003469467163086,
+          0.9567964673042297,
+          0.09006898105144501
+        ],
+        "FR": [
+          6.805934429168701,
+          0.7036420106887817,
+          0.018764615058898926
+        ],
+        "RL": [
+          6.437380790710449,
+          1.063351035118103,
+          0.020740032196044922
+        ],
+        "RR": [
+          6.410552501678467,
+          0.6982001066207886,
+          0.08199368417263031
+        ]
+      },
+      "terminal_foot_trailing_x_m": {
+        "FL": 6.981469467163086,
+        "FR": 6.783934429168701,
+        "RL": 6.415380790710449,
+        "RR": 6.3885525016784666
+      }
+    },
+    {
+      "run": "issue5-D13550-ROLLING_UNEVEN-c2-v1",
+      "QA": "FAIL_NATIVE_GATES_MISSING",
+      "physics_camera_timing_QA": "PASS",
+      "native_ground_gate_RGB": {
+        "START": {
+          "matching_native_rgb_pixels": 0,
+          "visible": false
+        },
+        "FINISH": {
+          "matching_native_rgb_pixels": 0,
+          "visible": false
+        }
+      },
+      "entire_physics_matches_prior_v1": null,
+      "course_success": true,
+      "reason": "COURSE_COMPLETED",
+      "terminal_sim_s": 30.1,
+      "terminal_xyz_m": [
+        6.7498955726623535,
+        0.17698895931243896,
+        0.33253583312034607
+      ],
+      "first_all_feet_s": 29.900000000000002,
+      "confirmed_s": 30.1,
+      "terminal_min_foot_trailing_x_m": 6.433797672271728,
+      "first20s_trajectory_exact": true,
+      "max_independent_FK_error_m": 9.092590343374e-07,
+      "actual_camera_Z_range_m": {
+        "side": [
+          0.3400000035762787,
+          0.3400000035762787
+        ],
+        "oblique": [
+          1.119999743068886,
+          1.1200002078766664
+        ],
+        "overhead": [
+          3.299999952316284,
+          3.299999952316284
+        ]
+      },
+      "decoded_HUD_baseline_Y_range_px": {
+        "side": [
+          43,
+          44
+        ],
+        "oblique": [
+          43,
+          44
+        ],
+        "overhead": [
+          43,
+          44
+        ]
+      },
+      "terminal_frame_mapping": {
+        "side": {
+          "simulation_time_s": "30.1",
+          "video_pts_s": "30.12",
+          "kind": "terminal_real_snapshot"
+        },
+        "oblique": {
+          "simulation_time_s": "30.1",
+          "video_pts_s": "30.12",
+          "kind": "terminal_real_snapshot"
+        },
+        "overhead": {
+          "simulation_time_s": "30.1",
+          "video_pts_s": "30.12",
+          "kind": "terminal_real_snapshot"
+        }
+      },
+      "movies": {
+        "native-side-raw.mp4": {
+          "path": "logs/course-native/issue5-D13550-ROLLING_UNEVEN-c2-v1/native-media/native-side-raw.mp4",
+          "sha256": "df9f1808c74c5373b05c7fbd820d8da400c9b5524e7096d931cd3a74ae6fbcc5",
+          "frames": 754,
+          "fps": 25.0,
+          "size": [
+            1280,
+            720
+          ],
+          "duration_s": 30.16,
+          "codec": "H.264 High",
+          "pixel_format": "yuv420p",
+          "color": "SDR BT.709",
+          "progressive": true,
+          "audio": false,
+          "faststart": true,
+          "bytes": 4634227,
+          "actual_pts": {
+            "status": "PASS",
+            "count": 754,
+            "first_pts_s": 0.0,
+            "last_pts_s": 30.12,
+            "max_error_s": 0.0
+          }
+        },
+        "course-side.mp4": {
+          "path": "logs/course-native/issue5-D13550-ROLLING_UNEVEN-c2-v1/native-media/course-side.mp4",
+          "sha256": "c3d4042406b6c558290e57ca40c3e7ae14180f6979dc9172f84b1548ca3303cb",
+          "frames": 804,
+          "fps": 25.0,
+          "size": [
+            1280,
+            720
+          ],
+          "duration_s": 32.16,
+          "codec": "H.264 High",
+          "pixel_format": "yuv420p",
+          "color": "SDR BT.709",
+          "progressive": true,
+          "audio": false,
+          "faststart": true,
+          "bytes": 3309585,
+          "actual_pts": {
+            "status": "PASS",
+            "count": 804,
+            "first_pts_s": 0.0,
+            "last_pts_s": 32.12,
+            "max_error_s": 0.0
+          }
+        },
+        "native-oblique-raw.mp4": {
+          "path": "logs/course-native/issue5-D13550-ROLLING_UNEVEN-c2-v1/native-media/native-oblique-raw.mp4",
+          "sha256": "cf1ed47c06dac6dbbc03a27b265434251234ca8f72eabaa532840457cd5b19df",
+          "frames": 754,
+          "fps": 25.0,
+          "size": [
+            1280,
+            720
+          ],
+          "duration_s": 30.16,
+          "codec": "H.264 High",
+          "pixel_format": "yuv420p",
+          "color": "SDR BT.709",
+          "progressive": true,
+          "audio": false,
+          "faststart": true,
+          "bytes": 3482615,
+          "actual_pts": {
+            "status": "PASS",
+            "count": 754,
+            "first_pts_s": 0.0,
+            "last_pts_s": 30.12,
+            "max_error_s": 0.0
+          }
+        },
+        "course-oblique.mp4": {
+          "path": "logs/course-native/issue5-D13550-ROLLING_UNEVEN-c2-v1/native-media/course-oblique.mp4",
+          "sha256": "3b31443d676e86bfe97656923c5b5ddbe56f366e4c69ad4acff150fb5d355353",
+          "frames": 804,
+          "fps": 25.0,
+          "size": [
+            1280,
+            720
+          ],
+          "duration_s": 32.16,
+          "codec": "H.264 High",
+          "pixel_format": "yuv420p",
+          "color": "SDR BT.709",
+          "progressive": true,
+          "audio": false,
+          "faststart": true,
+          "bytes": 2638532,
+          "actual_pts": {
+            "status": "PASS",
+            "count": 804,
+            "first_pts_s": 0.0,
+            "last_pts_s": 32.12,
+            "max_error_s": 0.0
+          }
+        },
+        "native-overhead-raw.mp4": {
+          "path": "logs/course-native/issue5-D13550-ROLLING_UNEVEN-c2-v1/native-media/native-overhead-raw.mp4",
+          "sha256": "f3119947523167a1995f73e66cf62147f6dd3e2cf7887c846aeb95a7d89bb9e4",
+          "frames": 754,
+          "fps": 25.0,
+          "size": [
+            1280,
+            720
+          ],
+          "duration_s": 30.16,
+          "codec": "H.264 High",
+          "pixel_format": "yuv420p",
+          "color": "SDR BT.709",
+          "progressive": true,
+          "audio": false,
+          "faststart": true,
+          "bytes": 2590599,
+          "actual_pts": {
+            "status": "PASS",
+            "count": 754,
+            "first_pts_s": 0.0,
+            "last_pts_s": 30.12,
+            "max_error_s": 0.0
+          }
+        },
+        "course-overhead.mp4": {
+          "path": "logs/course-native/issue5-D13550-ROLLING_UNEVEN-c2-v1/native-media/course-overhead.mp4",
+          "sha256": "67bb7ba27395125c417f3bfb78878efe846946477be34dec9f398a95e464dc3b",
+          "frames": 804,
+          "fps": 25.0,
+          "size": [
+            1280,
+            720
+          ],
+          "duration_s": 32.16,
+          "codec": "H.264 High",
+          "pixel_format": "yuv420p",
+          "color": "SDR BT.709",
+          "progressive": true,
+          "audio": false,
+          "faststart": true,
+          "bytes": 2208522,
+          "actual_pts": {
+            "status": "PASS",
+            "count": 804,
+            "first_pts_s": 0.0,
+            "last_pts_s": 32.12,
+            "max_error_s": 0.0
+          }
+        }
+      },
+      "new_run_safety": {
+        "physical_fall": false,
+        "boundary_excursion": false,
+        "engine_error": false,
+        "nonfoot_contact_points": 0,
+        "first_nonfoot_sim_s": null,
+        "joint_input_pass": true,
+        "max_joint_excursion_rad": 0.0,
+        "max_FK_error_m": 9.092590343374e-07
+      },
+      "completion": {
+        "reason": "COURSE_COMPLETED",
+        "success": true,
+        "finish_x_m": 6.4,
+        "confirmation_s": 0.2,
+        "max_sim_s": 60.0,
+        "first_all_feet_pass_s": 29.900000000000002,
+        "confirmation_start_s": 29.900000000000002,
+        "confirmed_at_sim_s": 30.1,
+        "terminal_sim_s": 30.1,
+        "first_each_foot_pass": {
+          "FR": {
+            "at_or_after_sim_s": 27.11,
+            "trailing_x_m": 6.406723812103271,
+            "previous_sim_s": 27.1,
+            "previous_trailing_x_m": 6.397290065765381
+          },
+          "FL": {
+            "at_or_after_sim_s": 27.26,
+            "trailing_x_m": 6.403437450408935,
+            "previous_sim_s": 27.25,
+            "previous_trailing_x_m": 6.395970180511474
+          },
+          "RR": {
+            "at_or_after_sim_s": 28.650000000000002,
+            "trailing_x_m": 6.409075572967529,
+            "previous_sim_s": 28.64,
+            "previous_trailing_x_m": 6.398866012573242
+          },
+          "RL": {
+            "at_or_after_sim_s": 29.900000000000002,
+            "trailing_x_m": 6.400276496887207,
+            "previous_sim_s": 29.89,
+            "previous_trailing_x_m": 6.394085243225097
+          }
+        },
+        "last_measurement": {
+          "time_s": 30.1,
+          "x_m": 6.7498955726623535,
+          "trailing_x_m": {
+            "FL": 6.958350017547607,
+            "FR": 6.938171222686767,
+            "RL": 6.433797672271728,
+            "RR": 6.6470549850463865
+          },
+          "physical_fallen": false,
+          "out_of_terrain": false
+        },
+        "foot_predicate": "all native sphere centre X minus radius > finish; base X > finish; continuous0.20s, no fall/boundary/solver/state error",
+        "error": null
+      },
+      "native_wall_including_media_s": 93.981100917008,
+      "recording_started_before_first_step": true,
+      "physical_build": {
+        "entities": 2,
+        "robot_urdf_sha256": "4f306754e9b3d73930ac8362aa456eb8912f2e886665618e7eced9627c1704a4",
+        "sim": {
+          "dt": 0.02,
+          "substeps": 2,
+          "substeps_local": 1,
+          "gravity": [
+            0.0,
+            0.0,
+            -9.81
+          ],
+          "floor_height": 0.0,
+          "requires_grad": false
+        },
+        "rigid": {
+          "dt": 0.02,
+          "gravity": [
+            0.0,
+            0.0,
+            -9.81
+          ],
+          "enable_collision": true,
+          "enable_joint_limit": true,
+          "enable_self_collision": false,
+          "enable_neutral_collision": false,
+          "enable_adjacent_collision": false,
+          "disable_constraint": false,
+          "max_collision_pairs": 128,
+          "max_contacts": 135,
+          "multiplier_collision_broad_phase": 8,
+          "integrator": 2,
+          "IK_max_targets": 6,
+          "batch_links_info": false,
+          "batch_joints_info": false,
+          "batch_dofs_info": false,
+          "constraint_solver": 1,
+          "iterations": 25,
+          "tolerance": 1e-05,
+          "ls_iterations": 50,
+          "ls_tolerance": 0.01,
+          "noslip_iterations": 0,
+          "noslip_tolerance": 1e-06,
+          "friction_cone": 0,
+          "contact_resolution": 0,
+          "enable_torsional_friction": false,
+          "enable_rolling_friction": false,
+          "impratio": 1.0,
+          "contact_pruning_tolerance": 0.02,
+          "sparse_solve": null,
+          "constraint_timeconst": 0.01,
+          "box_box_detection": false,
+          "use_hibernation": false,
+          "hibernation_thresh_vel": null,
+          "max_dynamic_constraints": 8,
+          "enable_multi_contact": true,
+          "enable_mujoco_compatibility": false,
+          "use_gjk_collision": false,
+          "enable_contact_patch": false,
+          "broadphase_traversal": null
+        },
+        "robot_dofs": 18,
+        "ground_collision_geoms": [
+          0
+        ],
+        "ground_only": true,
+        "substep_dt_s": 0.01
+      },
+      "native_positive_foot_contacts": {
+        "FL": 1093,
+        "FR": 1260,
+        "RL": 1817,
+        "RR": 1160
+      },
+      "terminal_foot_centers_xyz_m": {
+        "FL": [
+          6.980350017547607,
+          0.4498470723628998,
+          0.07804057002067566
+        ],
+        "FR": [
+          6.960171222686768,
+          0.13008350133895874,
+          0.020391210913658142
+        ],
+        "RL": [
+          6.4557976722717285,
+          0.18269801139831543,
+          0.020258188247680664
+        ],
+        "RR": [
+          6.669054985046387,
+          -0.12023209780454636,
+          0.06599155068397522
+        ]
+      },
+      "terminal_foot_trailing_x_m": {
+        "FL": 6.958350017547607,
+        "FR": 6.938171222686767,
+        "RL": 6.433797672271728,
+        "RR": 6.6470549850463865
+      }
+    }
+  ]
+}

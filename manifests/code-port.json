@@ -336,6 +336,18 @@
     {
       "path": "src/go2_ppo/presentation_media.py",
       "sha256": "8be76d3d476ebf60f2e062cac6b7878e44e8195619be745abbdf2b3b868082f7"
+    },
+    {
+      "path": "src/go2_ppo/course_completion.py",
+      "sha256": "c6082fdb817e1f817b211cbab8ccce0ba183d0838d02d102f9f43cd1de1d5ab7"
+    },
+    {
+      "path": "src/go2_ppo/course_media.py",
+      "sha256": "3e4a86c3d7342206b597b210ed2be7fa5cd609403990e5b6d5b5b94a94d543dd"
+    },
+    {
+      "path": "src/go2_ppo/course_native.py",
+      "sha256": "31c77ce7a4e7d49c829e2f45ae78b9f685856de40e24059555e62f6d6c83c4b5"
     }
   ],
   "new_tests": [
@@ -347,6 +359,8 @@
     "tests/test_selection.py",
     "tests/test_training_constraints.py",
     "tests/test_presentation.py",
-    "tests/test_presentation_media.py"
+    "tests/test_presentation_media.py",
+    "tests/test_course_completion.py",
+    "tests/test_course_media.py"
   ]
 }
