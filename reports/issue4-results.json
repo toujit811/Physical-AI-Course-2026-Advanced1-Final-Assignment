@@ -1559,5 +1559,12 @@
   "QA": "reports/generated/issue4/videos-v1/independent-qa.json",
   "index": "reports/generated/issue4/videos-v1/index.html",
   "goal_csv": "reports/generated/issue4/videos-v1/goal-results.csv",
-  "graph": "reports/generated/issue4/videos-v1/goal-and-ruler-validation.png"
+  "graph": "reports/generated/issue4/videos-v1/goal-and-ruler-validation.png",
+  "git": {
+    "code_commit": "5c9ce7c9a37aecc57b772a94c7b48a760f8a2708",
+    "branch": "issue4/video-goal-hud",
+    "main_unchanged": "8fe46546679bb06b9b167104aace3ba5bf601153",
+    "main_fast_forward": "NOT_EXECUTED_AUTO_REVIEW_REJECTED",
+    "reason": "Auto approval review requires explicit user authorization to mutate default main; verified feature branch is the safer alternative."
+  }
 }

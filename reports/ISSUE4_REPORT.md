@@ -30,3 +30,5 @@ Issue3の保存済み6試行のraw RGB・実カメラK/E・100Hz物理状態・5
 再現は既存環境で`PYTHONPATH=src python -m go2_ppo.presentation_media --output reports/generated/issue4/<new-directory>`、独立検証は`PYTHONPATH=src python scripts/verify_issue4.py <output>`です。既存出力ディレクトリへの上書きは拒否します。既存Genesis環境は変更せず、依存追加もありません。
 
 本件はIssue4で承認された提示用動画作業として提出準備時間へ別記します。実験残額-28.167秒と予備時間は変更せず、追加実験への流用はありません。正確な作業時間・Git SHA・読み戻したmain/branch HEAD・状態はIssue4の最終コメントとローカル台帳で報告します。Issue1〜3のclose、Actions、公開設定、公開・提出操作は行いません。
+
+検証済みコードは専用ブランチ`issue4/video-goal-hud`へpush済み（コードcommit `5c9ce7c9a37aecc57b772a94c7b48a760f8a2708`）。mainのfast-forwardは自動承認レビューに拒否され、実行されていません。理由は「Gitへの反映という承認は既定mainの変更を明示的に承認したものとみなせず、専用ブランチがより安全な代替」というものです。main/local main/origin mainは`8fe46546679bb06b9b167104aace3ba5bf601153`を維持しました。拒否を別経路で回避していません。main反映は明示承認が必要な未実施項目です。
