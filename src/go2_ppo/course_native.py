@@ -55,11 +55,13 @@ def run(a):
     original_t=copy.deepcopy(t)
     active=np.flatnonzero(np.max(t['height_m'],axis=1)>0);finish=float(t['x'][active[-1]+1])
     assert abs(finish-6.4)<1e-8
-    tracker=CourseTracker(finish_x=finish,confirmation_s=0. if a.raw_only else .2)
+    paired=getattr(a,'paired',False);post_goal=getattr(a,'post_goal_seconds',3.) if paired else 0.
+    tracker=CourseTracker(finish_x=finish,confirmation_s=0. if a.raw_only or paired else .2,post_goal_s=post_goal)
     old_reference=historical_reference(json.loads((ROOT/'reports/issue3-results.json').read_text()),a.kind,a.condition)
     if a.kind=='FLAT':
         t=copy.deepcopy(t);t['height_mm']=np.zeros_like(t['height_mm']);t['height_m']=np.zeros_like(t['height_m']);t['original_height_m']=np.zeros_like(t['original_height_m']);t['metadata']['kind']='FLAT'
     goal_config=dict(finish_x_m=finish,approved_last_nonzero_x_m=float(original_t['x'][active[-1]]),first_flat_exit_x_m=finish,terrain_x_bounds=None if a.kind=='FLAT' else [-1,7],foot_test='native sphere centre X minus radius > finish',confirmation_s=tracker.confirmation,max_sim_s=60.,stall_window_s=6.,stall_progress_m=.1,raw_only=a.raw_only)
+    goal_config.update(paired_standard=paired,post_goal_recording_s=post_goal,post_goal_safety_observations='logged, no early cut; engine/state/resource/wall errors still stop' if paired else None)
     dump(run/'course-config.json',goal_config)
     t['provenance']={'label':'NEW NATIVE FULL COURSE / '+a.kind+' / D13550','source_sha256':t['metadata']['source_sha256']}
     save_audit(t,run);source=run/'source';source.mkdir()
@@ -184,7 +186,7 @@ def run(a):
         result.update(status='COURSE_COMPLETED' if completion['success'] else 'NOT_COMPLETED',completion=completion,new_run_safety=safety,terminal_sim_s=current,distance_m=rows[-1]['distance_m'] if terminal_verified else None,distance_at_last_verified_sample_m=rows[-1]['distance_m'] if rows else None,terminal_base_xyz_m=[rows[-1][k] for k in ('x_m','y_m','height_m')] if terminal_verified else None,wall_seconds=time.monotonic()-started,checkpoint_file_unchanged=sha(PARENT)==EXPECTED,rows=len(rows),control_samples=len(controls),peak_rss_bytes=max((r['process_rss_bytes'] for r in monitor.rows),default=None),step_median_s=float(np.median(step_times)) if step_times else None,step_p95_s=float(np.percentile(step_times,95)) if step_times else None,engine_error=safety['engine_error'],control=control if runner is not None else None)
         dump(run/'result.json',result)
         if rec and rows and terminal_verified and result.get('terminal_evidence',{}).get('terminal_snapshot_verified'):
-            try:result['videos']=rec.validate_raw() if a.raw_only else rec.present(result,rows)
+            try:result['videos']=rec.validate_raw() if a.raw_only else rec.present(result,rows,end_card_frames=0 if paired else 50,standard_subdir='standard-final' if paired else None)
             except Exception as e:result['presentation_error']=repr(e);result['presentation_traceback']=traceback.format_exc();print(result['presentation_traceback'],flush=True)
         elif rec:result['presentation_error']='UNAVAILABLE_TERMINAL_MEASUREMENT; preserved last verified raw frames only'
         result['total_wall_including_media_s']=time.monotonic()-started
@@ -193,4 +195,7 @@ def run(a):
 
 if __name__=='__main__':
     p=argparse.ArgumentParser(description=__doc__);p.add_argument('--name',required=True);p.add_argument('--source',default=str(SOURCE));p.add_argument('--kind',required=True,choices=['FLAT','ROLLING_UNEVEN']);p.add_argument('--condition',type=int,default=2,choices=range(3));p.add_argument('--substeps',type=int,default=2,choices=[2]);p.add_argument('--wall-cap',type=float,default=900.);p.add_argument('--raw-only',action='store_true')
-    torch.set_num_threads(4);raise SystemExit(run(p.parse_args()))
+    p.add_argument('--paired',action='store_true',help='same-run raw + standard, no cards, immediate goal plus actual post-goal capture');p.add_argument('--post-goal-seconds',type=float,default=3.)
+    args=p.parse_args()
+    if args.paired and args.raw_only:p.error('--paired and --raw-only are mutually exclusive')
+    torch.set_num_threads(4);raise SystemExit(run(args))

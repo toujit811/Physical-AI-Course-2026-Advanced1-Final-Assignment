@@ -339,15 +339,15 @@
     },
     {
       "path": "src/go2_ppo/course_completion.py",
-      "sha256": "c666b8dcbbc7c9c20bf07f72a37f92663038ec0ead2f290073bcb56271b61938"
+      "sha256": "f262ac9040e9a44f2a9b718e13dae1f580a6af069aee8e105329216b2f530965"
     },
     {
       "path": "src/go2_ppo/course_media.py",
-      "sha256": "acf4481d9e062e8de292df1b2b564ca9356eba994327026a3506c9dce85e9838"
+      "sha256": "d884922a450194b1c8874df2d7523928ac2257fc8ac6fc512497dcd4b4017cc0"
     },
     {
       "path": "src/go2_ppo/course_native.py",
-      "sha256": "81991e465559e64bbafe2e48ad99beba971098883d3a79934fbdd03ade1c15a3"
+      "sha256": "1f02eea350ac65596b48205162c8b19fae1b5155f7f2b369766f0e091c04e3db"
     }
   ],
   "new_tests": [

@@ -52,9 +52,12 @@ def summarize_safety(rows,contacts,control,names,excursion_limit=.002,terminal_v
 
 
 class CourseTracker:
-    def __init__(self,finish_x=6.4,confirmation_s=.2,max_sim_s=60.,stall_s=6.,stall_progress_m=.1):
+    def __init__(self,finish_x=6.4,confirmation_s=.2,max_sim_s=60.,stall_s=6.,stall_progress_m=.1,post_goal_s=0.):
         self.finish=float(finish_x);self.confirmation=float(confirmation_s)
         self.max_sim=float(max_sim_s);self.stall_s=float(stall_s);self.stall_progress=float(stall_progress_m)
+        self.post_goal=float(post_goal_s);self.goal_at=None;self.post_events={}
+        if not math.isfinite(self.post_goal) or self.post_goal<0 or (self.post_goal and self.confirmation):
+            raise ValueError('Post-goal recording requires immediate goal and finite nonnegative duration')
         if not all(math.isfinite(v) for v in (self.finish,self.confirmation,self.max_sim,self.stall_s,self.stall_progress)) or self.confirmation<0 or min(self.max_sim,self.stall_s)<=0:
             raise ValueError('Invalid course configuration')
         self.rows=[];self.pending=None;self.first_all=None;self.first_each={};self.reason='RUNNING';self.terminal=None;self.last=None
@@ -82,6 +85,14 @@ class CourseTracker:
                         previous_sim_s=previous['time_s'] if previous else None,
                         previous_trailing_x_m=previous['trailing_x_m'][leg] if previous else None)
             if engine:self.stop('ENGINE_ERROR',tm)
+            elif self.goal_at is not None and self.post_goal:
+                # Continue actual physics for the requested tail, retaining all
+                # safety observations. This neither extends nor edits terrain.
+                if fall:self.post_events.setdefault('FALL',tm)
+                if outside:self.post_events.setdefault('OUT_OF_BOUNDS',tm)
+                if flag(row['fallen']) and not (fall or outside):self.stop('STATE_ERROR',tm)
+                if self.reason=='RUNNING' and tm-self.goal_at>=self.post_goal-1e-8:self.stop('POST_GOAL_RECORDED',tm)
+                return self.summary()
             elif fall:self.stop('FALL',tm)
             elif outside:self.stop('OUT_OF_BOUNDS',tm)
             elif flag(row['fallen']):self.stop('STATE_ERROR',tm)
@@ -90,7 +101,9 @@ class CourseTracker:
             if all_passed:
                 if self.first_all is None:self.first_all=tm
                 if self.pending is None:self.pending=tm
-                if tm-self.pending>=self.confirmation-1e-8:self.stop('COURSE_COMPLETED',tm)
+                if tm-self.pending>=self.confirmation-1e-8:
+                    self.goal_at=tm
+                    if not self.post_goal:self.stop('COURSE_COMPLETED',tm)
             else:self.pending=None
             if self.reason=='RUNNING' and tm>=self.max_sim-1e-8:self.stop('TIMEOUT_NOT_REACHED',tm)
             window=round(self.stall_s/.01)
@@ -102,10 +115,13 @@ class CourseTracker:
         return self.summary()
 
     def summary(self):
-        return copy.deepcopy(dict(reason=self.reason,success=self.reason=='COURSE_COMPLETED',
+        return copy.deepcopy(dict(reason=self.reason,success=self.reason in ('COURSE_COMPLETED','POST_GOAL_RECORDED'),
+            goal_achieved=self.goal_at is not None,goal_sim_s=self.goal_at,post_goal_requested_s=self.post_goal,
+            post_goal_recorded_s=(round(self.last['time_s']-self.goal_at,8) if self.last and self.goal_at is not None else 0.),
+            post_goal_first_events_s=self.post_events,
             finish_x_m=self.finish,confirmation_s=self.confirmation,max_sim_s=self.max_sim,
             first_all_feet_pass_s=self.first_all,confirmation_start_s=self.pending,
-            confirmed_at_sim_s=self.terminal if self.reason=='COURSE_COMPLETED' else None,
+            confirmed_at_sim_s=self.goal_at,
             terminal_sim_s=self.terminal,first_each_foot_pass=self.first_each,last_measurement=self.last,
             foot_predicate='all four native foot sphere trailing extents X > finish; immediate goal' if self.confirmation==0 else 'all native sphere centre X minus radius > finish; base X > finish; continuous0.20s, no fall/boundary/solver/state error',
             error=getattr(self,'error',None)))

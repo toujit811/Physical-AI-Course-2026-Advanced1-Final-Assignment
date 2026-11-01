@@ -30,6 +30,24 @@ def camera_poses(base_pos):
         overhead=dict(pos=(x+.5,0,3.3),lookat=(x+.5,0,0),up=(0,1,0)))
 
 
+def paired_layout(terrain):
+    """Same standard layout, with room for the actual three-second goal tail.
+
+    Only the displayed world-X axis expands. Never extrapolate finite terrain.
+    """
+    layout=make_layout(terrain)
+    # Measured post-goal base X reaches 8.358m on the unchanged finite terrain.
+    # The 9m axis endpoint is display-only, never a physical stopping boundary.
+    layout.plot_xlo=-1.;layout.plot_xhi=9.
+    layout.xppm=1120/(layout.plot_xhi-layout.plot_xlo);layout.zppm=layout.xppm*layout.exaggeration
+    layout._section=layout._make_section();d=ImageDraw.Draw(layout._section)
+    for x in (7.5,8.,8.5,9.):
+        px=layout._section_xy([x],[layout.zlow])[0,0]
+        d.line((px,118,px,123),fill=DARK,width=1)
+        if x==round(x):d.text((px-9,124),f'{x:g}',font=font(13),fill=DARK)
+    return layout
+
+
 def final_capture(recorder,cameras,rows,current_sim_s):
     """Never render an advanced failed scene under an earlier verified timestamp."""
     last=float(rows[-1]['time_s']) if rows else None
@@ -48,7 +66,7 @@ def final_capture(recorder,cameras,rows,current_sim_s):
     return evidence
 
 
-def course_timeline(times):
+def course_timeline(times,end_card_frames=50):
     times=list(map(float,times))
     if not times or abs(times[0])>1e-8 or any(not math.isfinite(t) for t in times) or any(b<=a for a,b in zip(times,times[1:])):
         raise ValueError('Nonmonotonic real source times')
@@ -58,7 +76,7 @@ def course_timeline(times):
     for i,t in enumerate(times):
         kind='terminal_real_snapshot' if abs(t-i/25)>1e-7 else 'recorded_motion'
         records.append(dict(output_frame=i,video_pts_s=i/25,kind=kind,simulation_time_s=t,source_frame=i,frozen_at_sim_s=None))
-    for _ in range(50):
+    for _ in range(end_card_frames):
         i=len(records);records.append(dict(output_frame=i,video_pts_s=i/25,kind='end_card',simulation_time_s=None,source_frame=None,frozen_at_sim_s=times[-1]))
     return records
 
@@ -69,7 +87,7 @@ def compose_course(layout,rgb,view,row,finish,start,old_pass,completion,contact_
     d.rectangle((0,0,1279,69),fill=BG);d.rectangle((0,70,223,538),fill=BG)
     d.text((18,6),f'{run_id} / {view.upper()} / 新規native連続走行・原速 / カメラZ固定',font=font(17),fill=DARK)
     d.text((16,33),'世界X距離目盛り',font=font(16),fill=DARK);d.text((16,53),'固定HUD：高さとは別',font=font(12),fill=DARK)
-    calibration=row['_calibration'];ticks=ruler_ticks(calibration,np.arange(-1,7.00001,.5));markers=ruler_ticks(calibration,[start,finish])
+    calibration=row['_calibration'];ticks=ruler_ticks(calibration,np.arange(-1,layout.plot_xhi+1e-8,.5));markers=ruler_ticks(calibration,[start,finish])
     d.line((224,43,1055,43),fill=DARK,width=2)
     for tick in ticks:
         px=tick['hud_x_px'];wx=tick['world_xyz_m'][0];major=abs(wx-round(wx))<1e-8
@@ -90,14 +108,19 @@ def compose_course(layout,rgb,view,row,finish,start,old_pass,completion,contact_
         (335,f'旧20秒c{condition}：'+('PASS' if old_pass else 'FAIL'),DARK,16),(363,'F：本人確認未済',DARK,16),
         (398,'新run：非足接触あり' if contact_first is not None and t>=contact_first-1e-8 else '新run：非足接触なし',RED if contact_first is not None and t>=contact_first-1e-8 else DARK,15)]
     if contact_first is not None and t>=contact_first-1e-8:lines.append((425,f'初回 {contact_first:.2f}秒',RED,15))
-    if t>=float(completion.get('terminal_sim_s') or float('inf'))-1e-8:
+    goal=completion.get('goal_sim_s')
+    if goal is not None and t>=float(goal)-1e-8:
+        lines.append((470,f'全足通過 {goal:.2f}秒',GREEN,18))
+    elif t>=float(completion.get('terminal_sim_s') or float('inf'))-1e-8:
         lines.append((470,'踏破成功' if completion['success'] else '未踏破',GREEN if completion['success'] else RED,22))
     elif passed==4:lines.append((470,'0.2秒 安定確認中',DARK,16))
     for y,text,color,size in lines:d.text((16,y),text,font=font(size),fill=color)
     for wx,label,color in ((start,'START',GREEN),(finish,'FINISH',RED)):
         sx=layout._section_xy([wx],[layout.zlow])[0,0];d.line((sx,570,sx,690),fill=color,width=2)
         d.text((sx+3,570),label,font=font(12),fill=color)
-    return image,dict(baseline_y_px=43.,world_ticks=ticks,gate_markers=markers,min_trailing_foot_x_m=min(trailing),passed_feet=passed)
+    return image,dict(baseline_y_px=43.,world_ticks=ticks,gate_markers=markers,min_trailing_foot_x_m=min(trailing),passed_feet=passed,
+        section_current_x_m=x,section_current_y_m=0.,section_current_pixel=layout._section_xy([x],[layout.zlow])[0].tolist(),
+        goal_sim_s=goal,goal_displayed=goal is not None and t>=float(goal)-1e-8)
 
 
 def result_card(result,view):
@@ -172,12 +195,17 @@ class CourseRecorder:
         dump(self.output/'video-validation.json',validations)
         return validations
 
-    def present(self,result,states):
+    def present(self,result,states,end_card_frames=50,standard_subdir=None):
         if not self.closed:raise ValueError('Close native capture before encoding presentation')
-        layout=make_layout(self.terrain);validations={};completion=result['completion']
+        output=self.output
+        if standard_subdir:
+            output=self.output/standard_subdir;output.mkdir(exist_ok=False)
+        layout=paired_layout(self.terrain) if end_card_frames==0 else make_layout(self.terrain)
+        validations={};completion=result['completion']
+        dump(output/'section-layout.json',dict(x_limits_m=[layout.plot_xlo,layout.plot_xhi],native_terrain_x_limits_m=[float(layout.x[0]),float(layout.x[-1])],x_pixels_per_m=layout.xppm,z_pixels_per_m=layout.zppm,extrapolated_terrain=False))
         for view in VIEWS:
             records=[r for r in self.records if r['view']==view];times=[r['simulation_time_s'] for r in records]
-            mapping=course_timeline(times);path=self.output/f'course-{view}.mp4';audits=[]
+            mapping=course_timeline(times,end_card_frames=end_card_frames);path=output/f'course-{view}.mp4';audits=[]
             with writer(path) as handle:
                 for i,r in enumerate(records):
                     state=dict(states[round(r['simulation_time_s']*100)]);state['_calibration']=r
@@ -186,13 +214,15 @@ class CourseRecorder:
                     expected=np.asarray(Image.fromarray(rgb).resize((832,468),Image.Resampling.LANCZOS))
                     if not np.array_equal(np.asarray(frame)[70:538,224:1056],expected):raise ValueError('HUD touched native RGB')
                     handle.append_data(np.asarray(frame));audit.update(source_frame=i,simulation_time_s=r['simulation_time_s'],video_pts_s=i/25,raw_png_sha256=r['raw_png_sha256']);audits.append(audit)
-                    if i in (0,len(records)//2,len(records)-1):frame.save(self.output/f'{view}-frame{i:06d}.png')
-                card=result_card(result,view);card.save(self.output/f'{view}-result.png')
-                for _ in range(50):handle.append_data(np.asarray(card))
-            write_csv(self.output/f'{view}-timeline.csv',mapping)
-            with (self.output/f'{view}-hud-map.jsonl').open('w') as stream:
+                    if i in (0,len(records)//2,len(records)-1):frame.save(output/f'{view}-frame{i:06d}.png')
+                if end_card_frames:
+                    card=result_card(result,view);card.save(output/f'{view}-result.png')
+                    for _ in range(end_card_frames):handle.append_data(np.asarray(card))
+            write_csv(output/f'{view}-timeline.csv',mapping)
+            with (output/f'{view}-hud-map.jsonl').open('w') as stream:
                 for record in audits:stream.write(json.dumps(record,allow_nan=False)+'\n')
             for file in (path,self.output/f'native-{view}-raw.mp4'):
                 v=inspect_video(file,decode=True);v['actual_pts']=verify_pts(file,v['frames']);validations[file.name]=v
-            if validations[path.name]['frames']!=len(records)+50:raise ValueError('Frame count mismatch')
-        dump(self.output/'video-validation.json',validations);return validations
+            if validations[path.name]['frames']!=len(records)+end_card_frames:raise ValueError('Frame count mismatch')
+            validations[path.name].update(source_frames=len(records),end_card_frames=end_card_frames,playback_rate=1.)
+        dump(output/'video-validation.json',validations);return validations

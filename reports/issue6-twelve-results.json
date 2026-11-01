@@ -1,0 +1,796 @@
+{
+  "status": "PASS",
+  "authority": "Issue6 top section updated2026-11-01T17:23:32Z + user3seconds",
+  "native_runs": 2,
+  "videos": [
+    {
+      "path": "/Users/toujit811/Documents/ChatGPT/\u3010\u6700\u7d42\u8ab2\u984c\u3011PhysicaAI/issue2-git/logs/course-native/issue6-twelve-D13550-FLAT-c2/native-media/native-side-raw.mp4",
+      "sha256": "73bbf2672ca7f42c79eca21cce7de5d3dfc1d3f7394a879292795ea150200185",
+      "frames": 765,
+      "fps": 25.0,
+      "size": [
+        1280,
+        720
+      ],
+      "duration_s": 30.6,
+      "codec": "H.264 High",
+      "pixel_format": "yuv420p",
+      "color": "SDR BT.709",
+      "progressive": true,
+      "audio": false,
+      "faststart": true,
+      "bytes": 2658745,
+      "actual_pts": {
+        "status": "PASS",
+        "count": 765,
+        "first_pts_s": 0.0,
+        "last_pts_s": 30.56,
+        "max_error_s": 0.0
+      },
+      "environment": "FLAT",
+      "view": "side",
+      "format": "raw",
+      "paired_path": "/Users/toujit811/Documents/ChatGPT/\u3010\u6700\u7d42\u8ab2\u984c\u3011PhysicaAI/issue2-git/logs/course-native/issue6-twelve-D13550-FLAT-c2/native-media/standard-final/course-side.mp4",
+      "run": "issue6-twelve-D13550-FLAT-c2",
+      "sim_start_s": 0.0,
+      "sim_end_s": 30.560000000000002,
+      "goal_sim_s": 27.560000000000002,
+      "actual_post_goal_s": 3.0,
+      "end_card_frames": 0,
+      "sample_native_rgb_mean_error": [
+        2.0069563802083334,
+        1.969708839699074,
+        1.979656032986111
+      ]
+    },
+    {
+      "path": "/Users/toujit811/Documents/ChatGPT/\u3010\u6700\u7d42\u8ab2\u984c\u3011PhysicaAI/issue2-git/logs/course-native/issue6-twelve-D13550-FLAT-c2/native-media/standard-final/course-side.mp4",
+      "sha256": "0c5de44102e6ffe6f8c8ff4782652f24cdf75a2b0c8b2977da55c8b9140c945e",
+      "frames": 765,
+      "fps": 25.0,
+      "size": [
+        1280,
+        720
+      ],
+      "duration_s": 30.6,
+      "codec": "H.264 High",
+      "pixel_format": "yuv420p",
+      "color": "SDR BT.709",
+      "progressive": true,
+      "audio": false,
+      "faststart": true,
+      "bytes": 2326488,
+      "actual_pts": {
+        "status": "PASS",
+        "count": 765,
+        "first_pts_s": 0.0,
+        "last_pts_s": 30.56,
+        "max_error_s": 0.0
+      },
+      "environment": "FLAT",
+      "view": "side",
+      "format": "standard",
+      "paired_path": "/Users/toujit811/Documents/ChatGPT/\u3010\u6700\u7d42\u8ab2\u984c\u3011PhysicaAI/issue2-git/logs/course-native/issue6-twelve-D13550-FLAT-c2/native-media/native-side-raw.mp4",
+      "run": "issue6-twelve-D13550-FLAT-c2",
+      "sim_start_s": 0.0,
+      "sim_end_s": 30.560000000000002,
+      "goal_sim_s": 27.560000000000002,
+      "actual_post_goal_s": 3.0,
+      "end_card_frames": 0,
+      "sample_native_rgb_mean_error": [
+        2.0641984440061365,
+        2.0199721263423185,
+        2.028423254985755
+      ]
+    },
+    {
+      "path": "/Users/toujit811/Documents/ChatGPT/\u3010\u6700\u7d42\u8ab2\u984c\u3011PhysicaAI/issue2-git/logs/course-native/issue6-twelve-D13550-FLAT-c2/native-media/native-oblique-raw.mp4",
+      "sha256": "d489fa613e1b985b7827a3b4b40b4a996b5eb15621106c4b42a23ea78d86c7bc",
+      "frames": 765,
+      "fps": 25.0,
+      "size": [
+        1280,
+        720
+      ],
+      "duration_s": 30.6,
+      "codec": "H.264 High",
+      "pixel_format": "yuv420p",
+      "color": "SDR BT.709",
+      "progressive": true,
+      "audio": false,
+      "faststart": true,
+      "bytes": 1449443,
+      "actual_pts": {
+        "status": "PASS",
+        "count": 765,
+        "first_pts_s": 0.0,
+        "last_pts_s": 30.56,
+        "max_error_s": 0.0
+      },
+      "environment": "FLAT",
+      "view": "oblique",
+      "format": "raw",
+      "paired_path": "/Users/toujit811/Documents/ChatGPT/\u3010\u6700\u7d42\u8ab2\u984c\u3011PhysicaAI/issue2-git/logs/course-native/issue6-twelve-D13550-FLAT-c2/native-media/standard-final/course-oblique.mp4",
+      "run": "issue6-twelve-D13550-FLAT-c2",
+      "sim_start_s": 0.0,
+      "sim_end_s": 30.560000000000002,
+      "goal_sim_s": 27.560000000000002,
+      "actual_post_goal_s": 3.0,
+      "end_card_frames": 0,
+      "sample_native_rgb_mean_error": [
+        2.0328294994212963,
+        1.9736006221064815,
+        2.0016684751157405
+      ]
+    },
+    {
+      "path": "/Users/toujit811/Documents/ChatGPT/\u3010\u6700\u7d42\u8ab2\u984c\u3011PhysicaAI/issue2-git/logs/course-native/issue6-twelve-D13550-FLAT-c2/native-media/standard-final/course-oblique.mp4",
+      "sha256": "c8f170001e3838535626e4c0e7635726c6e3539e6edbd1f10ad94c868210635a",
+      "frames": 765,
+      "fps": 25.0,
+      "size": [
+        1280,
+        720
+      ],
+      "duration_s": 30.6,
+      "codec": "H.264 High",
+      "pixel_format": "yuv420p",
+      "color": "SDR BT.709",
+      "progressive": true,
+      "audio": false,
+      "faststart": true,
+      "bytes": 1624589,
+      "actual_pts": {
+        "status": "PASS",
+        "count": 765,
+        "first_pts_s": 0.0,
+        "last_pts_s": 30.56,
+        "max_error_s": 0.0
+      },
+      "environment": "FLAT",
+      "view": "oblique",
+      "format": "standard",
+      "paired_path": "/Users/toujit811/Documents/ChatGPT/\u3010\u6700\u7d42\u8ab2\u984c\u3011PhysicaAI/issue2-git/logs/course-native/issue6-twelve-D13550-FLAT-c2/native-media/native-oblique-raw.mp4",
+      "run": "issue6-twelve-D13550-FLAT-c2",
+      "sim_start_s": 0.0,
+      "sim_end_s": 30.560000000000002,
+      "goal_sim_s": 27.560000000000002,
+      "actual_post_goal_s": 3.0,
+      "end_card_frames": 0,
+      "sample_native_rgb_mean_error": [
+        2.0893129862480824,
+        2.0122229755643217,
+        2.0397995767587114
+      ]
+    },
+    {
+      "path": "/Users/toujit811/Documents/ChatGPT/\u3010\u6700\u7d42\u8ab2\u984c\u3011PhysicaAI/issue2-git/logs/course-native/issue6-twelve-D13550-FLAT-c2/native-media/native-overhead-raw.mp4",
+      "sha256": "2e654d895ea7c7fbe1e1d08b9930fe53a63bb918596494ca7b47462481ae6787",
+      "frames": 765,
+      "fps": 25.0,
+      "size": [
+        1280,
+        720
+      ],
+      "duration_s": 30.6,
+      "codec": "H.264 High",
+      "pixel_format": "yuv420p",
+      "color": "SDR BT.709",
+      "progressive": true,
+      "audio": false,
+      "faststart": true,
+      "bytes": 984210,
+      "actual_pts": {
+        "status": "PASS",
+        "count": 765,
+        "first_pts_s": 0.0,
+        "last_pts_s": 30.56,
+        "max_error_s": 0.0
+      },
+      "environment": "FLAT",
+      "view": "overhead",
+      "format": "raw",
+      "paired_path": "/Users/toujit811/Documents/ChatGPT/\u3010\u6700\u7d42\u8ab2\u984c\u3011PhysicaAI/issue2-git/logs/course-native/issue6-twelve-D13550-FLAT-c2/native-media/standard-final/course-overhead.mp4",
+      "run": "issue6-twelve-D13550-FLAT-c2",
+      "sim_start_s": 0.0,
+      "sim_end_s": 30.560000000000002,
+      "goal_sim_s": 27.560000000000002,
+      "actual_post_goal_s": 3.0,
+      "end_card_frames": 0,
+      "sample_native_rgb_mean_error": [
+        1.9691373697916668,
+        1.9542661313657408,
+        1.9744672309027778
+      ]
+    },
+    {
+      "path": "/Users/toujit811/Documents/ChatGPT/\u3010\u6700\u7d42\u8ab2\u984c\u3011PhysicaAI/issue2-git/logs/course-native/issue6-twelve-D13550-FLAT-c2/native-media/standard-final/course-overhead.mp4",
+      "sha256": "c2e98c209e3ac7c7138c5eb609453c52f1b36b2c505072931bb676b39b83c63e",
+      "frames": 765,
+      "fps": 25.0,
+      "size": [
+        1280,
+        720
+      ],
+      "duration_s": 30.6,
+      "codec": "H.264 High",
+      "pixel_format": "yuv420p",
+      "color": "SDR BT.709",
+      "progressive": true,
+      "audio": false,
+      "faststart": true,
+      "bytes": 1308554,
+      "actual_pts": {
+        "status": "PASS",
+        "count": 765,
+        "first_pts_s": 0.0,
+        "last_pts_s": 30.56,
+        "max_error_s": 0.0
+      },
+      "environment": "FLAT",
+      "view": "overhead",
+      "format": "standard",
+      "paired_path": "/Users/toujit811/Documents/ChatGPT/\u3010\u6700\u7d42\u8ab2\u984c\u3011PhysicaAI/issue2-git/logs/course-native/issue6-twelve-D13550-FLAT-c2/native-media/native-overhead-raw.mp4",
+      "run": "issue6-twelve-D13550-FLAT-c2",
+      "sim_start_s": 0.0,
+      "sim_end_s": 30.560000000000002,
+      "goal_sim_s": 27.560000000000002,
+      "actual_post_goal_s": 3.0,
+      "end_card_frames": 0,
+      "sample_native_rgb_mean_error": [
+        2.0561171378479073,
+        1.9473756300679377,
+        2.0573490233946963
+      ]
+    },
+    {
+      "path": "/Users/toujit811/Documents/ChatGPT/\u3010\u6700\u7d42\u8ab2\u984c\u3011PhysicaAI/issue2-git/logs/course-native/issue6-twelve-D13550-ROLLING_UNEVEN-c2/native-media/native-side-raw.mp4",
+      "sha256": "07637a4e3876c3814f63e4a9c1d9c930828d79460d0cdacf2e61364b0d6e4b63",
+      "frames": 824,
+      "fps": 25.0,
+      "size": [
+        1280,
+        720
+      ],
+      "duration_s": 32.96,
+      "codec": "H.264 High",
+      "pixel_format": "yuv420p",
+      "color": "SDR BT.709",
+      "progressive": true,
+      "audio": false,
+      "faststart": true,
+      "bytes": 4943576,
+      "actual_pts": {
+        "status": "PASS",
+        "count": 824,
+        "first_pts_s": 0.0,
+        "last_pts_s": 32.92,
+        "max_error_s": 0.0
+      },
+      "environment": "ROLLING_UNEVEN",
+      "view": "side",
+      "format": "raw",
+      "paired_path": "/Users/toujit811/Documents/ChatGPT/\u3010\u6700\u7d42\u8ab2\u984c\u3011PhysicaAI/issue2-git/logs/course-native/issue6-twelve-D13550-ROLLING_UNEVEN-c2/native-media/standard-final/course-side.mp4",
+      "run": "issue6-twelve-D13550-ROLLING_UNEVEN-c2",
+      "sim_start_s": 0.0,
+      "sim_end_s": 32.9,
+      "goal_sim_s": 29.900000000000002,
+      "actual_post_goal_s": 3.0,
+      "end_card_frames": 0,
+      "sample_native_rgb_mean_error": [
+        1.9026356336805557,
+        1.945554832175926,
+        1.6713111255787036
+      ]
+    },
+    {
+      "path": "/Users/toujit811/Documents/ChatGPT/\u3010\u6700\u7d42\u8ab2\u984c\u3011PhysicaAI/issue2-git/logs/course-native/issue6-twelve-D13550-ROLLING_UNEVEN-c2/native-media/standard-final/course-side.mp4",
+      "sha256": "97d95e714ba15eb0bcb4de15ba7dc7822450d4169119983b0aa87589de7561c2",
+      "frames": 824,
+      "fps": 25.0,
+      "size": [
+        1280,
+        720
+      ],
+      "duration_s": 32.96,
+      "codec": "H.264 High",
+      "pixel_format": "yuv420p",
+      "color": "SDR BT.709",
+      "progressive": true,
+      "audio": false,
+      "faststart": true,
+      "bytes": 3470047,
+      "actual_pts": {
+        "status": "PASS",
+        "count": 824,
+        "first_pts_s": 0.0,
+        "last_pts_s": 32.92,
+        "max_error_s": 0.0
+      },
+      "environment": "ROLLING_UNEVEN",
+      "view": "side",
+      "format": "standard",
+      "paired_path": "/Users/toujit811/Documents/ChatGPT/\u3010\u6700\u7d42\u8ab2\u984c\u3011PhysicaAI/issue2-git/logs/course-native/issue6-twelve-D13550-ROLLING_UNEVEN-c2/native-media/native-side-raw.mp4",
+      "run": "issue6-twelve-D13550-ROLLING_UNEVEN-c2",
+      "sim_start_s": 0.0,
+      "sim_end_s": 32.9,
+      "goal_sim_s": 29.900000000000002,
+      "actual_post_goal_s": 3.0,
+      "end_card_frames": 0,
+      "sample_native_rgb_mean_error": [
+        1.9693706511615165,
+        2.0353086305610346,
+        1.687528250328731
+      ]
+    },
+    {
+      "path": "/Users/toujit811/Documents/ChatGPT/\u3010\u6700\u7d42\u8ab2\u984c\u3011PhysicaAI/issue2-git/logs/course-native/issue6-twelve-D13550-ROLLING_UNEVEN-c2/native-media/native-oblique-raw.mp4",
+      "sha256": "939bbda5379a7c7463ba047602bac3991534f36fab7ddb2d41a02fe8a10e1f4b",
+      "frames": 824,
+      "fps": 25.0,
+      "size": [
+        1280,
+        720
+      ],
+      "duration_s": 32.96,
+      "codec": "H.264 High",
+      "pixel_format": "yuv420p",
+      "color": "SDR BT.709",
+      "progressive": true,
+      "audio": false,
+      "faststart": true,
+      "bytes": 3946652,
+      "actual_pts": {
+        "status": "PASS",
+        "count": 824,
+        "first_pts_s": 0.0,
+        "last_pts_s": 32.92,
+        "max_error_s": 0.0
+      },
+      "environment": "ROLLING_UNEVEN",
+      "view": "oblique",
+      "format": "raw",
+      "paired_path": "/Users/toujit811/Documents/ChatGPT/\u3010\u6700\u7d42\u8ab2\u984c\u3011PhysicaAI/issue2-git/logs/course-native/issue6-twelve-D13550-ROLLING_UNEVEN-c2/native-media/standard-final/course-oblique.mp4",
+      "run": "issue6-twelve-D13550-ROLLING_UNEVEN-c2",
+      "sim_start_s": 0.0,
+      "sim_end_s": 32.9,
+      "goal_sim_s": 29.900000000000002,
+      "actual_post_goal_s": 3.0,
+      "end_card_frames": 0,
+      "sample_native_rgb_mean_error": [
+        1.9578678385416666,
+        1.9052065248842593,
+        1.725937861689815
+      ]
+    },
+    {
+      "path": "/Users/toujit811/Documents/ChatGPT/\u3010\u6700\u7d42\u8ab2\u984c\u3011PhysicaAI/issue2-git/logs/course-native/issue6-twelve-D13550-ROLLING_UNEVEN-c2/native-media/standard-final/course-oblique.mp4",
+      "sha256": "0648431c2d95e62622004bbeff920d5375ea01ed32352f034d1760adf436f653",
+      "frames": 824,
+      "fps": 25.0,
+      "size": [
+        1280,
+        720
+      ],
+      "duration_s": 32.96,
+      "codec": "H.264 High",
+      "pixel_format": "yuv420p",
+      "color": "SDR BT.709",
+      "progressive": true,
+      "audio": false,
+      "faststart": true,
+      "bytes": 2939488,
+      "actual_pts": {
+        "status": "PASS",
+        "count": 824,
+        "first_pts_s": 0.0,
+        "last_pts_s": 32.92,
+        "max_error_s": 0.0
+      },
+      "environment": "ROLLING_UNEVEN",
+      "view": "oblique",
+      "format": "standard",
+      "paired_path": "/Users/toujit811/Documents/ChatGPT/\u3010\u6700\u7d42\u8ab2\u984c\u3011PhysicaAI/issue2-git/logs/course-native/issue6-twelve-D13550-ROLLING_UNEVEN-c2/native-media/native-oblique-raw.mp4",
+      "run": "issue6-twelve-D13550-ROLLING_UNEVEN-c2",
+      "sim_start_s": 0.0,
+      "sim_end_s": 32.9,
+      "goal_sim_s": 29.900000000000002,
+      "actual_post_goal_s": 3.0,
+      "end_card_frames": 0,
+      "sample_native_rgb_mean_error": [
+        2.0286740836620645,
+        1.9933089524435679,
+        1.7731464360070128
+      ]
+    },
+    {
+      "path": "/Users/toujit811/Documents/ChatGPT/\u3010\u6700\u7d42\u8ab2\u984c\u3011PhysicaAI/issue2-git/logs/course-native/issue6-twelve-D13550-ROLLING_UNEVEN-c2/native-media/native-overhead-raw.mp4",
+      "sha256": "f7a0d8733877beebfcda5396218f2724532f0758d91c05356ba94343ca3efd26",
+      "frames": 824,
+      "fps": 25.0,
+      "size": [
+        1280,
+        720
+      ],
+      "duration_s": 32.96,
+      "codec": "H.264 High",
+      "pixel_format": "yuv420p",
+      "color": "SDR BT.709",
+      "progressive": true,
+      "audio": false,
+      "faststart": true,
+      "bytes": 2803193,
+      "actual_pts": {
+        "status": "PASS",
+        "count": 824,
+        "first_pts_s": 0.0,
+        "last_pts_s": 32.92,
+        "max_error_s": 0.0
+      },
+      "environment": "ROLLING_UNEVEN",
+      "view": "overhead",
+      "format": "raw",
+      "paired_path": "/Users/toujit811/Documents/ChatGPT/\u3010\u6700\u7d42\u8ab2\u984c\u3011PhysicaAI/issue2-git/logs/course-native/issue6-twelve-D13550-ROLLING_UNEVEN-c2/native-media/standard-final/course-overhead.mp4",
+      "run": "issue6-twelve-D13550-ROLLING_UNEVEN-c2",
+      "sim_start_s": 0.0,
+      "sim_end_s": 32.9,
+      "goal_sim_s": 29.900000000000002,
+      "actual_post_goal_s": 3.0,
+      "end_card_frames": 0,
+      "sample_native_rgb_mean_error": [
+        1.9210546875,
+        1.937400173611111,
+        1.7264503761574075
+      ]
+    },
+    {
+      "path": "/Users/toujit811/Documents/ChatGPT/\u3010\u6700\u7d42\u8ab2\u984c\u3011PhysicaAI/issue2-git/logs/course-native/issue6-twelve-D13550-ROLLING_UNEVEN-c2/native-media/standard-final/course-overhead.mp4",
+      "sha256": "114b446e3e94041741749ca238c44c8cf4511809f2a5089847e8e03fbcdc933c",
+      "frames": 824,
+      "fps": 25.0,
+      "size": [
+        1280,
+        720
+      ],
+      "duration_s": 32.96,
+      "codec": "H.264 High",
+      "pixel_format": "yuv420p",
+      "color": "SDR BT.709",
+      "progressive": true,
+      "audio": false,
+      "faststart": true,
+      "bytes": 2306133,
+      "actual_pts": {
+        "status": "PASS",
+        "count": 824,
+        "first_pts_s": 0.0,
+        "last_pts_s": 32.92,
+        "max_error_s": 0.0
+      },
+      "environment": "ROLLING_UNEVEN",
+      "view": "overhead",
+      "format": "standard",
+      "paired_path": "/Users/toujit811/Documents/ChatGPT/\u3010\u6700\u7d42\u8ab2\u984c\u3011PhysicaAI/issue2-git/logs/course-native/issue6-twelve-D13550-ROLLING_UNEVEN-c2/native-media/native-overhead-raw.mp4",
+      "run": "issue6-twelve-D13550-ROLLING_UNEVEN-c2",
+      "sim_start_s": 0.0,
+      "sim_end_s": 32.9,
+      "goal_sim_s": 29.900000000000002,
+      "actual_post_goal_s": 3.0,
+      "end_card_frames": 0,
+      "sample_native_rgb_mean_error": [
+        2.071891094126671,
+        1.982636320677186,
+        1.7303446197676966
+      ]
+    }
+  ],
+  "runs": [
+    {
+      "kind": "FLAT",
+      "run": "issue6-twelve-D13550-FLAT-c2",
+      "goal_x_m": 6.4,
+      "first_all_feet_sim_s": 27.560000000000002,
+      "crossing_bracket": [
+        {
+          "time_s": 27.55,
+          "FL_trailing_x_m": 6.986906841278076,
+          "FR_trailing_x_m": 6.848329856872558,
+          "RL_trailing_x_m": 6.483355358123779,
+          "RR_trailing_x_m": 6.398848846435547
+        },
+        {
+          "time_s": 27.560000000000002,
+          "FL_trailing_x_m": 6.99898274230957,
+          "FR_trailing_x_m": 6.84922631072998,
+          "RL_trailing_x_m": 6.483603790283203,
+          "RR_trailing_x_m": 6.4093936233520505
+        }
+      ],
+      "terminal_sim_s": 30.560000000000002,
+      "actual_post_goal_s": 3.0,
+      "post_goal_interval_s": [
+        27.560000000000002,
+        30.560000000000002
+      ],
+      "first_events": {
+        "physical_fallen": null,
+        "out_of_terrain": null,
+        "engine_error": null,
+        "unexpected_floor_contact": null
+      },
+      "full_run_safety": {
+        "measurements_available": true,
+        "verified_through_sim_s": 30.560000000000002,
+        "physical_fall": false,
+        "boundary_excursion": false,
+        "nonfoot_contact_points": 0,
+        "first_nonfoot_sim_s": null,
+        "joint_input_pass": true,
+        "max_joint_excursion_rad": 0.0,
+        "max_FK_error_m": 8.451860703939934e-07,
+        "engine_error": false
+      },
+      "physical_settings_unchanged": true,
+      "old_physical_prefix_exact": true,
+      "initial_camera_actual": {
+        "side": {
+          "fov_deg": 60.0,
+          "native_res": [
+            640,
+            360
+          ],
+          "intrinsics": [
+            [
+              311.769145362398,
+              0.0,
+              320.0
+            ],
+            [
+              0.0,
+              311.769145362398,
+              180.0
+            ],
+            [
+              0.0,
+              0.0,
+              1.0
+            ]
+          ],
+          "world_z_range_m": [
+            0.3400000035762787,
+            0.3400000035762787
+          ],
+          "frames": 765,
+          "true_90_side_verified": true,
+          "base_center_visible_at_last_frame": true,
+          "first_base_center_out_of_frame_s": null
+        },
+        "oblique": {
+          "fov_deg": 55.0,
+          "native_res": [
+            640,
+            360
+          ],
+          "intrinsics": [
+            [
+              345.7767828548099,
+              0.0,
+              320.0
+            ],
+            [
+              0.0,
+              345.7767828548099,
+              180.0
+            ],
+            [
+              0.0,
+              0.0,
+              1.0
+            ]
+          ],
+          "world_z_range_m": [
+            1.1199998649136365,
+            1.1200001263810595
+          ],
+          "frames": 765,
+          "true_90_side_verified": false,
+          "base_center_visible_at_last_frame": true,
+          "first_base_center_out_of_frame_s": null
+        },
+        "overhead": {
+          "fov_deg": 55.0,
+          "native_res": [
+            640,
+            360
+          ],
+          "intrinsics": [
+            [
+              345.7767828548099,
+              0.0,
+              320.0
+            ],
+            [
+              0.0,
+              345.7767828548099,
+              180.0
+            ],
+            [
+              0.0,
+              0.0,
+              1.0
+            ]
+          ],
+          "world_z_range_m": [
+            3.299999952316284,
+            3.299999952316284
+          ],
+          "frames": 765,
+          "true_90_side_verified": false,
+          "base_center_visible_at_last_frame": true,
+          "first_base_center_out_of_frame_s": null
+        }
+      },
+      "PPO_updates": 0,
+      "source_snapshot_verified": true
+    },
+    {
+      "kind": "ROLLING_UNEVEN",
+      "run": "issue6-twelve-D13550-ROLLING_UNEVEN-c2",
+      "goal_x_m": 6.4,
+      "first_all_feet_sim_s": 29.900000000000002,
+      "crossing_bracket": [
+        {
+          "time_s": 29.89,
+          "FL_trailing_x_m": 6.892595603942871,
+          "FR_trailing_x_m": 6.920510604858398,
+          "RL_trailing_x_m": 6.394085243225097,
+          "RR_trailing_x_m": 6.569305255889892
+        },
+        {
+          "time_s": 29.900000000000002,
+          "FL_trailing_x_m": 6.893457725524902,
+          "FR_trailing_x_m": 6.929469898223877,
+          "RL_trailing_x_m": 6.400276496887207,
+          "RR_trailing_x_m": 6.569454029083252
+        }
+      ],
+      "terminal_sim_s": 32.9,
+      "actual_post_goal_s": 3.0,
+      "post_goal_interval_s": [
+        29.900000000000002,
+        32.9
+      ],
+      "first_events": {
+        "physical_fallen": 30.88,
+        "out_of_terrain": 30.18,
+        "engine_error": null,
+        "unexpected_floor_contact": 30.5
+      },
+      "full_run_safety": {
+        "measurements_available": true,
+        "verified_through_sim_s": 32.9,
+        "physical_fall": true,
+        "boundary_excursion": true,
+        "nonfoot_contact_points": 52,
+        "first_nonfoot_sim_s": 30.5,
+        "joint_input_pass": false,
+        "max_joint_excursion_rad": 0.07282646923065195,
+        "max_FK_error_m": 3.254119534123852e-06,
+        "engine_error": false
+      },
+      "physical_settings_unchanged": true,
+      "old_physical_prefix_exact": true,
+      "initial_camera_actual": {
+        "side": {
+          "fov_deg": 60.0,
+          "native_res": [
+            640,
+            360
+          ],
+          "intrinsics": [
+            [
+              311.769145362398,
+              0.0,
+              320.0
+            ],
+            [
+              0.0,
+              311.769145362398,
+              180.0
+            ],
+            [
+              0.0,
+              0.0,
+              1.0
+            ]
+          ],
+          "world_z_range_m": [
+            0.3400000035762787,
+            0.3400000035762787
+          ],
+          "frames": 824,
+          "true_90_side_verified": true,
+          "base_center_visible_at_last_frame": false,
+          "first_base_center_out_of_frame_s": 31.16
+        },
+        "oblique": {
+          "fov_deg": 55.0,
+          "native_res": [
+            640,
+            360
+          ],
+          "intrinsics": [
+            [
+              345.7767828548099,
+              0.0,
+              320.0
+            ],
+            [
+              0.0,
+              345.7767828548099,
+              180.0
+            ],
+            [
+              0.0,
+              0.0,
+              1.0
+            ]
+          ],
+          "world_z_range_m": [
+            1.119999743068886,
+            1.1200002078766664
+          ],
+          "frames": 824,
+          "true_90_side_verified": false,
+          "base_center_visible_at_last_frame": false,
+          "first_base_center_out_of_frame_s": 31.48
+        },
+        "overhead": {
+          "fov_deg": 55.0,
+          "native_res": [
+            640,
+            360
+          ],
+          "intrinsics": [
+            [
+              345.7767828548099,
+              0.0,
+              320.0
+            ],
+            [
+              0.0,
+              345.7767828548099,
+              180.0
+            ],
+            [
+              0.0,
+              0.0,
+              1.0
+            ]
+          ],
+          "world_z_range_m": [
+            3.299999952316284,
+            3.299999952316284
+          ],
+          "frames": 824,
+          "true_90_side_verified": false,
+          "base_center_visible_at_last_frame": true,
+          "first_base_center_out_of_frame_s": null
+        }
+      },
+      "PPO_updates": 0,
+      "source_snapshot_verified": true
+    }
+  ],
+  "all12_fully_decoded": true,
+  "same_run_and_time_ranges_verified": true,
+  "cameras_measured_same": true,
+  "layout_measured_same": true,
+  "prior_artifact_hashes_unchanged": 224,
+  "checkpoint_sha256": "5d7fa7222067ff915942f2be546f9a9b3dcd6126b07eb3d7c8ea7fb4c05a4565",
+  "PPO_updates": 0,
+  "heldout": false,
+  "human_F": "USER_REVIEW_PENDING",
+  "initial_flat_standard_attempt": "Retained native-media/course-*.mp4; superseded by native-media/standard-final/course-*.mp4 because terminal position exceeded old profile axis",
+  "post_goal_safety_rule": "Record actual motion for 3s after goal; retain boundary/fall events; engine/state/resource/wall errors stop; no extension of physical terrain"
+}
