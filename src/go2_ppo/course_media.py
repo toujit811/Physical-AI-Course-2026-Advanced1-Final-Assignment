@@ -159,6 +159,19 @@ class CourseRecorder:
         write_csv(self.output/'frame-map.csv',[{k:r[k] for k in ('frame','view','simulation_time_s','video_pts_s','terminal_offgrid','raw_png','raw_png_sha256')} for r in self.records])
         dump(self.output/'recording-metadata.json',dict(kind='direct native full-course capture',frames_per_view=len(self.records)//3,fps=25,world_camera_z_m=self.camera_z,raw_source_size=[640,360],video_size=[1280,720],new_physics_by_recorder=0,pose_replay=False))
 
+    def validate_raw(self):
+        if not self.closed:raise ValueError('Close native capture before validation')
+        validations={}
+        for view in VIEWS:
+            path=self.output/f'native-{view}-raw.mp4'
+            info=inspect_video(path,decode=True);info['actual_pts']=verify_pts(path,info['frames'])
+            expected=sum(r['view']==view for r in self.records)
+            if info['frames']!=expected:raise ValueError('Raw MP4 count differs from actual captured frames')
+            info.update(source_frames=expected,end_card_frames=0,postprocessed_hud=False,playback_rate=1.)
+            validations[path.name]=info
+        dump(self.output/'video-validation.json',validations)
+        return validations
+
     def present(self,result,states):
         if not self.closed:raise ValueError('Close native capture before encoding presentation')
         layout=make_layout(self.terrain);validations={};completion=result['completion']

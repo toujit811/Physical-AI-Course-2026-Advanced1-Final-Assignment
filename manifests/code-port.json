@@ -339,15 +339,15 @@
     },
     {
       "path": "src/go2_ppo/course_completion.py",
-      "sha256": "7cdb1e2b1559054b304abd80fc98ef82e69d8a5db999e47eec11d6ff6de11aee"
+      "sha256": "c666b8dcbbc7c9c20bf07f72a37f92663038ec0ead2f290073bcb56271b61938"
     },
     {
       "path": "src/go2_ppo/course_media.py",
-      "sha256": "1182501629bf43075f0bbbe6e3a44e9bb44211e5485b444a19a39b927613983a"
+      "sha256": "acf4481d9e062e8de292df1b2b564ca9356eba994327026a3506c9dce85e9838"
     },
     {
       "path": "src/go2_ppo/course_native.py",
-      "sha256": "f0c5acc514394ec57b9047b9089adeac49545ef5705f673980632e2eb56c8b35"
+      "sha256": "81991e465559e64bbafe2e48ad99beba971098883d3a79934fbdd03ade1c15a3"
     }
   ],
   "new_tests": [
@@ -361,6 +361,7 @@
     "tests/test_presentation.py",
     "tests/test_presentation_media.py",
     "tests/test_course_completion.py",
-    "tests/test_course_media.py"
+    "tests/test_course_media.py",
+    "tests/test_issue6_completion.py"
   ]
 }

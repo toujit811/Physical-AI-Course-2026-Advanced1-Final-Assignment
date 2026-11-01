@@ -1,0 +1,304 @@
+{
+  "authority_issue": 6,
+  "status": "PASS",
+  "new_native_runs": 1,
+  "PPO_updates": 0,
+  "flat_goal_reached": true,
+  "first_four_feet_sim_s": 27.560000000000002,
+  "previous_stop_sim_s": 27.330000000000002,
+  "new_base_xyz_m": [
+    6.717578411102295,
+    0.8795201778411865,
+    0.3171626329421997
+  ],
+  "goal_x_m": 6.4,
+  "confirmation_s": 0,
+  "first_pass_bracket": {
+    "before": {
+      "time_s": 27.55,
+      "FL_trailing_x_m": 6.986906841278076,
+      "FR_trailing_x_m": 6.848329856872558,
+      "RL_trailing_x_m": 6.483355358123779,
+      "RR_trailing_x_m": 6.398848846435547
+    },
+    "first_pass": {
+      "time_s": 27.560000000000002,
+      "FL_trailing_x_m": 6.99898274230957,
+      "FR_trailing_x_m": 6.84922631072998,
+      "RL_trailing_x_m": 6.483603790283203,
+      "RR_trailing_x_m": 6.4093936233520505
+    }
+  },
+  "continued_beyond_old_stop": true,
+  "physical_prefix_exact_except_removed_boundary_flags": true,
+  "new_run_safety": {
+    "measurements_available": true,
+    "verified_through_sim_s": 27.560000000000002,
+    "physical_fall": false,
+    "boundary_excursion": false,
+    "nonfoot_contact_points": 0,
+    "first_nonfoot_sim_s": null,
+    "joint_input_pass": true,
+    "max_joint_excursion_rad": 0.0,
+    "max_FK_error_m": 8.451860703939934e-07,
+    "engine_error": false
+  },
+  "tests": 113,
+  "old_tests_preserved": 109,
+  "new_raw_movies": 3,
+  "reused_uneven_raw_movies": 3,
+  "videos": [
+    {
+      "path": "/Users/toujit811/Documents/ChatGPT/\u3010\u6700\u7d42\u8ab2\u984c\u3011PhysicaAI/issue2-git/logs/course-native/issue6-D13550-FLAT-c2-raw/native-media/native-side-raw.mp4",
+      "sha256": "83fa623f1589d8e04fbaa02f36b3a128238f96b3d2314dd73f0f03abbf1743fb",
+      "frames": 690,
+      "fps": 25.0,
+      "size": [
+        1280,
+        720
+      ],
+      "duration_s": 27.6,
+      "codec": "H.264 High",
+      "pixel_format": "yuv420p",
+      "color": "SDR BT.709",
+      "progressive": true,
+      "audio": false,
+      "faststart": true,
+      "bytes": 2372828,
+      "actual_pts": {
+        "status": "PASS",
+        "count": 690,
+        "first_pts_s": 0.0,
+        "last_pts_s": 27.56,
+        "max_error_s": 0.0
+      },
+      "view": "side",
+      "reused": false,
+      "run": "issue6-D13550-FLAT-c2-raw",
+      "source_frames": 690,
+      "end_card_frames": 0,
+      "camera_world_Z_range_m": [
+        0.3400000035762787,
+        0.3400000035762787
+      ],
+      "sample_mean_RGB_difference": [
+        2.0069563802083334,
+        1.9714811197916666,
+        2.001685474537037
+      ],
+      "first_sim_s": 0.0,
+      "last_sim_s": 27.560000000000002
+    },
+    {
+      "path": "/Users/toujit811/Documents/ChatGPT/\u3010\u6700\u7d42\u8ab2\u984c\u3011PhysicaAI/issue2-git/logs/course-native/issue6-D13550-FLAT-c2-raw/native-media/native-oblique-raw.mp4",
+      "sha256": "1fd7011b56250ea0079d7372b516ce17e755ffcd4621f92e7d92110731950ef6",
+      "frames": 690,
+      "fps": 25.0,
+      "size": [
+        1280,
+        720
+      ],
+      "duration_s": 27.6,
+      "codec": "H.264 High",
+      "pixel_format": "yuv420p",
+      "color": "SDR BT.709",
+      "progressive": true,
+      "audio": false,
+      "faststart": true,
+      "bytes": 1293168,
+      "actual_pts": {
+        "status": "PASS",
+        "count": 690,
+        "first_pts_s": 0.0,
+        "last_pts_s": 27.56,
+        "max_error_s": 0.0
+      },
+      "view": "oblique",
+      "reused": false,
+      "run": "issue6-D13550-FLAT-c2-raw",
+      "source_frames": 690,
+      "end_card_frames": 0,
+      "camera_world_Z_range_m": [
+        1.1199998649136365,
+        1.1200001191875684
+      ],
+      "sample_mean_RGB_difference": [
+        2.0328294994212963,
+        1.9842078993055556,
+        2.023150679976852
+      ],
+      "first_sim_s": 0.0,
+      "last_sim_s": 27.560000000000002
+    },
+    {
+      "path": "/Users/toujit811/Documents/ChatGPT/\u3010\u6700\u7d42\u8ab2\u984c\u3011PhysicaAI/issue2-git/logs/course-native/issue6-D13550-FLAT-c2-raw/native-media/native-overhead-raw.mp4",
+      "sha256": "b935d02982ee2b4834a92d5c3c0f54ae5949794229fb3093709f49a569021eb4",
+      "frames": 690,
+      "fps": 25.0,
+      "size": [
+        1280,
+        720
+      ],
+      "duration_s": 27.6,
+      "codec": "H.264 High",
+      "pixel_format": "yuv420p",
+      "color": "SDR BT.709",
+      "progressive": true,
+      "audio": false,
+      "faststart": true,
+      "bytes": 877633,
+      "actual_pts": {
+        "status": "PASS",
+        "count": 690,
+        "first_pts_s": 0.0,
+        "last_pts_s": 27.56,
+        "max_error_s": 0.0
+      },
+      "view": "overhead",
+      "reused": false,
+      "run": "issue6-D13550-FLAT-c2-raw",
+      "source_frames": 690,
+      "end_card_frames": 0,
+      "camera_world_Z_range_m": [
+        3.299999952316284,
+        3.299999952316284
+      ],
+      "sample_mean_RGB_difference": [
+        1.9691373697916668,
+        1.9455472366898148,
+        1.9619737413194445
+      ],
+      "first_sim_s": 0.0,
+      "last_sim_s": 27.560000000000002
+    },
+    {
+      "path": "/Users/toujit811/Documents/ChatGPT/\u3010\u6700\u7d42\u8ab2\u984c\u3011PhysicaAI/issue2-git/logs/course-native/issue5-D13550-ROLLING_UNEVEN-c2-v2/native-media/native-side-raw.mp4",
+      "sha256": "169f1d0914fbf61a2412c4e42ec71207158c0fe16b4bc85e80d8d31bbd97c611",
+      "frames": 754,
+      "fps": 25.0,
+      "size": [
+        1280,
+        720
+      ],
+      "duration_s": 30.16,
+      "codec": "H.264 High",
+      "pixel_format": "yuv420p",
+      "color": "SDR BT.709",
+      "progressive": true,
+      "audio": false,
+      "faststart": true,
+      "bytes": 4797542,
+      "actual_pts": {
+        "status": "PASS",
+        "count": 754,
+        "first_pts_s": 0.0,
+        "last_pts_s": 30.12,
+        "max_error_s": 0.0
+      },
+      "view": "side",
+      "reused": true,
+      "run": "issue5-D13550-ROLLING_UNEVEN-c2-v2",
+      "source_frames": 754,
+      "end_card_frames": 0,
+      "camera_world_Z_range_m": [
+        0.3400000035762787,
+        0.3400000035762787
+      ],
+      "sample_mean_RGB_difference": [
+        1.9026356336805557,
+        1.9534114583333333,
+        1.8449989149305555
+      ],
+      "first_sim_s": 0.0,
+      "last_sim_s": 30.1
+    },
+    {
+      "path": "/Users/toujit811/Documents/ChatGPT/\u3010\u6700\u7d42\u8ab2\u984c\u3011PhysicaAI/issue2-git/logs/course-native/issue5-D13550-ROLLING_UNEVEN-c2-v2/native-media/native-oblique-raw.mp4",
+      "sha256": "92d7177839e2bd3c31ecfe031be7fe3bfab9d5782004b19929250d13dcf7f1b3",
+      "frames": 754,
+      "fps": 25.0,
+      "size": [
+        1280,
+        720
+      ],
+      "duration_s": 30.16,
+      "codec": "H.264 High",
+      "pixel_format": "yuv420p",
+      "color": "SDR BT.709",
+      "progressive": true,
+      "audio": false,
+      "faststart": true,
+      "bytes": 3756856,
+      "actual_pts": {
+        "status": "PASS",
+        "count": 754,
+        "first_pts_s": 0.0,
+        "last_pts_s": 30.12,
+        "max_error_s": 0.0
+      },
+      "view": "oblique",
+      "reused": true,
+      "run": "issue5-D13550-ROLLING_UNEVEN-c2-v2",
+      "source_frames": 754,
+      "end_card_frames": 0,
+      "camera_world_Z_range_m": [
+        1.119999743068886,
+        1.1200002078766664
+      ],
+      "sample_mean_RGB_difference": [
+        1.9578678385416666,
+        1.9117932581018517,
+        1.8736671730324075
+      ],
+      "first_sim_s": 0.0,
+      "last_sim_s": 30.1
+    },
+    {
+      "path": "/Users/toujit811/Documents/ChatGPT/\u3010\u6700\u7d42\u8ab2\u984c\u3011PhysicaAI/issue2-git/logs/course-native/issue5-D13550-ROLLING_UNEVEN-c2-v2/native-media/native-overhead-raw.mp4",
+      "sha256": "f8edcb8e961cb80775e551da63e32baff3cad34d8e073e00fce62bd26a7bbe36",
+      "frames": 754,
+      "fps": 25.0,
+      "size": [
+        1280,
+        720
+      ],
+      "duration_s": 30.16,
+      "codec": "H.264 High",
+      "pixel_format": "yuv420p",
+      "color": "SDR BT.709",
+      "progressive": true,
+      "audio": false,
+      "faststart": true,
+      "bytes": 2683084,
+      "actual_pts": {
+        "status": "PASS",
+        "count": 754,
+        "first_pts_s": 0.0,
+        "last_pts_s": 30.12,
+        "max_error_s": 0.0
+      },
+      "view": "overhead",
+      "reused": true,
+      "run": "issue5-D13550-ROLLING_UNEVEN-c2-v2",
+      "source_frames": 754,
+      "end_card_frames": 0,
+      "camera_world_Z_range_m": [
+        3.299999952316284,
+        3.299999952316284
+      ],
+      "sample_mean_RGB_difference": [
+        1.9210546875,
+        1.9578891782407408,
+        1.8403815827546297
+      ],
+      "first_sim_s": 0.0,
+      "last_sim_s": 30.1
+    }
+  ],
+  "source_preservation": {
+    "status": "PASS",
+    "files": 13143,
+    "bytes": 877796350
+  },
+  "no_new_viewer_or_layout": true
+}

@@ -8,6 +8,14 @@ import math
 LEGS=('FL','FR','RL','RR')
 
 
+def outside_course_boundary(kind,position,foot=False):
+    """Keep existing Y/uneven guards; an infinite FLAT plane has no X edge."""
+    x,y=position[:2]
+    y_out=not(-1.3<=y<=1.3) if foot else not(-1.25<y<1.25)
+    x_out=False if kind=='FLAT' else not(-1<=x<=7) if foot else not(-.95<x<6.95)
+    return bool(x_out or y_out)
+
+
 def historical_reference(source,kind,condition):
     found=[r for r in source['results'] if r['kind']==kind and r['condition']==condition]
     if len(found)!=1:raise ValueError('Unique historical condition reference required')
@@ -47,7 +55,7 @@ class CourseTracker:
     def __init__(self,finish_x=6.4,confirmation_s=.2,max_sim_s=60.,stall_s=6.,stall_progress_m=.1):
         self.finish=float(finish_x);self.confirmation=float(confirmation_s)
         self.max_sim=float(max_sim_s);self.stall_s=float(stall_s);self.stall_progress=float(stall_progress_m)
-        if not all(math.isfinite(v) for v in (self.finish,self.confirmation,self.max_sim,self.stall_s,self.stall_progress)) or min(self.confirmation,self.max_sim,self.stall_s)<=0:
+        if not all(math.isfinite(v) for v in (self.finish,self.confirmation,self.max_sim,self.stall_s,self.stall_progress)) or self.confirmation<0 or min(self.max_sim,self.stall_s)<=0:
             raise ValueError('Invalid course configuration')
         self.rows=[];self.pending=None;self.first_all=None;self.first_each={};self.reason='RUNNING';self.terminal=None;self.last=None
 
@@ -78,7 +86,7 @@ class CourseTracker:
             elif outside:self.stop('OUT_OF_BOUNDS',tm)
             elif flag(row['fallen']):self.stop('STATE_ERROR',tm)
             if self.reason!='RUNNING':return self.summary()
-            all_passed=x>self.finish and all(v>self.finish for v in trailing.values())
+            all_passed=(self.confirmation==0 or x>self.finish) and all(v>self.finish for v in trailing.values())
             if all_passed:
                 if self.first_all is None:self.first_all=tm
                 if self.pending is None:self.pending=tm
@@ -99,5 +107,5 @@ class CourseTracker:
             first_all_feet_pass_s=self.first_all,confirmation_start_s=self.pending,
             confirmed_at_sim_s=self.terminal if self.reason=='COURSE_COMPLETED' else None,
             terminal_sim_s=self.terminal,first_each_foot_pass=self.first_each,last_measurement=self.last,
-            foot_predicate='all native sphere centre X minus radius > finish; base X > finish; continuous0.20s, no fall/boundary/solver/state error',
+            foot_predicate='all four native foot sphere trailing extents X > finish; immediate goal' if self.confirmation==0 else 'all native sphere centre X minus radius > finish; base X > finish; continuous0.20s, no fall/boundary/solver/state error',
             error=getattr(self,'error',None)))
