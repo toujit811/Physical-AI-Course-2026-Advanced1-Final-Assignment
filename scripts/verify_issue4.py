@@ -96,13 +96,13 @@ def main():
     fig,axs=plt.subplots(1,2,figsize=(12,4.2),layout='constrained')
     for rid,t,x,arrival,passed in progress_curves:
         axs[0].plot(t,x,label=rid.removeprefix('issue3-D13550-')+(' oldPASS' if passed else ' oldFAIL'))
-        axs[0].plot(arrival,4,'o',ms=4)
+        axs[0].plot(arrival,x[np.searchsorted(t,arrival)],'o',ms=4)
     axs[0].axhline(4,color='black',ls='--');axs[0].set(xlabel='Recorded simulation time (s)',ylabel='Base +X displacement (m)',title='Existing20s evidence / presentation goal4m');axs[0].legend(fontsize=7)
     for trial in summary['runs']:
         g=trial['goal'];rid=g['source_run_id'];lo,hi=g['original_world_x4_tick_y_range_px']
         axs[1].plot([lo,hi],[rid.removeprefix('issue3-D13550-')]*2,'o-',label=None)
     axs[1].axvline(43,color='black',ls='--',label='New HUD Y=43px (all views)')
-    axs[1].set(xlabel='Screen Y (px)',title='Old world-X4 surface tick vs fixed HUD');axs[1].legend(fontsize=7)
+    axs[1].set(xlabel='Screen Y (px)',title='Old projected X4 (incl. offscreen) vs fixed HUD');axs[1].legend(fontsize=7)
     fig.savefig(output/'goal-and-ruler-validation.png',dpi=140);plt.close(fig)
     print(json.dumps({k:report[k] for k in ('status','files','videos','new_native_runs','all_source_hashes_unchanged')}))
 

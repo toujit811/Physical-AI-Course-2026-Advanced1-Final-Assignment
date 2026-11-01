@@ -21,17 +21,17 @@
 - Original gates may FAIL after the goal cutoff; clearly refer to full historical 20s gate.
 
 ### Task 1: goal and saved-camera HUD primitives
-- [ ] Write tests for fixed Y, X projection/translation, nonzero start, backward motion, crossing bracket, absent crossing, fall/bounds/error/unknown, nonfoot separation, real frame cutoff and independent end-card time.
-- [ ] Run tests RED, implement src/go2_ppo/presentation.py, run GREEN.
+- [x] Write tests for fixed Y, X projection/translation, nonzero start, backward motion, crossing bracket, absent crossing, fall/bounds/error/unknown, nonfoot separation, real frame cutoff and independent end-card time.
+- [x] Run tests RED, implement src/go2_ppo/presentation.py, run GREEN.
 Interface: analyse_trial(states,result,contacts) -> dict; ruler_ticks(calibration,values) -> list; select_frames(goal,frame_times) -> list; timeline(frame_times,end_card_frames=50) -> list.
 
 ### Task 2: offline individual video reconstruction and QA
-- [ ] Add src/go2_ppo/presentation_media.py and CLI; save source hashes before touching output, audit 100Hz/50Hz/frame-map/K/E/raw RGB and actual terrain input.
-- [ ] Generate six trials x three independent views into new reports/generated/issue4/; preserve raw/old annotations; draw fixed HUD and actual unchanged section, add nonsimulation endcard.
-- [ ] Full decode/PTS/codec/frame count/SHA/HUD projection and source preservation checks; save start/middle/end/card images, CSV, metadata and HTML index.
-- [ ] Existing regression suite plus new tests; update code-port module hashes.
+- [x] Add src/go2_ppo/presentation_media.py and CLI; save source hashes before touching output, audit 100Hz/50Hz/frame-map/K/E/raw RGB and actual terrain input.
+- [x] Generate six trials x three independent views into new reports/generated/issue4/; preserve raw/old annotations; draw fixed HUD and actual unchanged section, add nonsimulation endcard.
+- [x] Full decode/PTS/codec/frame count/SHA/HUD projection and source preservation checks; save start/middle/end/card images, CSV, metadata and HTML index.
+- [x] Existing regression suite plus new tests; update code-port module hashes.
 
 ### Task 3: report, review and Git
-- [ ] Save lightweight result/spec/report; one fresh whole-branch review per executing-plans skill, address important findings with regression tests.
-- [ ] Commit/push verified source, tests and lightweight reports only; safely fast-forward main and read back heads/status.
+- [x] Save lightweight result/spec/report; one fresh whole-branch review per executing-plans skill, address important findings with regression tests.
+- [x] Commit/push verified source, tests and lightweight reports only; safely fast-forward main and read back heads/status.
 - [ ] Post complete Issue4 report with 18 paths, old-gate limitations, camera discrepancy and presentation time; read back; stop.
