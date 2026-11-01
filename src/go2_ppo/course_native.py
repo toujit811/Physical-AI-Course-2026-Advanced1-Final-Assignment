@@ -18,8 +18,8 @@ from .natural_metrics import assess,point_velocity
 from .stage1_flat import torque_setup
 from .go2_kinematics import Go2Kinematics
 from .evaluation_status import enforce_substep_safety
-from .course_completion import CourseTracker,historical_reference
-from .course_media import CourseRecorder,camera_poses,show_gate_in_native_camera
+from .course_completion import CourseTracker,historical_reference,summarize_safety
+from .course_media import CourseRecorder,camera_poses,show_gate_in_native_camera,final_capture
 
 class CourseStop(Exception):
     """Stop immediately after the measured terminal native substep."""
@@ -66,7 +66,7 @@ def run(a):
     for module in (ROOT/'src/go2_ppo').glob('*.py'):
         shutil.copy2(module,source/module.name)
     for name in ('stage2-uneven.json','natural-gait.json'):shutil.copy2(ROOT/'configs'/name,source/name)
-    started=time.monotonic();monitor=Monitor();monitor.begin();rec=None;runner=None;solver=None;original_step=None;actor0=opt0=None
+    started=time.monotonic();monitor=Monitor();monitor.begin();rec=None;runner=None;solver=None;original_step=None;actor0=opt0=None;control=None;names=[];cameras={}
     rows=[];controls=[];contacts=[];current=0.;step_times=[];subcount=0;fallen=False;outside=False
     result={'started_at_utc':datetime.now(timezone.utc).isoformat(),'run_id':a.name,'status':'initializing','mode':'new_native_course_completion','approved_source':True,'source_sha256':t['metadata']['source_sha256'],'robot_count':1,'policy_evaluation':True,'learning_performed':False,'heldout':False,'checkpoint_sha256':EXPECTED,'args':vars(a),'evaluation_kind':a.kind,'course_config':goal_config,'PPO_updates':0,'start_x_m':0.,'old_20s_gates_redefined':False,'historical_c2_numeric_pass':True,'visual_gate_F':'requires user review of all three native videos','source_sha256s':{p.name:sha(p) for p in source.iterdir()}}
     dump(run/'result.json',result)
@@ -132,8 +132,9 @@ def run(a):
                 row[leg+'_sphere_radius_m']=float(g.data[0])
                 for i,axis in enumerate('xyz'):row[leg+'_center_'+axis+'_m']=float(center[i])
             fallen|=row['fallen'];outside|=row['out_of_terrain']
-            row['max_joint_excursion_rad']=float(np.maximum(np.maximum(limitarray[:,0]-q,q-limitarray[:,1]),0).max());rows.append(row)
+            row['max_joint_excursion_rad']=float(np.maximum(np.maximum(limitarray[:,0]-q,q-limitarray[:,1]),0).max())
             row['engine_error']=bool(solver.get_error_envs_mask().any())
+            rows.append(row)
             tracker.update(row)
             if abs(tm*25-round(tm*25))<1e-7 or tracker.reason!='RUNNING':
                 for view,pose in camera_poses(p).items():cameras[view].set_pose(**pose)
@@ -167,11 +168,9 @@ def run(a):
         result.update(error=str(e),traceback=traceback.format_exc());print(result['traceback'],flush=True)
     finally:
         if solver is not None and original_step is not None:solver.substep=original_step
-        if rec and rows:
-            try:
-                for view,pose in camera_poses([rows[-1][k] for k in ('x_m','y_m','height_m')]).items():cameras[view].set_pose(**pose)
-                rec.capture(cameras,float(rows[-1]['time_s']),rows[-1],terminal=True)
-            except Exception as e:result['terminal_recording_error']=repr(e)
+        terminal_verified=bool(rows) and abs(float(rows[-1]['time_s'])-current)<1e-8
+        try:result['terminal_evidence']=final_capture(rec,cameras,rows,current)
+        except Exception as e:result['terminal_recording_error']=repr(e)
         if rec:
             try:rec.close()
             except Exception as e:result['recording_error']=repr(e)
@@ -180,21 +179,17 @@ def run(a):
             for event in contacts:f.write(json.dumps(event,allow_nan=False)+'\n')
         if runner is not None and actor0 is not None:result.update(actor_unchanged=digest(runner.alg.actor.state_dict())==actor0,optimizer_unchanged=digest(runner.alg.optimizer.state_dict())==opt0)
         completion=tracker.summary()
-        limits=np.array([control['joint_limits_rad'][n] for n in names]) if runner is not None else None
-        joint_ok=bool(rows) and all(r['max_joint_excursion_rad']<=s2['joint_excursion_limit_rad'] for r in rows)
-        if runner is not None:
-            joint_ok &= all(max(abs(r[n+'_qf_applied_Nm']) for r in rows)<=control['urdf_effort_limits'][i]+1e-4 for i,n in enumerate(names))
-            joint_ok &= all(control['joint_limits_rad'][n][0]+.12-1e-5<=r[n+'_target_rad']<=control['joint_limits_rad'][n][1]-.12+1e-5 for r in rows for n in names)
-        nonfoot=[e for e in contacts if not e['foot']]
-        safety=dict(physical_fall=any(r['physical_fallen'] for r in rows),boundary_excursion=any(r['out_of_terrain'] for r in rows),engine_error=completion['reason'] in ('ENGINE_ERROR','STATE_ERROR'),nonfoot_contact_points=len(nonfoot),first_nonfoot_sim_s=min((e['time_s'] for e in nonfoot),default=None),joint_input_pass=bool(joint_ok),max_joint_excursion_rad=max((r['max_joint_excursion_rad'] for r in rows),default=None),max_FK_error_m=max((r[leg+'_FK_error_m'] for r in rows for leg in LEGS),default=None))
-        result.update(status='COURSE_COMPLETED' if completion['success'] else 'NOT_COMPLETED',completion=completion,new_run_safety=safety,terminal_sim_s=current,distance_m=rows[-1]['distance_m'] if rows else 0.,terminal_base_xyz_m=[rows[-1][k] for k in ('x_m','y_m','height_m')] if rows else None,wall_seconds=time.monotonic()-started,checkpoint_file_unchanged=sha(PARENT)==EXPECTED,rows=len(rows),control_samples=len(controls),peak_rss_bytes=max((r['process_rss_bytes'] for r in monitor.rows),default=None),step_median_s=float(np.median(step_times)) if step_times else None,step_p95_s=float(np.percentile(step_times,95)) if step_times else None,engine_error=safety['engine_error'],control=control if runner is not None else None)
+        safety=summarize_safety(rows,contacts,control,names,terminal_verified=terminal_verified)
+        safety['engine_error']=completion['reason'] in ('ENGINE_ERROR','STATE_ERROR')
+        result.update(status='COURSE_COMPLETED' if completion['success'] else 'NOT_COMPLETED',completion=completion,new_run_safety=safety,terminal_sim_s=current,distance_m=rows[-1]['distance_m'] if terminal_verified else None,distance_at_last_verified_sample_m=rows[-1]['distance_m'] if rows else None,terminal_base_xyz_m=[rows[-1][k] for k in ('x_m','y_m','height_m')] if terminal_verified else None,wall_seconds=time.monotonic()-started,checkpoint_file_unchanged=sha(PARENT)==EXPECTED,rows=len(rows),control_samples=len(controls),peak_rss_bytes=max((r['process_rss_bytes'] for r in monitor.rows),default=None),step_median_s=float(np.median(step_times)) if step_times else None,step_p95_s=float(np.percentile(step_times,95)) if step_times else None,engine_error=safety['engine_error'],control=control if runner is not None else None)
         dump(run/'result.json',result)
-        if rec and rows:
+        if rec and rows and terminal_verified and result.get('terminal_evidence',{}).get('terminal_snapshot_verified'):
             try:result['videos']=rec.present(result,rows)
             except Exception as e:result['presentation_error']=repr(e);result['presentation_traceback']=traceback.format_exc();print(result['presentation_traceback'],flush=True)
+        elif rec:result['presentation_error']='UNAVAILABLE_TERMINAL_MEASUREMENT; preserved last verified raw frames only'
         result['total_wall_including_media_s']=time.monotonic()-started
         dump(run/'result.json',result);print(json.dumps({k:result.get(k) for k in ('run_id','status','terminal_sim_s','distance_m','new_run_safety','total_wall_including_media_s','presentation_error')}),flush=True)
-    return 1 if result.get('presentation_error') or result.get('recording_error') or result.get('engine_error') else 0 if completion['success'] else 2
+    return 1 if result.get('presentation_error') or result.get('recording_error') or result.get('terminal_recording_error') or result.get('engine_error') else 0 if completion['success'] else 2
 
 if __name__=='__main__':
     p=argparse.ArgumentParser(description=__doc__);p.add_argument('--name',required=True);p.add_argument('--source',default=str(SOURCE));p.add_argument('--kind',required=True,choices=['FLAT','ROLLING_UNEVEN']);p.add_argument('--condition',type=int,default=2,choices=range(3));p.add_argument('--substeps',type=int,default=2,choices=[2]);p.add_argument('--wall-cap',type=float,default=900.)

@@ -22,10 +22,10 @@
   "existing20s_evaluation": "UNCHANGED_4_OF_6_NUMERIC_PASS_ROLLING_c0_c1_NONFOOT_FAIL",
   "F": "USER_REVIEW_PENDING",
   "tests": {
-    "new": 16,
+    "new": 22,
     "previous": 87,
-    "total": 103,
-    "stdlib_core": 10,
+    "total": 109,
+    "stdlib_core": 11,
     "status": "PASS"
   },
   "source_preservation": {
@@ -2351,5 +2351,15 @@
         "RR": 6.6470549850463865
       }
     }
-  ]
+  ],
+  "post_review": {
+    "important_findings": 2,
+    "fixed": 2,
+    "tests": 109,
+    "native_reruns_after_error_path_fix": 0,
+    "saved_run_replay_count": 6,
+    "replay": "reports/generated/issue5/post-review-replay.json",
+    "change_scope": "failure finalization only; no observation/action/controller/terrain/goal changes",
+    "native_execution_code_commit": "9196a66ed5fd43de6c7873c942da26d32d659a53"
+  }
 }

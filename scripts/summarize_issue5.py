@@ -57,12 +57,13 @@ def main():
     axes[1,1].set(xlabel='Native sim time (s)',ylabel='Body angle (deg)',title='Actual posture; fall threshold remains45deg')
     for ax in axes.flat:ax.grid(alpha=.2);ax.legend(fontsize=7)
     fig.savefig(OUT/'course-verification.png',dpi=150);plt.close(fig)
+    all_movies=sum(len(q['movies']) for q in records);primary_movies=sum(len(q['movies']) for q in primary)
     report=dict(authority_issue=5,source_branch='issue4/video-goal-hud',source_commit='dfcadd4275a26b7d3a25a2ff936275b492147dc9',
         implementation_branch='issue5/native-course-completion',new_native_runs=len(records),native_run_order=['FLATc2v1','ROLLINGc2v1','FLATc0v1','FLATc1v1','FLATc2v2','ROLLINGc2v2'],
-        final_priority_runs=2,all_new_mp4_files=36,primary_new_mp4_files=12,new_PPO_updates=0,heldout='UNOPENED_NOT_PERFORMED',
+        final_priority_runs=2,all_new_mp4_files=all_movies,primary_new_mp4_files=primary_movies,new_PPO_updates=0,heldout='UNOPENED_NOT_PERFORMED',
         final_FLAT_c2='NOT_COMPLETED_OUT_OF_BOUNDS',final_ROLLING_c2='COURSE_COMPLETED',
         existing20s_evaluation='UNCHANGED_4_OF_6_NUMERIC_PASS_ROLLING_c0_c1_NONFOOT_FAIL',F='USER_REVIEW_PENDING',
-        tests={'new':16,'previous':87,'total':103,'stdlib_core':10,'status':'PASS'},source_preservation=qa['source_preservation'],
+        tests={'new':22,'previous':87,'total':109,'stdlib_core':11,'status':'PASS'},source_preservation=qa['source_preservation'],
         native_marker_failure_retained_v1=4,final_v2_native_marker_QA='PASS',
         numerical_verification='All6 time grids, raw RGB/hash/K-E/FK/support/contact/physics/source/MP4PTS verified; v1 ground marker visualFAIL explicitly retained.',
         limitations=['FLATc1/c2: forefoot crossesX7 before last hind-foot trailing extent crosses6.40; exit placement0.60m constrains completion. Not a fall or solver failure.',
@@ -73,7 +74,7 @@ def main():
         index='reports/generated/issue5/index.html',CSV='reports/generated/issue5/course-results.csv',graph='reports/generated/issue5/course-verification.png',
         detailed_QA='reports/generated/issue5/independent-qa.json',runs=report_runs)
     (ROOT/'reports/issue5-results.json').write_text(json.dumps(report,indent=2)+'\n')
-    print(json.dumps(dict(native_runs=len(records),primary=2,all_mp4=36,results=table)))
+    print(json.dumps(dict(native_runs=len(records),primary=2,all_mp4=all_movies,results=table)))
 
 
 if __name__=='__main__':main()

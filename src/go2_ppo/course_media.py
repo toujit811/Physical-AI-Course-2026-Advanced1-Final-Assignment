@@ -30,6 +30,24 @@ def camera_poses(base_pos):
         overhead=dict(pos=(x+.5,0,3.3),lookat=(x+.5,0,0),up=(0,1,0)))
 
 
+def final_capture(recorder,cameras,rows,current_sim_s):
+    """Never render an advanced failed scene under an earlier verified timestamp."""
+    last=float(rows[-1]['time_s']) if rows else None
+    verified=last is not None and abs(last-float(current_sim_s))<1e-8
+    evidence=dict(terminal_snapshot_verified=False,terminal_measurement_verified=verified,last_verified_sim_s=last,
+        terminal_physics_time_s=float(current_sim_s),
+        status='VERIFIED_TERMINAL_STATE' if verified else 'UNAVAILABLE_UNVERIFIED_TERMINAL_STATE' if rows else 'UNAVAILABLE_NO_VERIFIED_STATE')
+    if not verified:return evidence
+    if recorder is None:
+        evidence['status']='UNAVAILABLE_RECORDER';return evidence
+    for view,pose in camera_poses([rows[-1][k] for k in ('x_m','y_m','height_m')]).items():cameras[view].set_pose(**pose)
+    recorder.capture(cameras,last,rows[-1],terminal=True)
+    views={r['view'] for r in recorder.records if abs(float(r['simulation_time_s'])-last)<1e-8}
+    evidence['terminal_snapshot_verified']=views==set(VIEWS)
+    if not evidence['terminal_snapshot_verified']:evidence['status']='UNAVAILABLE_PARTIAL_TERMINAL_CAPTURE'
+    return evidence
+
+
 def course_timeline(times):
     times=list(map(float,times))
     if not times or abs(times[0])>1e-8 or any(not math.isfinite(t) for t in times) or any(b<=a for a,b in zip(times,times[1:])):

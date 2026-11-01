@@ -20,6 +20,29 @@ def flag(value):
     raise ValueError('Missing physical boolean')
 
 
+def summarize_safety(rows,contacts,control,names,excursion_limit=.002,terminal_verified=True):
+    """Report unavailable measurements as unknown, including startup failures."""
+    if not rows:
+        return dict(measurements_available=False,verified_through_sim_s=None,
+            physical_fall=None,boundary_excursion=None,nonfoot_contact_points=None,
+            first_nonfoot_sim_s=None,joint_input_pass=None,max_joint_excursion_rad=None,max_FK_error_m=None)
+    joint_ok=all(float(r['max_joint_excursion_rad'])<=excursion_limit for r in rows)
+    if control is None:joint_ok=None
+    else:
+        for i,name in enumerate(names):
+            low,high=control['joint_limits_rad'][name];effort=control['urdf_effort_limits'][i]
+            joint_ok &= all(abs(float(r[name+'_qf_applied_Nm']))<=effort+1e-4 and low+.12-1e-5<=float(r[name+'_target_rad'])<=high-.12+1e-5 for r in rows)
+    nonfoot=[e for e in contacts if not flag(e['foot'])]
+    fallen=any(flag(r['physical_fallen']) for r in rows);outside=any(flag(r['out_of_terrain']) for r in rows)
+    return dict(measurements_available=True,verified_through_sim_s=float(rows[-1]['time_s']),
+        physical_fall=fallen if fallen or terminal_verified else None,
+        boundary_excursion=outside if outside or terminal_verified else None,
+        nonfoot_contact_points=len(nonfoot),first_nonfoot_sim_s=min((float(e['time_s']) for e in nonfoot),default=None),
+        joint_input_pass=bool(joint_ok) if joint_ok is not None and (terminal_verified or not joint_ok) else None,
+        max_joint_excursion_rad=max(float(r['max_joint_excursion_rad']) for r in rows),
+        max_FK_error_m=max(float(r[leg+'_FK_error_m']) for r in rows for leg in LEGS))
+
+
 class CourseTracker:
     def __init__(self,finish_x=6.4,confirmation_s=.2,max_sim_s=60.,stall_s=6.,stall_progress_m=.1):
         self.finish=float(finish_x);self.confirmation=float(confirmation_s)

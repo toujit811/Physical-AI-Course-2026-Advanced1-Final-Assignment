@@ -78,3 +78,10 @@ class CourseCompletionTests(unittest.TestCase):
         self.assertTrue(c.historical_reference(source,'FLAT',0)['numeric_pass'])
         self.assertFalse(c.historical_reference(source,'ROLLING_UNEVEN',0)['numeric_pass'])
         with self.assertRaises(ValueError):c.historical_reference(source,'FLAT',2)
+
+    def test_initial_measurement_failure_returns_unknown_safety_not_max_empty_error(self):
+        safety=c.summarize_safety([],[],{},[],terminal_verified=False)
+        self.assertFalse(safety['measurements_available'])
+        self.assertIsNone(safety['joint_input_pass'])
+        self.assertIsNone(safety['physical_fall'])
+        self.assertIsNone(safety['max_FK_error_m'])
