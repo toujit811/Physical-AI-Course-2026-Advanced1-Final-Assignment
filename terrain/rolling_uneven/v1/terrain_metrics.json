@@ -1,0 +1,28 @@
+{
+  "status": "geometry_preview_only__no_genesis_native_verification",
+  "length_x_m": 8.0,
+  "width_y_m": 2.6,
+  "grid_nx": 161,
+  "grid_ny": 53,
+  "height_min_m": 0.0,
+  "height_max_m": 0.18932400342623854,
+  "centerline_max_height_m": 0.18890018744655152,
+  "active_foot_region_x_m": [
+    0.5,
+    6.0
+  ],
+  "active_foot_region_abs_y_m": 0.75,
+  "active_region_median_slope_deg": 7.075823141272219,
+  "active_region_p95_slope_deg": 13.559783384865773,
+  "active_region_max_slope_deg": 17.114078536035183,
+  "active_region_fraction_over_10deg": 0.2132132132132132,
+  "slope_max_whole_mesh_deg": 17.114078536035183,
+  "observations": 45,
+  "new_sensors": false,
+  "ppo_training_executed": false,
+  "genesis_robot_trajectory_executed": false,
+  "notes": "Continuously shaped slopes, zero-height approach and exit, no vertical steps. Steep sections are local. All figures use simulated geometry, not native Genesis output.",
+  "vertices": 17066,
+  "top_triangles": 16640,
+  "total_triangles": 34128
+}
