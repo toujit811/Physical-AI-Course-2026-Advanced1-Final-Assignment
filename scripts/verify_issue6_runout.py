@@ -20,7 +20,10 @@ def rows(p):
     with p.open() as f:return list(csv.DictReader(f))
 def dump(p,a):p.write_text(json.dumps(a,indent=2,allow_nan=False)+'\n')
 
-def main():
+def main(new_run=NEW,out=OUT,terrain_end=12.,report_path=None):
+    NEW=Path(new_run);OUT=Path(out)
+    report_path=Path(report_path) if report_path is not None else ROOT/'reports/issue6-runout-results.json'
+    grid_rows=161+round((terrain_end-7.)/.05)
     before=js(OUT/'preservation-before.json')
     for p,h in before.items():assert Path(p).is_file() and sha(Path(p))==h,('Prior artifact changed',p)
     approved=verify_heightfield(ROOT/'assets/approved/heightfield.npz')
@@ -44,22 +47,22 @@ def main():
         if reused:
             assert not np.any(terrain['height_m']) and layout['x_limits_m']==[-1,9]
         else:
-            assert terrain['height_m'].shape==(261,53) and terrain['x'][-1]==12
+            assert terrain['height_m'].shape==(grid_rows,53) and terrain['x'][-1]==terrain_end
             np.testing.assert_array_equal(terrain['height_m'][:161],approved['height_m'])
             np.testing.assert_array_equal(terrain['x'][:161],approved['x'])
             assert not np.any(terrain['height_m'][161:])
-            assert layout['x_limits_m']==[-1,12] and layout['native_terrain_x_limits_m']==[-1,12]
-            assert result['course_config']['terrain_x_bounds']==[-1,12] and result['course_config']['runout_extension']['end_x_m']==12
+            assert layout['x_limits_m']==[-1,terrain_end] and layout['native_terrain_x_limits_m']==[-1,terrain_end]
+            assert result['course_config']['terrain_x_bounds']==[-1,terrain_end] and result['course_config']['runout_extension']['end_x_m']==terrain_end
             quant=np.load(run/'terrain-source-and-quantized.npz')
             np.testing.assert_array_equal(quant['height_mm'][:161],approved['height_mm'])
             np.testing.assert_array_equal(quant['original_height_m'][:161],approved['original_height_m'])
-            assert quant['height_mm'].shape==(261,53) and quant['height_mm'].dtype==np.int16
+            assert quant['height_mm'].shape==(grid_rows,53) and quant['height_mm'].dtype==np.int16
             assert not np.any(quant['height_mm'][161:]) and not np.any(quant['original_height_m'][161:])
             assert result['terrain_audit']['integer_heightfield_max_error']==0
             assert result['terrain_audit']['query_max_error_m']<1e-5 and result['terrain_audit']['metre_readback_max_error_m']<1e-5
-            readback=rows(run/'terrain-readback.csv');assert max(float(q['x_m']) for q in readback)>11.99
-            exit_queries=[q for q in readback if 7<float(q['x_m'])<=12];assert len(exit_queries)>0 and max(abs(float(q['native_z_m'])) for q in exit_queries)<1e-7
-            verts=np.load(run/'native-terrain-vertices.npz')['vertices_world_m'];assert verts[:,0].max()>11.99
+            readback=rows(run/'terrain-readback.csv');assert abs(max(float(q['x_m']) for q in readback)-terrain_end)<1e-5
+            exit_queries=[q for q in readback if 7<float(q['x_m'])<=terrain_end];assert len(exit_queries)>0 and max(abs(float(q['native_z_m'])) for q in exit_queries)<1e-7
+            verts=np.load(run/'native-terrain-vertices.npz')['vertices_world_m'];assert abs(float(verts[:,0].max())-terrain_end)<1e-5
             old=ROOT/'logs/course-native/issue6-twelve-D13550-ROLLING_UNEVEN-c2';old_result=js(old/'result.json');old_s=rows(old/'states.csv')
             assert result['control']==old_result['control'] and result['physical_build']==old_result['physical_build']
             assert js(run/'config.json')['effective_cfgs']==js(old/'config.json')['effective_cfgs']
@@ -135,10 +138,10 @@ def main():
         assert same_times['side']==same_times['oblique']==same_times['overhead']
         tail=s[first:]
         numeric={key:{'min':min(float(q[key]) for q in tail),'max':max(float(q[key]) for q in tail)} for key in ('x_m','y_m','height_m','base_clearance_m','roll_deg','pitch_deg','max_joint_excursion_rad')}
-        trials.append({'kind':kind,'run':run.name,'reused_unchanged':reused,'goal_sim_s':float(goal),'last_pre_goal_sim_s':float(ts[first-1]),'terminal_sim_s':float(ts[-1]),'post_goal_recorded_s':3.,'goal_hold_s':0.,'full_run_safety':safety,'post_goal_numeric_ranges':numeric,'cameras':cameras,'profile_x_limits_m':layout['x_limits_m'],'physical_floor_x_end_m':None if reused else 12.,'model_control_unchanged':True})
+        trials.append({'kind':kind,'run':run.name,'reused_unchanged':reused,'goal_sim_s':float(goal),'last_pre_goal_sim_s':float(ts[first-1]),'terminal_sim_s':float(ts[-1]),'post_goal_recorded_s':3.,'goal_hold_s':0.,'full_run_safety':safety,'post_goal_numeric_ranges':numeric,'cameras':cameras,'profile_x_limits_m':layout['x_limits_m'],'physical_floor_x_end_m':None if reused else terrain_end,'model_control_unchanged':True})
     assert len(videos)==12
-    report={'status':'PASS','material_acceptance':'all12 verified; corrected UNEVEN no fall/boundary/disappearance through goal+3s','new_native_runs':1,'new_uneven_videos':6,'reused_flat_videos':6,'stopped_preexisting_runs_not_delivered':True,'checkpoint_sha256':EXPECTED,'PPO_updates':0,'heldout':False,'old_artifacts_sha_unchanged':len(before),'all12_fully_decoded':True,'same_run_time_frames_per_pair':True,'videos':videos,'runs':trials,'F':'USER_REVIEW_PENDING','display_axes_difference':'preserved FLAT[-1,9], extended UNEVEN[-1,12]; same panels/cameras/viridis0..0.20; verified rather than claimed identical'}
-    dump(OUT/'verification.json',report);dump(ROOT/'reports/issue6-runout-results.json',report)
+    report={'status':'PASS','material_acceptance':'all12 verified; corrected UNEVEN no fall/boundary/disappearance through goal+3s','new_native_runs':1,'new_uneven_videos':6,'reused_flat_videos':6,'stopped_preexisting_runs_not_delivered':True,'checkpoint_sha256':EXPECTED,'PPO_updates':0,'heldout':False,'old_artifacts_sha_unchanged':len(before),'all12_fully_decoded':True,'same_run_time_frames_per_pair':True,'videos':videos,'runs':trials,'F':'USER_REVIEW_PENDING','display_axes_difference':f'preserved FLAT[-1,9], extended UNEVEN[-1,{terrain_end:g}]; same panels/cameras/viridis0..0.20; verified rather than claimed identical'}
+    dump(OUT/'verification.json',report);dump(report_path,report)
     print(json.dumps({k:report[k] for k in ('status','new_native_runs','new_uneven_videos','reused_flat_videos','old_artifacts_sha_unchanged','all12_fully_decoded')}))
     for q in trials:print(json.dumps(q))
 

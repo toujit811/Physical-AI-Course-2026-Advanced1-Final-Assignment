@@ -49,3 +49,16 @@ class CourseRunoutTests(unittest.TestCase):
         self.assertLessEqual(layout._section_xy([12.],[0.])[0,0],1200.)
         np.testing.assert_array_equal(layout.x,t['x'])
         self.assertEqual(float(layout.z[-1]),0.)
+
+    def test_eight_metre_revision_has_exact_floor_boundary_and_profile_end(self):
+        from go2_ppo.course_media import paired_layout
+        t=source.extend_flat_runout(self.original,8.)
+        self.assertEqual(t['height_mm'].shape,(181,53))
+        np.testing.assert_array_equal(t['height_mm'][:161],self.original['height_mm'])
+        self.assertFalse(np.any(t['height_mm'][161:]))
+        self.assertEqual(terrain_options(t)['height_field'].shape,(181,53))
+        self.assertFalse(outside_course_boundary('ROLLING_UNEVEN',[7.8,0.,.3],terrain_x_end=8.))
+        self.assertTrue(outside_course_boundary('ROLLING_UNEVEN',[8.001,0.,.03],foot=True,terrain_x_end=8.))
+        self.assertTrue(outside_course_boundary('ROLLING_UNEVEN',[7.96,0.,.3],terrain_x_end=8.))
+        self.assertEqual(paired_layout(t).plot_xhi,8.)
+        self.assertEqual(float(surface_height(t,7.6,.5)),0.)

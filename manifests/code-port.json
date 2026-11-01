@@ -343,7 +343,7 @@
     },
     {
       "path": "src/go2_ppo/course_media.py",
-      "sha256": "d7159c663c0fc21edfb805ded654cc5f2e27d3824c9923eff0b7a0965a0fa676"
+      "sha256": "6c4e20cf144bb5313467577f1f6d093b94de45386971181f61ea7422e68ace55"
     },
     {
       "path": "src/go2_ppo/course_native.py",

@@ -38,7 +38,7 @@ def paired_layout(terrain):
     layout=make_layout(terrain)
     # Preserve the old display for old captures; an extended physical exit must
     # also appear completely in the profile. This axis is never a stop boundary.
-    layout.plot_xlo=-1.;layout.plot_xhi=max(9.,float(layout.x[-1]))
+    layout.plot_xlo=-1.;end=float(layout.x[-1]);layout.plot_xhi=end if end>7. else 9.
     layout.xppm=1120/(layout.plot_xhi-layout.plot_xlo);layout.zppm=layout.xppm*layout.exaggeration
     layout._section=layout._make_section();d=ImageDraw.Draw(layout._section)
     for x in np.arange(float(layout.x[-1])+.5,layout.plot_xhi+1e-8,.5):
